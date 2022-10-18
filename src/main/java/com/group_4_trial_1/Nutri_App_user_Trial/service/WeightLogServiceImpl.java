@@ -1,13 +1,15 @@
-package com.example.demo.service;
-import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import com.example.demo.entity.WeightLog;
-import com.example.demo.exception.WeightLogNotFoundException;
-import com.example.demo.repository.WeightLogRepository;
+package com.group_4_trial_1.Nutri_App_user_Trial.service;
 
+
+import com.group_4_trial_1.Nutri_App_user_Trial.entity.WeightLog;
+import com.group_4_trial_1.Nutri_App_user_Trial.exception.WeightLogNotFoundException;
+import com.group_4_trial_1.Nutri_App_user_Trial.repository.WeightLogRepository;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 
 @Service
@@ -54,17 +56,16 @@ return wl;
 
 
    @Override
-    public List<WeightLog> showAllWeightLog()throws WeightLogNotFoundException {
+    public List<WeightLog> showAllWeightLog() {
         // TODO Auto-generated method stub
 logger.info("showAllWeightLog method initiated");
-
-        return weightLogRepository.findAll();
+        return weightLogRepository.findAll().stream().toList();
     }
 
 
 
    @Override
-   public WeightLog updateWeightLog(WeightLog weightLog,Long ID) throws WeightLogNotFoundException {
+   public WeightLog updateWeightLog(WeightLog weightLog, Long ID) throws WeightLogNotFoundException {
         // TODO Auto-generated method stub
 logger.info("updateWeightLog method initiated");
         WeightLog value=weightLogRepository.findById(ID).orElseThrow(()->new WeightLogNotFoundException("WeightLog with id"+ ID + "does not exist."));
