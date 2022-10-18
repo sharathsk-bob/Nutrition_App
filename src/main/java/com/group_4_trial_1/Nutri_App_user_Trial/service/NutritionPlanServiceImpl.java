@@ -9,19 +9,22 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Objects;
-
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 @Service
 public class NutritionPlanServiceImpl implements NutritionPlanService{
 
     private final NutritionPlanRepository nutritionPlanRepository;
-
+    private static final Logger logger = LogManager.getLogger(NutritionPlanServiceImpl.class);
+    
     public NutritionPlanServiceImpl(NutritionPlanRepository nutritionPlanRepository) {
         this.nutritionPlanRepository = nutritionPlanRepository;
     }
 
     @Autowired
     public List<NutritionPlanDTO> listAllPlans(){
+        logger.info("listAllPlans method initiated");
         return nutritionPlanRepository.findAll();
     }
 
@@ -31,7 +34,7 @@ public class NutritionPlanServiceImpl implements NutritionPlanService{
         if(nutritionPlanDTOOptional.isPresent()){
             throw new IllegalStateException("Email Taken");
         }*/
-
+        logger.info("createPlan method executed");
         // Logger logger = (Logger) Logger.getLogger(NutritionPlanService.class.getName());
         nutritionPlanRepository.save(nutritionPlanDTO);
         // logger.log(Level.INFO, (Supplier<String>) nutritionPlanDTO);
@@ -41,18 +44,23 @@ public class NutritionPlanServiceImpl implements NutritionPlanService{
 
 
     public void removePlan(Long nutritionPlanDTOId) throws NutritionPlanNotFoundException {
+      logger.info("removePlan method initiated");
+        
         boolean exists = nutritionPlanRepository.existsById(nutritionPlanDTOId);
         if(!exists){
             throw new NutritionPlanNotFoundException("Nutrition Plan for id "
                     + nutritionPlanDTOId + " does not exits");
         }
         nutritionPlanRepository.deleteById(nutritionPlanDTOId);
+        logger.info("removePlan method executed");
     }
 
     @Transactional
     public NutritionPlanDTO changePlan(Long nutritionPlanDTOId,
                                        String name,
                                        Double price , String planDescription ) throws NutritionPlanNotFoundException{
+        
+        logger.info("changePlan method initiated");
         NutritionPlanDTO nutritionPlanDTO = nutritionPlanRepository.findById(nutritionPlanDTOId).
                 orElseThrow(() -> new NutritionPlanNotFoundException(
                         "Nutrition Plan with id " + nutritionPlanDTOId + " does not exists"));
@@ -76,6 +84,7 @@ public class NutritionPlanServiceImpl implements NutritionPlanService{
                 !Objects.equals(nutritionPlanDTO.getUpdated_At(),updated_At)){
             nutritionPlanDTO.setUpdated_At(updated_At);
         }*/
+        logger.info("changePlan method executed");
         return nutritionPlanDTO;
     }
 }
