@@ -823,3 +823,39 @@ Identify and stop the process that's listening on port 8020 or configure this ap
 2022-10-18 23:49:44.983  INFO 28304 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2022-10-18 23:49:44.989  INFO 28304 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2022-10-18 23:49:45.012  INFO 28304 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-10-18 23:55:01.752  INFO 18396 --- [main] c.g.N.NutritionApplicationTests          : Starting NutritionApplicationTests using Java 17.0.2 on Samael with PID 18396 (started by Pratik in D:\Capgemini Training\Sprint_1 Project\Git Repo\RepoGit\NutritionApp)
+2022-10-18 23:55:01.754  INFO 18396 --- [main] c.g.N.NutritionApplicationTests          : No active profile set, falling back to 1 default profile: "default"
+2022-10-18 23:55:03.123  INFO 18396 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-10-18 23:55:03.234  INFO 18396 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 99 ms. Found 5 JPA repository interfaces.
+2022-10-18 23:55:05.223  INFO 18396 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-10-18 23:55:05.553  INFO 18396 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-10-18 23:55:06.791  INFO 18396 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-10-18 23:55:06.851  INFO 18396 --- [main] f.a.AutowiredAnnotationBeanPostProcessor : Autowired annotation should only be used on methods with parameters: public java.util.List com.group_4_trial_1.Nutri_App_user_Trial.service.NutritionPlanServiceImpl.getNutritionPlans()
+2022-10-18 23:55:10.418  INFO 18396 --- [main] c.g.N.NutritionApplicationTests          : Started NutritionApplicationTests in 9.057 seconds (JVM running for 10.429)
+2022-10-18 23:55:10.595  INFO 18396 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-10-18 23:55:10.598  INFO 18396 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-10-18 23:55:10.604  INFO 18396 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-10-18 23:55:41.969  INFO 31400 --- [main] c.g.N.NutritionApplicationTests          : Starting NutritionApplicationTests using Java 17.0.2 on Samael with PID 31400 (started by Pratik in D:\Capgemini Training\Sprint_1 Project\Git Repo\RepoGit\NutritionApp)
+2022-10-18 23:55:41.971  INFO 31400 --- [main] c.g.N.NutritionApplicationTests          : No active profile set, falling back to 1 default profile: "default"
+2022-10-18 23:55:43.299  INFO 31400 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-10-18 23:55:43.395  INFO 31400 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 85 ms. Found 5 JPA repository interfaces.
+2022-10-18 23:55:45.427  INFO 31400 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-10-18 23:55:45.653  INFO 31400 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-10-18 23:55:46.876  INFO 31400 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-10-18 23:55:46.943  INFO 31400 --- [main] f.a.AutowiredAnnotationBeanPostProcessor : Autowired annotation should only be used on methods with parameters: public java.util.List com.group_4_trial_1.Nutri_App_user_Trial.service.NutritionPlanServiceImpl.getNutritionPlans()
+2022-10-18 23:55:50.640  INFO 31400 --- [main] c.g.N.NutritionApplicationTests          : Started NutritionApplicationTests in 9.059 seconds (JVM running for 10.572)
+2022-10-18 23:55:50.844  INFO 31400 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-10-18 23:55:50.846  INFO 31400 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-10-18 23:55:50.854  INFO 31400 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-10-18 23:56:08.733  INFO 23540 --- [main] c.g.Nutri_App_user_Trial.WeightLogTest   : Starting WeightLogTest using Java 17.0.2 on Samael with PID 23540 (started by Pratik in D:\Capgemini Training\Sprint_1 Project\Git Repo\RepoGit\NutritionApp)
+2022-10-18 23:56:08.734  INFO 23540 --- [main] c.g.Nutri_App_user_Trial.WeightLogTest   : No active profile set, falling back to 1 default profile: "default"
+2022-10-18 23:56:10.074  INFO 23540 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-10-18 23:56:10.177  INFO 23540 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 87 ms. Found 5 JPA repository interfaces.
+2022-10-18 23:56:12.228  INFO 23540 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-10-18 23:56:12.446  INFO 23540 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-10-18 23:56:13.481  INFO 23540 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-10-18 23:56:14.485  INFO 23540 --- [main] f.a.AutowiredAnnotationBeanPostProcessor : Autowired annotation should only be used on methods with parameters: public java.util.List com.group_4_trial_1.Nutri_App_user_Trial.service.NutritionPlanServiceImpl.getNutritionPlans()
+2022-10-18 23:56:18.188  INFO 23540 --- [main] c.g.Nutri_App_user_Trial.WeightLogTest   : Started WeightLogTest in 9.826 seconds (JVM running for 11.508)
+2022-10-18 23:56:18.445  INFO 23540 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-10-18 23:56:18.449  INFO 23540 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-10-18 23:56:18.462  INFO 23540 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

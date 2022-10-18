@@ -99,7 +99,7 @@ class NutritionApplicationTests {
 //		userService.deleteUser(user.getId());
 //		verify(userRepository, times(1)).deleteById(user.getId());
 //	}
-	
+
 
 //        @Test
 //        public void deletePlanTest() throws DietPlanNotFoundException {
