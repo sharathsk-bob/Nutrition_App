@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+//Description : This is weightLog Service Layer
 
 @Service
 public class  WeightLogServiceImpl  implements WeightLogServices {
@@ -21,6 +22,13 @@ public class  WeightLogServiceImpl  implements WeightLogServices {
     public void weightLogService(WeightLogRepository weightLogRepository) {
         this.weightLogRepository= weightLogRepository;
     }
+    
+
+
+/*
+ * Description : This method removes existing ID :Input Parameter 
+ *               Throws Exception if the ID is not found as WeightLogNotFoundException
+ */	
     
     @Override
     public void removeWeightLog(Long ID) throws WeightLogNotFoundException {
@@ -41,7 +49,7 @@ logger.info("removeWeightLog method executed");
     
     
  
-
+  //Description : This method Adds new weightLog : Input Parameter
 
    @Override
     public WeightLog addWeightLog(WeightLog weightLog)throws WeightLogNotFoundException {
@@ -55,6 +63,11 @@ return wl;
 
 
 
+/*
+ * Description : This method shows existing weightLog :Input Parameter 
+ *          
+ */
+
    @Override
     public List<WeightLog> showAllWeightLog() {
         // TODO Auto-generated method stub
@@ -62,6 +75,10 @@ logger.info("showAllWeightLog method initiated");
         return weightLogRepository.findAll().stream().toList();
     }
 
+  /*
+	 * Description : This method Updates existing weightLog by taking ID:Input Parameter 
+	 *               Throws Exception if the ID is not found as WeightLogNotFoundException	
+	 */
 
 
    @Override
