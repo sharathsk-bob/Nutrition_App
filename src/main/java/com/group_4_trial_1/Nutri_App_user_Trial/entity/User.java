@@ -3,6 +3,7 @@ package com.group_4_trial_1.Nutri_App_user_Trial.entity;
 import javax.persistence.*;
 import java.sql.Time;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -54,13 +55,19 @@ public class User {
     @JoinColumn(name = "nutrition_plan_id")
     private NutritionPlan nutritionPlan;
 
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "payment_id")
+    private List<Payment> paymentList;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "weight_log_id")
+    private List<WeightLog> weightLogList;
+
     public User() {
     }
 
     public User(long l, String mariam007, String mariam, String gender, String female, LocalDate of) {
     }
-
-
 
     public User(String userId, String name, String contact, String gender, LocalDate dob, DietPlan dietPlan) {
         this.userId = userId;
@@ -70,8 +77,6 @@ public class User {
         this.dob = dob;
         this.dietPlan = dietPlan;
     }
-
-
 
     public User(Long id, String userId, String name, String contact,
                 String gender, LocalDate dob, String email, String role,
@@ -300,6 +305,22 @@ public class User {
         this.nutritionPlan = nutritionPlan;
     }
 
+    public List<Payment> getPaymentList() {
+        return paymentList;
+    }
+
+    public void setPaymentList(List<Payment> paymentList) {
+        this.paymentList = paymentList;
+    }
+
+    public List<WeightLog> getWeightLogList() {
+        return weightLogList;
+    }
+
+    public void setWeightLogList(List<WeightLog> weightLogList) {
+        this.weightLogList = weightLogList;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -326,6 +347,8 @@ public class User {
                 ", password='" + password + '\'' +
                 ", DietPlan='" + dietPlan + '\'' +
                 ", NutritionPlan'" + nutritionPlan + '\'' +
+                ", Payments'" + paymentList + '\'' +
+                ", WeightLogs'" + weightLogList + '\'' +
                 '}';
     }
 

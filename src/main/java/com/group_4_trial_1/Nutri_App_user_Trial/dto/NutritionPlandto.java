@@ -3,8 +3,6 @@ import java.time.LocalDate;
 
 
 public class NutritionPlandto {
-
-
     private Long id;
     private String name;
     private String planDiscription;

@@ -1,4 +1,4 @@
-package com.sprint_1.payment_module.dto;
+package com.group_4_trial_1.Nutri_App_user_Trial.dto;
 
 import java.time.LocalDate;
 
