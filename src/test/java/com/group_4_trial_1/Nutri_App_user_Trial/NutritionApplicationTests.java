@@ -1,7 +1,10 @@
 package com.group_4_trial_1.Nutri_App_user_Trial;
 
+import com.group_4_trial_1.Nutri_App_user_Trial.entity.DietPlan;
 import com.group_4_trial_1.Nutri_App_user_Trial.entity.User;
+import com.group_4_trial_1.Nutri_App_user_Trial.repository.DietPlanRepo;
 import com.group_4_trial_1.Nutri_App_user_Trial.repository.UserRepository;
+import com.group_4_trial_1.Nutri_App_user_Trial.service.DietService;
 import com.group_4_trial_1.Nutri_App_user_Trial.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -32,6 +35,10 @@ class NutritionApplicationTests {
 	private UserRepository userRepository;
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private DietService dietService;
+	@MockBean
+	private DietPlanRepo repository;
 
 	@Test
 	public void getAllUsersTest() {
@@ -88,5 +95,30 @@ class NutritionApplicationTests {
 //		userService.deleteUser(user.getId());
 //		verify(userRepository, times(1)).deleteById(user.getId());
 //	}
+@Test
+public void listPlansTest(){
+	when(repository.findAll()).thenReturn(Stream.of(new DietPlan("jjkj","gugu",
+					"jguigiug","guigig","vuiug","jkggi",
+					"uigiug"),
+			new DietPlan("jedgig","gedui","jegdugd",
+					"jbejkbjk","jhegvu","jgedguig","uiguigf")
+	).collect(Collectors.toList()));
+	assertEquals(2,dietService.listAllPlan().size());
+}
+	@Test
+	public void createPlanTest(){
+		DietPlan plan = new DietPlan("jjgk","jggig","guguigui","jhfuyfu",
+				"jgjkgk","jhfyufy","fuyuu");
+		when(repository.save(plan)).thenReturn(plan);
+		assertEquals(plan,dietService.createDietPlan(plan));
+	}
+//        @Test
+//        public void deletePlanTest() throws DietPlanNotFoundException {
+//           DietPlan plan = new DietPlan(1,"jjgk","jggig","guguigui","jhfuyfu",
+//                    "jgjkgk","jhfyufy","fuyuu");
+//            //int Id = 2;
+//            dietService.removeDietPlan(plan.getId());
+//            verify(repository,times(1)).delete(plan);
+//        }
 
 }
