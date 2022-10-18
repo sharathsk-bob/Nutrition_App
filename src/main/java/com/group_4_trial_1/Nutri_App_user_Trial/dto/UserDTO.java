@@ -1,18 +1,28 @@
 package com.group_4_trial_1.Nutri_App_user_Trial.dto;
 
+import javax.validation.constraints.*;
 import java.sql.Time;
 import java.time.LocalDate;
 
 
 public class UserDTO {
     private Long id;
+    @NotEmpty(message = "UserId cant be empty")
     private String userIdentification;
+    @NotNull(message = "{user.name.absent}")
+    @Pattern(regexp = "[A-Za-z]+", message = "{user.name.invalid}")
     private String name;
+    @Pattern(regexp = "[0-9]+", message = "{user.contact.invalid}")
     private String contact;
+    @Pattern(regexp = "[A-Za-z]+", message = "{user.gender.invalid}")
     private String gender;
+    @PastOrPresent(message = "user.dob.invalid")
     private LocalDate dob;
     //    private Image photo;
+    @Email(message = "{Please provide valid email address}")
+    @NotNull(message = "{Please provide valid email address}")
     private String email;
+    @Pattern(regexp = "[A-Za-z]+", message = "{user.gender.invalid}")
     private String role;
     private String status;
     private Float weight;
