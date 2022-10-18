@@ -1,17 +1,17 @@
-package com.example.demo.controller;
+package com.group_4_trial_1.Nutri_App_user_Trial.controller;
 
 //import com.nutritionapp.nutrition.Entity.WeightLog;
 //import com.nutritionapp.nutrition.service.WeightLogService;
-import com.example.demo.entity.WeightLog;
-import com.example.demo.exception.WeightLogNotFoundException;
-import com.example.demo.service.WeightLogServiceImpl;
 
+import com.group_4_trial_1.Nutri_App_user_Trial.entity.WeightLog;
+import com.group_4_trial_1.Nutri_App_user_Trial.exception.WeightLogNotFoundException;
+import com.group_4_trial_1.Nutri_App_user_Trial.service.WeightLogServiceImpl;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 
 
@@ -29,7 +29,7 @@ public class WeightLogController {
 
 //private Environment environment;
    @GetMapping
-    public List<WeightLog> WeightLog() throws WeightLogNotFoundException{
+    public List<WeightLog> WeightLog() throws WeightLogNotFoundException {
        return weightLogService.showAllWeightLog();
   }
 
