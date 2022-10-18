@@ -120,5 +120,48 @@ public void listPlansTest(){
 //            dietService.removeDietPlan(plan.getId());
 //            verify(repository,times(1)).delete(plan);
 //        }
+   
+	@MockBean
+	private NutritionPlanRepository nutritionPlanRepository;
+	@Autowired
+	private NutritionPlanService nutritionPlanService;
 
+	@Test
+	public void listAllPlansTest(){
+		when(nutritionPlanRepository.findAll()).thenReturn(Stream
+				.of(new NutritionPlanDTO(
+						"Fat Loss Nutrition Plan","Eating Healthy Foods",
+						LocalDate.of(2022, Month.OCTOBER,10),
+						LocalDate.of(2022, Month.OCTOBER,14),
+						5000),
+						new NutritionPlanDTO (
+						"Bulk Nutrition Plan",
+						"Eating Fatty Foods",
+						LocalDate.of(2022, Month.SEPTEMBER,30),
+						LocalDate.of(2022, Month.OCTOBER,11),
+						4000
+				)).collect(Collectors.toList()));
+		assertEquals(2, nutritionPlanService.listAllPlans().size());
+	}
+
+	@Test
+	public void createPlanTest() {
+		NutritionPlanDTO nutritionPlanDTO = new NutritionPlanDTO(
+				"Plant-based Nutrition Plan","Eating Vegetables and Fruits",
+				LocalDate.of(2022, Month.OCTOBER,10),
+				LocalDate.of(2022, Month.OCTOBER,14),
+				5000
+				);
+		when(nutritionPlanRepository.save(nutritionPlanDTO)).thenReturn(nutritionPlanDTO);
+		assertEquals(nutritionPlanDTO, nutritionPlanService.createPlan(nutritionPlanDTO));
+	}
+
+
+
+	/*@Test
+	public void removePlanTest() throws NutritionPlanNotFoundException {
+		long nutritionPlanDTOId = 1L;
+		nutritionPlanService.removePlan(nutritionPlanDTOId);
+		((NutritionPlanService) verify(nutritionPlanRepository, times(0))).removePlan(nutritionPlanDTOId);
+	}*/
 }
