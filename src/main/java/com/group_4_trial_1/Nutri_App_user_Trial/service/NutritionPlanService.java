@@ -1,75 +1,51 @@
-package com.group_4_trial_1.Nutri_App_user_Trial.service;
+package com.group_4_trial_1.Nutri_App_user_Trial.controller;
 
 import com.group_4_trial_1.Nutri_App_user_Trial.entity.NutritionPlan;
-import com.group_4_trial_1.Nutri_App_user_Trial.repository.NutritionPlanRepository;
+import com.group_4_trial_1.Nutri_App_user_Trial.service.NutritionPlanService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.*;
 
-import javax.transaction.Transactional;
 import java.util.List;
-import java.util.Objects;
 
+@RestController
+@RequestMapping(path = "nutritionplan")
+public class NutritionPlanContoller {
 
-@Service
-public class NutritionPlanService {
-
-    private final NutritionPlanRepository nutritionPlanRepository;
-
-    public NutritionPlanService(NutritionPlanRepository nutritionPlanRepository) {
-        this.nutritionPlanRepository = nutritionPlanRepository;
-    }
+    private final NutritionPlanService nutritionPlanService;
 
     @Autowired
-    public List<NutritionPlan> getNutritionPlans(){
-        return nutritionPlanRepository.findAll();
+    public NutritionPlanContoller(NutritionPlanService nutritionPlanService) {
+        this.nutritionPlanService = nutritionPlanService;
     }
 
-    public void addNewNutritionPlan(NutritionPlan nutritionPlan) {
-   /*    Optional<NutritionPlanDTO> findNutritionPlanDTOByEmail = nutritionPlanRepository.
-                findNutritionPlanDTOByEmail(nutritionPlanDTO.getEmail())
-        if(nutritionPlanDTOOptional.isPresent()){
-            throw new IllegalStateException("Email Taken");
-        }*/
-        nutritionPlanRepository.save(nutritionPlan);
-//        System.out.println(nutritionPlan);
+    @GetMapping
+    public List<NutritionPlan> listAllPlans(){
+   // throw new NutritionPlanApiRequestException("Oops cannot get all Nutrition Plans with custom exception");
+    //throw new IllegalStateException("Oops cannot get all Nutrition Plans");
+       return  nutritionPlanService.listAllPlans();
     }
 
-
-    public void deleteNutritionPlan(Long nutritionPlanId) {
-         boolean exists = nutritionPlanRepository.existsById(nutritionPlanId);
-         if(!exists){
-             throw new IllegalStateException("Nutrition Plan for id "
-                     + nutritionPlanId + " does not exits");
-         }
-         nutritionPlanRepository.deleteById(nutritionPlanId);
+    @PostMapping
+    public void createPlan(@RequestBody NutritionPlan nutritionPlan){
+        nutritionPlanService.createPlan(nutritionPlan);
+    }
+    @DeleteMapping(path = "{nutritionPlanDTOId}")
+    public void removePlan(
+            @PathVariable("nutritionPlanDTOId") Long nutritionPlanDTOId){
+        nutritionPlanService.removePlan(nutritionPlanDTOId);
     }
 
-    @Transactional
-    public void updateNutritionPlan(Long nutritionPlanId,
-                                       String name,
-                                       Double price , String planDiscription ) {
-        NutritionPlan nutritionPlanDTO = nutritionPlanRepository.findById(nutritionPlanId).
-                orElseThrow(() -> new IllegalStateException(
-                        "Nutrition Plan with id " + nutritionPlanId + " does not exists"));
-                if(name != null && name.length() > 0 &&
-                !Objects.equals(nutritionPlanDTO.getName(),name)){
-                    nutritionPlanDTO.setName(name);
-                }
-        if(price!= null  &&
-                !Objects.equals(nutritionPlanDTO.getPrice(),price)){
-            nutritionPlanDTO.setPrice(price);
-        }
-        if(planDiscription!= null  &&
-                !Objects.equals(nutritionPlanDTO.getPlanDiscription(),planDiscription)){
-            nutritionPlanDTO.setPlanDiscription(planDiscription);
-        }
-       /*  if(created_At!= null  &&
-                !Objects.equals(nutritionPlanDTO.getCreated_At(),created_At)){
-            nutritionPlanDTO.setCreated_At(created_At);
-        }
-        if(updated_At!= null  &&
-                !Objects.equals(nutritionPlanDTO.getUpdated_At(),updated_At)){
-            nutritionPlanDTO.setUpdated_At(updated_At);
-        }*/
+    @PutMapping(path = "{nutritionPlanDTOId}")
+    public void changePlan(
+            @PathVariable("nutritionPlanDTOId") Long nutritionPlanDTOId ,
+            @RequestParam(required = false) String name,
+            @RequestParam(required = false) String planDiscription,
+
+           // @RequestParam(required = false) LocalDate created_At,
+            //@RequestParam(required = false) LocalDate updated_At,
+
+            @RequestParam(required = false) Double price) {
+        nutritionPlanService.changePlan(nutritionPlanDTOId ,name
+                ,price,planDiscription);
     }
 }
