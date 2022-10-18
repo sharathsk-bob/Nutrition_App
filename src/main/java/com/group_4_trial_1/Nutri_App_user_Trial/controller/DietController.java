@@ -2,6 +2,8 @@ package com.group_4_trial_1.Nutri_App_user_Trial.controller;
 
 import com.group_4_trial_1.Nutri_App_user_Trial.entity.DietPlan;
 import com.group_4_trial_1.Nutri_App_user_Trial.service.DietService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,6 +12,7 @@ import java.util.List;
 @RestController
 @RequestMapping(path = "/dietPlan")
 public class DietController {
+    private static final Logger logger = LogManager.getLogger(DietController.class);
     private final DietService dietService;
     @Autowired
     public DietController(DietService dietService) {
@@ -34,7 +37,7 @@ public class DietController {
         try {
             dietService.removeDietPlan( dietPlanId);
         }catch(Exception e){
-            System.out.println("Please enter correct dietPlan Id.");
+            logger.info("Please enter correct dietPlan Id.");
         }
 
   }
@@ -56,7 +59,7 @@ public class DietController {
         dietService.changeDietPlan(dietPlan, dietPlanId);}
     catch(Exception e)
     {
-        System.out.println("The plan you are requesting to change doesn't exists");
+        logger.info("The plan you are requesting to change doesn't exists");
     }
     }
 

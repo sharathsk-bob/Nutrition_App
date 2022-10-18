@@ -1,9 +1,7 @@
 package com.group_4_trial_1.Nutri_App_user_Trial.dto;
 
-import javax.persistence.*;
 
-
-public class DietPlan {
+public class DietPlanDto {
 
     private Long id;
 
@@ -21,14 +19,14 @@ public class DietPlan {
 //    @JoinColumn(name = "user_id", unique = true)
 //    private User user;
 
-    public DietPlan() {
+    public DietPlanDto() {
     }
 
 
 
-    public DietPlan(Long id, String userId, String slots,
-                    String foodType, String proteinRatio,
-                    String fatRatio, String carbsRatio, String total) {
+    public DietPlanDto(Long id, String userId, String slots,
+                        String foodType, String proteinRatio,
+                        String fatRatio, String carbsRatio, String total) {
         this.id = id;
         this.userId = userId;
         this.slots = slots;
@@ -39,9 +37,9 @@ public class DietPlan {
         this.total = total;
     }
 
-    public DietPlan(String userId, String slots, String foodType,
-                    String proteinRatio, String fatRatio,
-                    String carbsRatio, String total) {
+    public DietPlanDto(String userId, String slots, String foodType,
+                        String proteinRatio, String fatRatio,
+                        String carbsRatio, String total) {
         this.userId = userId;
         this.slots = slots;
         this.foodType = foodType;
