@@ -15,11 +15,6 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-import java.time.LocalDate;
-import java.time.Month;
-import java.util.List;
-
-import static java.time.Month.JANUARY;
 import static springfox.documentation.builders.PathSelectors.regex;
 
 @Configuration
