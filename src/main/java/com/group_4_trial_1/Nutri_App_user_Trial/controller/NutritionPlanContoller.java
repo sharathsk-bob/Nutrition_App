@@ -2,6 +2,7 @@ package com.group_4_trial_1.Nutri_App_user_Trial.controller;
 
 import com.group_4_trial_1.Nutri_App_user_Trial.entity.NutritionPlan;
 import com.group_4_trial_1.Nutri_App_user_Trial.service.NutritionPlanService;
+import com.group_4_trial_1.Nutri_App_user_Trial.service.NutritionPlanServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,10 +12,10 @@ import java.util.List;
 @RequestMapping(path = "nutritionplan")
 public class NutritionPlanContoller {
 
-    private final NutritionPlanService nutritionPlanService;
+    private final NutritionPlanServiceImpl nutritionPlanService;
 
     @Autowired
-    public NutritionPlanContoller(NutritionPlanService nutritionPlanService) {
+    public NutritionPlanContoller(NutritionPlanServiceImpl nutritionPlanService) {
         this.nutritionPlanService = nutritionPlanService;
     }
 
@@ -22,17 +23,17 @@ public class NutritionPlanContoller {
     public List<NutritionPlan> listAllPlans(){
    // throw new NutritionPlanApiRequestException("Oops cannot get all Nutrition Plans with custom exception");
     //throw new IllegalStateException("Oops cannot get all Nutrition Plans");
-       return  nutritionPlanService.listAllPlans();
+       return  nutritionPlanService.getNutritionPlans();
     }
 
     @PostMapping
     public void createPlan(@RequestBody NutritionPlan nutritionPlan){
-        nutritionPlanService.createPlan(nutritionPlan);
+        nutritionPlanService.addNewNutritionPlan(nutritionPlan);
     }
     @DeleteMapping(path = "{nutritionPlanDTOId}")
     public void removePlan(
             @PathVariable("nutritionPlanDTOId") Long nutritionPlanDTOId){
-        nutritionPlanService.removePlan(nutritionPlanDTOId);
+        nutritionPlanService.deleteNutritionPlan(nutritionPlanDTOId);
     }
 
     @PutMapping(path = "{nutritionPlanDTOId}")
@@ -45,7 +46,7 @@ public class NutritionPlanContoller {
             //@RequestParam(required = false) LocalDate updated_At,
 
             @RequestParam(required = false) Double price) {
-        nutritionPlanService.changePlan(nutritionPlanDTOId ,name
+        nutritionPlanService.updateNutritionPlan(nutritionPlanDTOId ,name
                 ,price,planDiscription);
     }
 }
