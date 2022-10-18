@@ -19,25 +19,28 @@
 ////    CommandLineRunner commandLineRunner(
 ////            NutritionPlanRepository repository) {
 ////        return args -> {
-////            NutritionPlan Suresh = new NutritionPlan (
-////                    "Suresh",
-////                    "Eating Healthy Foods",
-////                    LocalDate.of(2022, Month.OCTOBER,10),
-////                    LocalDate.of(2022, Month.OCTOBER,14),
-////                    5000
-////            );
+////            {
+        /*    NutritionPlanDTO A = new NutritionPlanDTO (
+                    "Fat Loss Nutrition Plan",
+                    "Eating Healthy Foods",
+                    LocalDate.of(2022, Month.OCTOBER,10),
+                    LocalDate.of(2022, Month.OCTOBER,14),
+                    5000
+            );
+
+            NutritionPlanDTO B = new NutritionPlanDTO (
+                    "Bulk Nutrition Plan",
+                    "Eating Fatty Foods",
+                    LocalDate.of(2022, Month.SEPTEMBER,30),
+                    LocalDate.of(2022, Month.OCTOBER,11),
+                    4000
+            );
+
+            repository.saveAll(
+                    List.of(A,B)
+            );*/
 ////
-////            NutritionPlan Ramesh = new NutritionPlan (
-////                    "Ramesh",
-////                    "Eating Fatty Foods",
-////                    LocalDate.of(2022, Month.SEPTEMBER,30),
-////                    LocalDate.of(2022, Month.OCTOBER,11),
-////                    4000
-////            );
-////
-////            repository.saveAll(
-////                    List.of(Suresh,Ramesh)
-////            );
+////           
 ////        };
 ////
 ////    }
