@@ -764,3 +764,38 @@ org.postgresql.util.PSQLException: Bad value for type int : Not_defined
 2022-10-18 11:55:48.171  INFO 22440 --- [http-nio-8020-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
 2022-10-18 11:55:48.174  INFO 22440 --- [http-nio-8020-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
 2022-10-18 11:55:48.212  INFO 22440 --- [http-nio-8020-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 37 ms
+2022-10-18 13:27:31.916  INFO 16376 --- [main] c.g.N.NutritionApplication               : Starting NutritionApplication using Java 17.0.2 on Samael with PID 16376 (D:\Capgemini Training\Sprint_1 Project\Git Repo\RepoGit\NutritionApp\target\classes started by Pratik in D:\Capgemini Training\Sprint_1 Project\Git Repo\RepoGit\NutritionApp)
+2022-10-18 13:27:31.933  INFO 16376 --- [main] c.g.N.NutritionApplication               : No active profile set, falling back to 1 default profile: "default"
+2022-10-18 13:27:33.339  INFO 16376 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-10-18 13:27:33.496  INFO 16376 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 94 ms. Found 3 JPA repository interfaces.
+2022-10-18 13:27:34.749  INFO 16376 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8020 (http)
+2022-10-18 13:27:34.769  INFO 16376 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-10-18 13:27:34.769  INFO 16376 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-10-18 13:27:34.905  INFO 16376 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-10-18 13:27:34.906  INFO 16376 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2908 ms
+2022-10-18 13:27:36.002  INFO 16376 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-10-18 13:27:36.435  INFO 16376 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-10-18 13:27:37.935  INFO 16376 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-10-18 13:27:38.757  INFO 16376 --- [main] f.a.AutowiredAnnotationBeanPostProcessor : Autowired annotation should only be used on methods with parameters: public java.util.List com.group_4_trial_1.Nutri_App_user_Trial.service.NutritionPlanService.getNutritionPlans()
+2022-10-18 13:27:40.781  WARN 16376 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'; nested exception is org.springframework.boot.web.server.PortInUseException: Port 8020 is already in use
+2022-10-18 13:27:40.787  INFO 16376 --- [main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-10-18 13:27:40.789  INFO 16376 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-10-18 13:27:40.793  INFO 16376 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-10-18 13:27:40.797  INFO 16376 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2022-10-18 13:27:40.810  INFO 16376 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2022-10-18 13:27:40.831 ERROR 16376 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8020 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8020 or configure this application to listen on another port.
+
