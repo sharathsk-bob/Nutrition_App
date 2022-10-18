@@ -16,7 +16,10 @@ import java.util.List;
 //Description : This is Flat Controller
 
 @RestController
-@RequestMapping(path = "/weightLog")
+@RequestMapping(path = "/weightLog")  
+/*Spring RestController takes care of mapping request data 
+* to the defined request handler method
+*/ 
 public class WeightLogController {
 	private static final Logger logger = LogManager.getLogger(WeightLogController.class);
 	
@@ -25,21 +28,36 @@ public class WeightLogController {
     public WeightLogController(WeightLogServiceImpl weightLogService) {
         this.weightLogService = weightLogService;
     }
-
-
+    
+    
 //private Environment environment;
    @GetMapping
     public List<WeightLog> WeightLog() throws WeightLogNotFoundException {
        return weightLogService.showAllWeightLog();
   }
 
-
+   /************************************************************************************
+	 * Method: addWeightLog
+	 * Description: It is used to add weight into weightLog table
+	 * @PostMapping: It is used to handle the HTTP POST requests matched.
+	 * @RequestBody: It used to bind the HTTP request/response body with a domain object in method parameter or return type.
+	 * 
+	 ************************************************************************************/
 
 
   @PostMapping
   public void addWeightLog(@RequestBody WeightLog weightLog) throws WeightLogNotFoundException{
         weightLogService.addWeightLog(weightLog);
   }
+  
+  /************************************************************************************
+	 * Method: updateWeightLog
+	 * Description: It is used to update weight which is already there in weightLog table
+	 * @PutMapping: It is used to handle the HTTP PUT requests matched.
+	 * @RequestBody: It used to bind the HTTP request/response body with a domain object in method parameter or return type.
+	 * 
+	 ************************************************************************************/
+
 
   @PutMapping(path ="ID")
   public void updateWeightLog(@RequestBody WeightLog weightLog,
@@ -57,6 +75,14 @@ public class WeightLogController {
   }
 
 
+  /************************************************************************************
+	 * Method: removeWeightLog
+	 * Description: It is used to remove Weight from WeightLog table
+	 * @DeleteMapping: It is used to handle the HTTP DELETE requests matched.
+	 *  
+	 ************************************************************************************/
+	
+  
   @DeleteMapping(path ="{ID}")
   public void removeWeightLog(@PathVariable("ID") Long ID  ){
         /*try {
@@ -68,9 +94,6 @@ public class WeightLogController {
 	  //WeightLogServiceImpl weightLogServices ;
 			// @DeleteMapping(path = "{id}")
         //public void deleteUser(@PathVariable("id") Long id) {
-	 
-        
-
  
     {
         try{
@@ -82,6 +105,14 @@ public class WeightLogController {
     }
 
   }
+  /************************************************************************************
+	 * Method: showAllWeightLog
+	 * Description: It is used to show all weights  from weightLog  table
+	 * @returns flat :It returns weightLog table with details
+	 * @GetMapping: It is used to handle the HTTP GET requests matched.
+	 *  
+	 ************************************************************************************/
+
 }
 
 
