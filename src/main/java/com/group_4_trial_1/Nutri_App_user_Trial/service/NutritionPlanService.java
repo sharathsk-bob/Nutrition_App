@@ -10,7 +10,7 @@ public interface NutritionPlanService {
     @Autowired
     List<NutritionPlan> getNutritionPlans();
 
-    void addNewNutritionPlan(NutritionPlan nutritionPlan);
+    Object addNewNutritionPlan(NutritionPlan nutritionPlan);
 
     void deleteNutritionPlan(Long nutritionPlanId);
 
