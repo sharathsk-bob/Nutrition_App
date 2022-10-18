@@ -799,3 +799,27 @@ Action:
 
 Identify and stop the process that's listening on port 8020 or configure this application to listen on another port.
 
+2022-10-18 23:49:14.722  INFO 32044 --- [main] c.g.N.NutritionApplicationTests          : Starting NutritionApplicationTests using Java 17.0.2 on Samael with PID 32044 (started by Pratik in D:\Capgemini Training\Sprint_1 Project\Git Repo\RepoGit\NutritionApp)
+2022-10-18 23:49:14.735  INFO 32044 --- [main] c.g.N.NutritionApplicationTests          : No active profile set, falling back to 1 default profile: "default"
+2022-10-18 23:49:16.452  INFO 32044 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-10-18 23:49:16.650  INFO 32044 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 176 ms. Found 5 JPA repository interfaces.
+2022-10-18 23:49:19.223  INFO 32044 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-10-18 23:49:19.779  INFO 32044 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-10-18 23:49:21.310  INFO 32044 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-10-18 23:49:21.384  INFO 32044 --- [main] f.a.AutowiredAnnotationBeanPostProcessor : Autowired annotation should only be used on methods with parameters: public java.util.List com.group_4_trial_1.Nutri_App_user_Trial.service.NutritionPlanServiceImpl.getNutritionPlans()
+2022-10-18 23:49:25.575  INFO 32044 --- [main] c.g.N.NutritionApplicationTests          : Started NutritionApplicationTests in 11.326 seconds (JVM running for 13.35)
+2022-10-18 23:49:25.685  INFO 32044 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-10-18 23:49:25.687  INFO 32044 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-10-18 23:49:25.692  INFO 32044 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-10-18 23:49:33.831  INFO 28304 --- [main] c.g.N.NutritionApplicationTests          : Starting NutritionApplicationTests using Java 17.0.2 on Samael with PID 28304 (started by Pratik in D:\Capgemini Training\Sprint_1 Project\Git Repo\RepoGit\NutritionApp)
+2022-10-18 23:49:33.832  INFO 28304 --- [main] c.g.N.NutritionApplicationTests          : No active profile set, falling back to 1 default profile: "default"
+2022-10-18 23:49:35.424  INFO 28304 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-10-18 23:49:35.559  INFO 28304 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 120 ms. Found 5 JPA repository interfaces.
+2022-10-18 23:49:38.135  INFO 28304 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-10-18 23:49:38.357  INFO 28304 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-10-18 23:49:39.548  INFO 28304 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-10-18 23:49:39.670  INFO 28304 --- [main] f.a.AutowiredAnnotationBeanPostProcessor : Autowired annotation should only be used on methods with parameters: public java.util.List com.group_4_trial_1.Nutri_App_user_Trial.service.NutritionPlanServiceImpl.getNutritionPlans()
+2022-10-18 23:49:44.854  INFO 28304 --- [main] c.g.N.NutritionApplicationTests          : Started NutritionApplicationTests in 11.539 seconds (JVM running for 13.119)
+2022-10-18 23:49:44.983  INFO 28304 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-10-18 23:49:44.989  INFO 28304 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-10-18 23:49:45.012  INFO 28304 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

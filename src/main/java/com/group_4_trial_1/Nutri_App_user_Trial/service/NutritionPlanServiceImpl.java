@@ -26,7 +26,7 @@ public class NutritionPlanServiceImpl implements NutritionPlanService {
     }
 
     @Override
-    public void addNewNutritionPlan(NutritionPlan nutritionPlan) {
+    public Object addNewNutritionPlan(NutritionPlan nutritionPlan) {
    /*    Optional<NutritionPlanDTO> findNutritionPlanDTOByEmail = nutritionPlanRepository.
                 findNutritionPlanDTOByEmail(nutritionPlanDTO.getEmail())
         if(nutritionPlanDTOOptional.isPresent()){
@@ -34,6 +34,7 @@ public class NutritionPlanServiceImpl implements NutritionPlanService {
         }*/
         nutritionPlanRepository.save(nutritionPlan);
 //        System.out.println(nutritionPlan);
+        return null;
     }
 
 
