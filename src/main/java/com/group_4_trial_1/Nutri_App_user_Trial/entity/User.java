@@ -15,10 +15,10 @@ public class User {
             sequenceName = "user_sequence",
             allocationSize = 1
     )
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "user_sequence"
-    )
+//    @GeneratedValue(
+//            strategy = GenerationType.SEQUENCE,
+//            generator = "user_sequence"
+//    )
     private Long id;
 //    @Column(name = "user_id")
 //    @Id
