@@ -9,9 +9,11 @@ public interface DietServices {
 
     public DietPlan createDietPlan(DietPlan dietPlan);
 
-    public DietPlan changeDietPlan(DietPlan dietPlan, int dietPlanId) throws DietPlanNotFoundException;
+    public void changeDietPlan(long dietPlanId,String slots, String foodType,
+                                   String userId,String proteinRatio, String fatRatio,
+                                   String carbsRatio,String total) throws DietPlanNotFoundException;
 
-    public void removeDietPlan(int dietPlanId) throws DietPlanNotFoundException;
+    public void removeDietPlan(long dietPlanId) throws DietPlanNotFoundException;
 
     public List<DietPlan> listAllPlan();
 

@@ -19,44 +19,44 @@ public class DietController {
         this.dietService = dietService;
     }
 
-    @GetMapping
+    @GetMapping(path = "/showPlans")
     public List<DietPlan> DietPlan(){
 
         return dietService.listAllPlan();
   }
 
 
-  @PostMapping
-  public void createDietPlan(@RequestBody DietPlan dietPlan){
-        dietService.createDietPlan(dietPlan);
+  @PostMapping(path = "/create")
+  public DietPlan createDietPlan(@RequestBody DietPlan dietPlan){
+        //dietService.createDietPlan(dietPlan);
+        return dietService.createDietPlan(dietPlan);
   }
 
 
-  @DeleteMapping(path ="{dietPlanId}")
-  public void removeDietPlan(@PathVariable("dietPlanId") int dietPlanId){
+    @DeleteMapping(path ="/delete/{dietPlanId}")
+    public void removeDietPlan(@PathVariable("dietPlanId") int dietPlanId){
         try {
             dietService.removeDietPlan( dietPlanId);
         }catch(Exception e){
             logger.info("Please enter correct dietPlan Id.");
-        }
+        }}
 
-  }
-//  @PutMapping(path ="{dietPlanId}")
-//    public void changeDietPlan(
-//            @PathVariable(" dietPlanId") int  dietPlanId,
-//  @RequestParam(required = false) String slots ,
-//  @RequestParam(required = false) String foodType  ){
-//        dietService.changeDietPlan(dietPlanId, slots, foodType);
-//  }
-    @PutMapping(path ="{dietPlanId}")
-    public void changeDietPlan(@RequestBody DietPlan dietPlan,
-            @PathVariable(" dietPlanId") int  dietPlanId
-//  @RequestParam(required = false) String slots ,
-//  @RequestParam(required = false) String foodType
-  )
+
+        @PutMapping(path ="{dietPlanId}")
+    public void changeDietPlan(
+            @PathVariable(" dietPlanId") long  dietPlanId,
+                               @RequestParam(required = false) String slots ,
+                               @RequestParam(required = false) String foodType,
+            @RequestParam(required = false) String userId,
+            @RequestParam(required = false) String proteinRatio,
+            @RequestParam(required = false) String fatRatio,
+            @RequestParam(required = false) String carbsRatio,
+            @RequestParam(required = false) String total
+    )
     {
         try{
-        dietService.changeDietPlan(dietPlan, dietPlanId);}
+        dietService.changeDietPlan( dietPlanId,slots,foodType,userId
+                ,proteinRatio,fatRatio,carbsRatio,total);}
     catch(Exception e)
     {
         logger.info("The plan you are requesting to change doesn't exists");

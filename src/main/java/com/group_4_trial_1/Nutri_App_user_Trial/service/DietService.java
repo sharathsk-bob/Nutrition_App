@@ -27,38 +27,40 @@ public class DietService implements DietServices {
 
     public DietPlan createDietPlan(DietPlan dietPlan) {
         logger.info("createDietPlan method initiated");
-//        Optional<DietPlan> dietById= dietPlanRepo.findDietPlanById(dietPlan.getId());
-//        if(dietById.isPresent()){
-//            throw new IllegalStateException("plan alrady exists");
-//        }
         DietPlan diet = dietPlanRepo.save(dietPlan);
         logger.info("createDietPlan method executed");
        return  diet;
     }
 
-    public void removeDietPlan(int dietPlanId) throws DietPlanNotFoundException {
+    public void removeDietPlan(long dietPlanId)  throws DietPlanNotFoundException{
         logger.info("removeDietPlan method initiated");
-boolean exists = dietPlanRepo.existsById(dietPlanId);
-if(!exists){
-    throw new DietPlanNotFoundException("The id mentioned" + dietPlanId + "doesn't exists");
-}dietPlanRepo.deleteById(dietPlanId);
+        boolean exists = dietPlanRepo.existsById(dietPlanId);
+        if(!exists){
+            throw new DietPlanNotFoundException("The id mentioned" + dietPlanId + "doesn't exists");
+        }dietPlanRepo.deleteById(dietPlanId);
         logger.info("removeDietPlan method executed");
     }
+
+
 @Transactional
-    public DietPlan changeDietPlan(DietPlan dietPlan, int dietPlanId) throws DietPlanNotFoundException
+    public void changeDietPlan(long dietPlanId,String slots, String foodType,
+                                   String userId,String proteinRatio, String fatRatio,
+                                   String carbsRatio,String total) throws DietPlanNotFoundException
     {
         logger.info("changeDietPlan method initiated.");
 
             DietPlan value = dietPlanRepo.findById(dietPlanId).
                     orElseThrow(()->new DietPlanNotFoundException("DietPlan with id "+
                             dietPlanId +" does not exist."));
-            value.setCarbsRatio(dietPlan.getCarbsRatio());
-            value.setFatRatio(dietPlan.getFatRatio());
-            value.setFoodType(dietPlan.getFoodType());
-            value.setSlots(dietPlan.getSlots());
-            value.setTotal(dietPlan.getTotal());
-            value.setProteinRatio(dietPlan.getProteinRatio());
+            value.setCarbsRatio(carbsRatio);
+            value.setFatRatio(fatRatio);
+            value.setFoodType(foodType);
+            value.setProteinRatio(proteinRatio);
+            value.setSlots(slots);
+            value.setUserId(userId);
+            value.setTotal(total);
+
         logger.info("changeDietPlan method executed");
-            return dietPlanRepo.save(value);
+
     }
 }

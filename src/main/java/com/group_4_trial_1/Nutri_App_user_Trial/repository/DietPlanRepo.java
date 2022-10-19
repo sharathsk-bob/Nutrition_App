@@ -9,8 +9,8 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface DietPlanRepo extends JpaRepository<DietPlan, Integer> {
-    Optional<DietPlan> findDietPlanById(int id);
+public interface DietPlanRepo extends JpaRepository<DietPlan, Long> {
+    Optional<DietPlan> findDietPlanById(long id);
 
     @Query("SELECT u FROM User u WHERE u.userId = ?1")
     Optional<User> findByUserId(String userId);
