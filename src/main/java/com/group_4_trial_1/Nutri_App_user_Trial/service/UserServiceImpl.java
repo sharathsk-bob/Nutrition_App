@@ -17,7 +17,6 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
 //    private Logger logger;
 
-
     @Autowired
     public UserServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
@@ -29,9 +28,6 @@ public class UserServiceImpl implements UserService {
         return userRepository.findAll();
     }
 
-//    public List<Userdto> getByUserId(Userdto user) {
-//        return userRepository.findAll();
-//    }
     @Override
     public User getUserByUserId(String userId) {
 //        logger.info("Getting user by its ID");
@@ -44,15 +40,6 @@ public class UserServiceImpl implements UserService {
        return userRepository.findByUserId(userId).get();
     }
 
-    @Override
-    public Optional<User> getById(Long id) {
-        return userRepository.findById(id);
-    }
-
-//    @Override
-//    public User getById(Long id) {
-//        return userRepository.findById(id);
-//    }
 
     @Override
     public User registerUser(User user) {
@@ -83,7 +70,6 @@ public class UserServiceImpl implements UserService {
     public void updateUser(Long id, String name, String contact, String email, String gender, String status, Float weight,
                            Float height, String goal, Time wakeUpTime, Time sleepTime)
     {
-        System.out.println(status);
             User user = userRepository.findById(id).orElseThrow(() -> new UserApiRequestException(
                     "User with this id is not present in the database."
         ));

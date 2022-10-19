@@ -1,19 +1,10 @@
 package com.group_4_trial_1.Nutri_App_user_Trial;
 
-import com.group_4_trial_1.Nutri_App_user_Trial.dto.NutritionPlandto;
-import com.group_4_trial_1.Nutri_App_user_Trial.entity.DietPlan;
-import com.group_4_trial_1.Nutri_App_user_Trial.entity.NutritionPlan;
-import com.group_4_trial_1.Nutri_App_user_Trial.entity.User;
-import com.group_4_trial_1.Nutri_App_user_Trial.entity.WeightLog;
+import com.group_4_trial_1.Nutri_App_user_Trial.entity.*;
+import com.group_4_trial_1.Nutri_App_user_Trial.exception.PaymentNotFoundException;
 import com.group_4_trial_1.Nutri_App_user_Trial.exception.WeightLogNotFoundException;
-import com.group_4_trial_1.Nutri_App_user_Trial.repository.DietPlanRepo;
-import com.group_4_trial_1.Nutri_App_user_Trial.repository.NutritionPlanRepository;
-import com.group_4_trial_1.Nutri_App_user_Trial.repository.UserRepository;
-import com.group_4_trial_1.Nutri_App_user_Trial.repository.WeightLogRepository;
-import com.group_4_trial_1.Nutri_App_user_Trial.service.DietService;
-import com.group_4_trial_1.Nutri_App_user_Trial.service.NutritionPlanService;
-import com.group_4_trial_1.Nutri_App_user_Trial.service.UserService;
-import com.group_4_trial_1.Nutri_App_user_Trial.service.WeightLogServiceImpl;
+import com.group_4_trial_1.Nutri_App_user_Trial.repository.*;
+import com.group_4_trial_1.Nutri_App_user_Trial.service.*;
 import org.junit.Assert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -31,7 +22,6 @@ import java.util.stream.Stream;
 
 import static java.time.Month.JANUARY;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @RunWith(SpringRunner.class)
@@ -56,16 +46,16 @@ class NutritionApplicationTests {
 	public void getAllUsersTest() {
 		when(userRepository.findAll()).thenReturn(Stream
 				.of(new User(
-                    "mariam007",
-                "Mariam",
-                    "9564525874",
-                    "Female",
-                    LocalDate.of(1999, JANUARY, 1)), new User(
-                    "alex009",
-                    "Alex",
-                    "8975469871",
-                    "Male",
-                    LocalDate.of(2004, JANUARY, 1))).collect(Collectors.toList()));
+						"mariam007",
+						"Mariam",
+						"9564525874",
+						"Female",
+						LocalDate.of(1999, JANUARY, 1)), new User(
+						"alex009",
+						"Alex",
+						"8975469871",
+						"Male",
+						LocalDate.of(2004, JANUARY, 1))).collect(Collectors.toList()));
 		assertEquals(2, userService.getAllUsers().size());
 	}
 
@@ -95,10 +85,9 @@ class NutritionApplicationTests {
 		assertEquals(user, userService.registerUser(user));
 	}
 
-//	@Test
-//	public void deleteUserTest() {
+	@Test
+	public void deleteUserTest() {
 //		User user = new User(
-//				1L,
 //				"mariam007",
 //				"Mariam",
 //				"9564525874",
@@ -106,8 +95,7 @@ class NutritionApplicationTests {
 //				LocalDate.of(1999, JANUARY, 1));
 //		userService.deleteUser(user.getId());
 //		verify(userRepository, times(1)).deleteById(user.getId());
-//	}
-
+	}
 
 
 	/************************************************************************************
@@ -124,20 +112,19 @@ class NutritionApplicationTests {
 	public void listAllPlansTest(){
 		when(nutritionPlanRepository.findAll()).thenReturn(Stream
 				.of(new NutritionPlan(
-						"Fat Loss Nutrition Plan","Eating Healthy Foods",
-						LocalDate.of(2022, Month.OCTOBER,10),
-						LocalDate.of(2022, Month.OCTOBER,14),
-						5000),
+								"Fat Loss Nutrition Plan","Eating Healthy Foods",
+								LocalDate.of(2022, Month.OCTOBER,10),
+								LocalDate.of(2022, Month.OCTOBER,14),
+								5000),
 						new NutritionPlan (
-						"Bulk Nutrition Plan",
-						"Eating Fatty Foods",
-						LocalDate.of(2022, Month.SEPTEMBER,30),
-						LocalDate.of(2022, Month.OCTOBER,11),
-						4000
-				)).collect(Collectors.toList()));
+								"Bulk Nutrition Plan",
+								"Eating Fatty Foods",
+								LocalDate.of(2022, Month.SEPTEMBER,30),
+								LocalDate.of(2022, Month.OCTOBER,11),
+								4000
+						)).collect(Collectors.toList()));
 		assertEquals(2, nutritionPlanService.getNutritionPlans().size());
 	}
-
 	@Test
 	public void createPlanTest1() {
 		NutritionPlan nutritionPlan = new NutritionPlan(1L,
@@ -149,6 +136,7 @@ class NutritionApplicationTests {
 		when(nutritionPlanRepository.save(nutritionPlan)).thenReturn(nutritionPlan);
 		assertEquals(null, nutritionPlanService.addNewNutritionPlan(nutritionPlan));
 	}
+
 
 
 //	@Test
@@ -200,6 +188,7 @@ class NutritionApplicationTests {
 		when(repository.save(plan)).thenReturn(plan);
 		assertEquals(plan,dietService.createDietPlan(plan));
 	}
+
 
 	//        @Test
 //        public void deletePlanTest() throws DietPlanNotFoundException {
@@ -315,6 +304,59 @@ class NutritionApplicationTests {
 
 	}
 
+	/************************************************************************************
+	 * Tanya Tests
+	 * Description: Tests for Payment Module
+	 *
+	 ************************************************************************************/
+	@Autowired
+	private PaymentServiceImpl paymentService;
+
+	@MockBean
+	private PaymentRepository paymentRepository;
+	Payment p;
+	@BeforeEach
+	public void init1() {
+		p = new Payment(1L,0f,0f,LocalDate.now(),LocalDate.now(),"null",0L);
+	}
+
+	/*@Test
+	void contextLoads() {
+	}*/
+
+	@Test
+	public void showAllPaymentsTest() throws PaymentNotFoundException {
+		when(paymentRepository.findAll()).thenReturn(Stream.of(new Payment(1L,0f,0f,LocalDate.now(),LocalDate.now(),"null",0L), new Payment(2L,0f,0f,LocalDate.now(),LocalDate.now(),"null",0L)).collect(Collectors.toList()));
+		assertEquals(2,paymentService.showAllPayments().size());
+	}
+
+	/*@Test
+    public void payTest() throws PaymentNotFoundException{
+		Payment tester= new Payment(1L,0f,0f,LocalDate.now(),LocalDate.now(),"null",0L);
+		//float price=0;
+    	paymentService.pay(tester);
+    	verify(paymentService,times(1)).pay(tester);
+    }
+
+	@Test
+	public void addOfferTest() throws PaymentNotFoundException{
+		Payment tester= new Payment(1L,0f,0f,LocalDate.now(),LocalDate.now(),"null",0L);
+		float discount=0;
+		paymentService.addOffer(tester, discount);
+		verify(paymentService,times(1)).addOffer(tester, discount);
+
+
+	}*/
+
+	@Test
+	public void updatePaymentTest() throws PaymentNotFoundException {
+//		when(paymentRepository.existsById(p.getId())).thenReturn(true);
+//		when(paymentRepository.findPaymentById(p.getId())).thenReturn(Optional.ofNullable(p));
+//		when(paymentRepository.save(p)).thenReturn(p);
+//	    assertEquals(p.getCreated_At(),paymentService.updatePayment(p,p.getId(),p.getPayment(),p.getDiscount(),p.getCreated_At(),p.getCreated_At(),p.getUserId(),p.getPlanId())).getCreated_At();
+//	    //assertEquals(p.getUpdated_At(),paymentService.updatePayment(p.getId(),p.getPayment(),p.getDiscount(),p.getUpdated_At(),p.getCreated_At(),p.getUserId(),p.getPlanId())).getCreated_At();
+
+	}
 
 
 }
