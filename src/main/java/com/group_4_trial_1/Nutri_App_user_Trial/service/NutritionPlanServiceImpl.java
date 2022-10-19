@@ -9,6 +9,7 @@ import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Objects;
 
+//Description : This is Nutrition Plan Service Layer
 
 @Service
 public class NutritionPlanServiceImpl implements NutritionPlanService {
@@ -19,12 +20,19 @@ public class NutritionPlanServiceImpl implements NutritionPlanService {
         this.nutritionPlanRepository = nutritionPlanRepository;
     }
 
+    /*
+ * Description : This method shows existing Nutrition Plans :Input Parameter 
+ *          
+ */
     @Override
     @Autowired
     public List<NutritionPlan> getNutritionPlans(){
         return nutritionPlanRepository.findAll();
     }
 
+    
+  //Description : This method Adds new NutritionPlan : Input Parameter
+    
     @Override
     public Object addNewNutritionPlan(NutritionPlan nutritionPlan) {
    /*    Optional<NutritionPlanDTO> findNutritionPlanDTOByEmail = nutritionPlanRepository.
@@ -37,6 +45,10 @@ public class NutritionPlanServiceImpl implements NutritionPlanService {
         return null;
     }
 
+    /*
+ * Description : This method removes existing ID :Input Parameter 
+ *               Throws Exception if the ID is not found as NutritionPlanNotFoundException
+ */
 
     @Override
     public void deleteNutritionPlan(Long nutritionPlanId) {
@@ -48,6 +60,12 @@ public class NutritionPlanServiceImpl implements NutritionPlanService {
          nutritionPlanRepository.deleteById(nutritionPlanId);
     }
 
+    
+    /*
+	 * Description : This method Updates existing Nutrition Plan by taking ID:Input Parameter 
+	 *               Throws Exception if the ID is not found as NutritionPlanNotFoundException	
+	 */
+    
     @Override
     @Transactional
     public void updateNutritionPlan(Long nutritionPlanId,
