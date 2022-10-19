@@ -13,7 +13,11 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+<<<<<<< Updated upstream
 //Description : This is WeightLog Controller
+=======
+//Description : This is Flat Controller
+>>>>>>> Stashed changes
 
 @RestController
 @RequestMapping(path = "/weightLog")  
