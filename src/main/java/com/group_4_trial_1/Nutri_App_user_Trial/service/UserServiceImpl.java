@@ -100,13 +100,12 @@ public class UserServiceImpl implements UserService {
                 Optional<User> optionalUser = userRepository.findUserByemail(email);
                 if(optionalUser.isPresent()) {
                     throw new UserApiRequestException("User with same email is already present in the database!");
-//                    throw new IllegalStateException("User with same email is already present in the database!");
                 }
                 user.setEmail(email);
             }
 
 //            if(gender.equalsIgnoreCase("Male") || gender.equalsIgnoreCase("Female") || !gender.equals(null)){
-//                user.setGender(gender);
+                user.setGender(gender);
 //            }
                 user.setStatus(status);
 //
