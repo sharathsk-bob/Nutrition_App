@@ -26,7 +26,11 @@ public class NutritionPlanContoller {
     /************************************************************************************
 	 * Method: listAllPlans
 	 * Description: It is used to show all Nutrition Plans  from nutrition_plan  table
+<<<<<<< HEAD
 	 * @returns flat :It returns nutrition_plan table with details
+=======
+	 * @returns plan :It returns nutrition_plan table with details
+>>>>>>> e0dffda6e325ff7fdfcea9e50c4b59640758274b
 	 * @GetMapping: It is used to handle the HTTP GET requests matched.
 	 *  
 	 ************************************************************************************/
