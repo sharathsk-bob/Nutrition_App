@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 2022-10-18 00:03:39.302  INFO 13712 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2022-10-18 00:03:39.352  INFO 13712 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2022-10-18 00:03:39.385  INFO 13712 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
@@ -1020,3 +1021,204 @@ Identify and stop the process that's listening on port 8765 or configure this ap
 2022-10-19 09:24:05.155  INFO 11368 --- [http-nio-8765-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
 2022-10-19 09:24:05.155  INFO 11368 --- [http-nio-8765-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
 2022-10-19 09:24:05.161  INFO 11368 --- [http-nio-8765-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 6 ms
+=======
+2022-10-19 00:38:41.948  INFO 11292 --- [main] c.g.N.NutritionApplication               : Starting NutritionApplication using Java 19 on CALLMEX with PID 11292 (D:\project\NutritionApp\target\classes started by CALL ME X in D:\project\NutritionApp)
+2022-10-19 00:38:41.953  INFO 11292 --- [main] c.g.N.NutritionApplication               : No active profile set, falling back to 1 default profile: "default"
+2022-10-19 00:38:43.008  INFO 11292 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-10-19 00:38:43.100  INFO 11292 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 83 ms. Found 5 JPA repository interfaces.
+2022-10-19 00:38:44.046  INFO 11292 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8020 (http)
+2022-10-19 00:38:44.059  INFO 11292 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-10-19 00:38:44.059  INFO 11292 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-10-19 00:38:44.208  INFO 11292 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-10-19 00:38:44.209  INFO 11292 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2202 ms
+2022-10-19 00:38:44.911  INFO 11292 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-10-19 00:38:45.132  INFO 11292 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-10-19 00:38:46.230  INFO 11292 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-10-19 00:38:46.819  INFO 11292 --- [main] f.a.AutowiredAnnotationBeanPostProcessor : Autowired annotation should only be used on methods with parameters: public java.util.List com.group_4_trial_1.Nutri_App_user_Trial.service.NutritionPlanServiceImpl.getNutritionPlans()
+2022-10-19 00:38:48.578  INFO 11292 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8020 (http) with context path ''
+2022-10-19 00:38:48.818  INFO 11292 --- [main] c.g.N.NutritionApplication               : Started NutritionApplication in 7.348 seconds (JVM running for 8.517)
+2022-10-19 00:38:57.095  INFO 11292 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-10-19 00:38:57.096  INFO 11292 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-10-19 00:38:57.098  INFO 11292 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-10-19 00:39:00.730  INFO 12512 --- [main] c.g.N.NutritionApplication               : Starting NutritionApplication using Java 19 on CALLMEX with PID 12512 (D:\project\NutritionApp\target\classes started by CALL ME X in D:\project\NutritionApp)
+2022-10-19 00:39:00.733  INFO 12512 --- [main] c.g.N.NutritionApplication               : No active profile set, falling back to 1 default profile: "default"
+2022-10-19 00:39:01.455  INFO 12512 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-10-19 00:39:01.501  INFO 12512 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 40 ms. Found 5 JPA repository interfaces.
+2022-10-19 00:39:02.080  INFO 12512 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8020 (http)
+2022-10-19 00:39:02.087  INFO 12512 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-10-19 00:39:02.087  INFO 12512 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-10-19 00:39:02.208  INFO 12512 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-10-19 00:39:02.208  INFO 12512 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1434 ms
+2022-10-19 00:39:02.640  INFO 12512 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-10-19 00:39:02.784  INFO 12512 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-10-19 00:39:03.557  INFO 12512 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-10-19 00:39:03.995  INFO 12512 --- [main] f.a.AutowiredAnnotationBeanPostProcessor : Autowired annotation should only be used on methods with parameters: public java.util.List com.group_4_trial_1.Nutri_App_user_Trial.service.NutritionPlanServiceImpl.getNutritionPlans()
+2022-10-19 00:39:05.195  INFO 12512 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8020 (http) with context path ''
+2022-10-19 00:39:05.417  INFO 12512 --- [main] c.g.N.NutritionApplication               : Started NutritionApplication in 5.05 seconds (JVM running for 5.737)
+2022-10-19 00:40:41.337  INFO 12512 --- [http-nio-8020-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-10-19 00:40:41.337  INFO 12512 --- [http-nio-8020-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-10-19 00:40:41.339  INFO 12512 --- [http-nio-8020-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2022-10-19 00:44:23.721  INFO 12512 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-10-19 00:44:23.723  INFO 12512 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-10-19 00:44:23.727  INFO 12512 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-10-19 00:44:29.539  INFO 13684 --- [main] c.g.N.NutritionApplication               : Starting NutritionApplication using Java 19 on CALLMEX with PID 13684 (D:\project\NutritionApp\target\classes started by CALL ME X in D:\project\NutritionApp)
+2022-10-19 00:44:29.544  INFO 13684 --- [main] c.g.N.NutritionApplication               : No active profile set, falling back to 1 default profile: "default"
+2022-10-19 00:44:30.775  INFO 13684 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-10-19 00:44:30.842  INFO 13684 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 60 ms. Found 5 JPA repository interfaces.
+2022-10-19 00:44:31.662  INFO 13684 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8020 (http)
+2022-10-19 00:44:31.671  INFO 13684 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-10-19 00:44:31.671  INFO 13684 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-10-19 00:44:31.833  INFO 13684 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-10-19 00:44:31.833  INFO 13684 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2225 ms
+2022-10-19 00:44:32.529  INFO 13684 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-10-19 00:44:32.744  INFO 13684 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-10-19 00:44:34.043  INFO 13684 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-10-19 00:44:34.708  INFO 13684 --- [main] f.a.AutowiredAnnotationBeanPostProcessor : Autowired annotation should only be used on methods with parameters: public java.util.List com.group_4_trial_1.Nutri_App_user_Trial.service.NutritionPlanServiceImpl.getNutritionPlans()
+2022-10-19 00:44:36.479  INFO 13684 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8020 (http) with context path ''
+2022-10-19 00:44:36.720  INFO 13684 --- [main] c.g.N.NutritionApplication               : Started NutritionApplication in 7.694 seconds (JVM running for 9.219)
+2022-10-19 00:44:41.224  INFO 13684 --- [http-nio-8020-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-10-19 00:44:41.224  INFO 13684 --- [http-nio-8020-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-10-19 00:44:41.229  INFO 13684 --- [http-nio-8020-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
+2022-10-19 00:45:09.543  INFO 13684 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-10-19 00:45:09.545  INFO 13684 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-10-19 00:45:09.548  INFO 13684 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-10-19 00:46:13.180  INFO 8792 --- [main] c.g.N.NutritionApplication               : Starting NutritionApplication using Java 19 on CALLMEX with PID 8792 (D:\project\NutritionApp\target\classes started by CALL ME X in D:\project\NutritionApp)
+2022-10-19 00:46:13.182  INFO 8792 --- [main] c.g.N.NutritionApplication               : No active profile set, falling back to 1 default profile: "default"
+2022-10-19 00:46:13.965  INFO 8792 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-10-19 00:46:14.016  INFO 8792 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 45 ms. Found 5 JPA repository interfaces.
+2022-10-19 00:46:14.665  INFO 8792 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8020 (http)
+2022-10-19 00:46:14.673  INFO 8792 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-10-19 00:46:14.673  INFO 8792 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-10-19 00:46:14.805  INFO 8792 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-10-19 00:46:14.806  INFO 8792 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1585 ms
+2022-10-19 00:46:15.294  INFO 8792 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-10-19 00:46:15.449  INFO 8792 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-10-19 00:46:16.297  INFO 8792 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-10-19 00:46:16.792  INFO 8792 --- [main] f.a.AutowiredAnnotationBeanPostProcessor : Autowired annotation should only be used on methods with parameters: public java.util.List com.group_4_trial_1.Nutri_App_user_Trial.service.NutritionPlanServiceImpl.getNutritionPlans()
+2022-10-19 00:46:18.347  INFO 8792 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8020 (http) with context path ''
+2022-10-19 00:46:18.604  INFO 8792 --- [main] c.g.N.NutritionApplication               : Started NutritionApplication in 5.791 seconds (JVM running for 6.608)
+2022-10-19 00:46:35.432  INFO 8792 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-10-19 00:46:35.433  INFO 8792 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-10-19 00:46:35.436  INFO 8792 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-10-19 00:46:38.789  INFO 10820 --- [main] c.g.N.NutritionApplication               : Starting NutritionApplication using Java 19 on CALLMEX with PID 10820 (D:\project\NutritionApp\target\classes started by CALL ME X in D:\project\NutritionApp)
+2022-10-19 00:46:38.791  INFO 10820 --- [main] c.g.N.NutritionApplication               : No active profile set, falling back to 1 default profile: "default"
+2022-10-19 00:46:39.575  INFO 10820 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-10-19 00:46:39.628  INFO 10820 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 46 ms. Found 5 JPA repository interfaces.
+2022-10-19 00:46:40.270  INFO 10820 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8020 (http)
+2022-10-19 00:46:40.277  INFO 10820 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-10-19 00:46:40.278  INFO 10820 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-10-19 00:46:40.414  INFO 10820 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-10-19 00:46:40.414  INFO 10820 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1585 ms
+2022-10-19 00:46:40.910  INFO 10820 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-10-19 00:46:41.068  INFO 10820 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-10-19 00:46:41.938  INFO 10820 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-10-19 00:46:42.442  INFO 10820 --- [main] f.a.AutowiredAnnotationBeanPostProcessor : Autowired annotation should only be used on methods with parameters: public java.util.List com.group_4_trial_1.Nutri_App_user_Trial.service.NutritionPlanServiceImpl.getNutritionPlans()
+2022-10-19 00:46:43.992  INFO 10820 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8020 (http) with context path ''
+2022-10-19 00:46:44.236  INFO 10820 --- [main] c.g.N.NutritionApplication               : Started NutritionApplication in 5.836 seconds (JVM running for 6.759)
+2022-10-19 00:46:49.127  INFO 10820 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-10-19 00:46:49.128  INFO 10820 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-10-19 00:46:49.130  INFO 10820 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-10-19 00:49:54.824  INFO 7080 --- [main] c.g.N.NutritionApplication               : Starting NutritionApplication using Java 19 on CALLMEX with PID 7080 (D:\project\NutritionApp\target\classes started by CALL ME X in D:\project\NutritionApp)
+2022-10-19 00:49:54.827  INFO 7080 --- [main] c.g.N.NutritionApplication               : No active profile set, falling back to 1 default profile: "default"
+2022-10-19 00:49:55.836  INFO 7080 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-10-19 00:49:55.891  INFO 7080 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 47 ms. Found 5 JPA repository interfaces.
+2022-10-19 00:49:56.597  INFO 7080 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8020 (http)
+2022-10-19 00:49:56.607  INFO 7080 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-10-19 00:49:56.607  INFO 7080 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-10-19 00:49:56.746  INFO 7080 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-10-19 00:49:56.746  INFO 7080 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1849 ms
+2022-10-19 00:49:57.301  INFO 7080 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-10-19 00:49:57.464  INFO 7080 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-10-19 00:49:58.535  INFO 7080 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-10-19 00:49:59.130  INFO 7080 --- [main] f.a.AutowiredAnnotationBeanPostProcessor : Autowired annotation should only be used on methods with parameters: public java.util.List com.group_4_trial_1.Nutri_App_user_Trial.service.NutritionPlanServiceImpl.getNutritionPlans()
+2022-10-19 00:50:00.861  INFO 7080 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8020 (http) with context path ''
+2022-10-19 00:50:01.187  INFO 7080 --- [main] c.g.N.NutritionApplication               : Started NutritionApplication in 6.881 seconds (JVM running for 7.972)
+2022-10-19 00:50:09.234  INFO 7080 --- [http-nio-8020-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-10-19 00:50:09.235  INFO 7080 --- [http-nio-8020-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-10-19 00:50:09.237  INFO 7080 --- [http-nio-8020-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2022-10-19 00:51:13.581  INFO 7080 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-10-19 00:51:13.582  INFO 7080 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-10-19 00:51:13.585  INFO 7080 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-10-19 01:08:09.289  INFO 18216 --- [main] c.g.N.NutritionApplication               : Starting NutritionApplication using Java 19 on CALLMEX with PID 18216 (D:\project\NutritionApp\target\classes started by CALL ME X in D:\project\NutritionApp)
+2022-10-19 01:08:09.291  INFO 18216 --- [main] c.g.N.NutritionApplication               : No active profile set, falling back to 1 default profile: "default"
+2022-10-19 01:08:10.006  INFO 18216 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-10-19 01:08:10.053  INFO 18216 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 41 ms. Found 5 JPA repository interfaces.
+2022-10-19 01:08:10.653  INFO 18216 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8020 (http)
+2022-10-19 01:08:10.659  INFO 18216 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-10-19 01:08:10.659  INFO 18216 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-10-19 01:08:10.800  INFO 18216 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-10-19 01:08:10.800  INFO 18216 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1466 ms
+2022-10-19 01:08:11.246  INFO 18216 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-10-19 01:08:11.389  INFO 18216 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-10-19 01:08:12.183  INFO 18216 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-10-19 01:08:12.613  INFO 18216 --- [main] f.a.AutowiredAnnotationBeanPostProcessor : Autowired annotation should only be used on methods with parameters: public java.util.List com.group_4_trial_1.Nutri_App_user_Trial.service.NutritionPlanServiceImpl.getNutritionPlans()
+2022-10-19 01:08:14.082  INFO 18216 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8020 (http) with context path ''
+2022-10-19 01:08:14.310  INFO 18216 --- [main] c.g.N.NutritionApplication               : Started NutritionApplication in 5.34 seconds (JVM running for 5.971)
+2022-10-19 01:10:42.009  INFO 18216 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-10-19 01:10:42.010  INFO 18216 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-10-19 01:10:42.012  INFO 18216 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-10-19 01:11:00.586  INFO 8088 --- [main] c.g.N.NutritionApplication               : Starting NutritionApplication using Java 19 on CALLMEX with PID 8088 (D:\project\NutritionApp\target\classes started by CALL ME X in D:\project\NutritionApp)
+2022-10-19 01:11:00.588  INFO 8088 --- [main] c.g.N.NutritionApplication               : No active profile set, falling back to 1 default profile: "default"
+2022-10-19 01:11:01.367  INFO 8088 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-10-19 01:11:01.418  INFO 8088 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 45 ms. Found 5 JPA repository interfaces.
+2022-10-19 01:11:02.050  INFO 8088 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8020 (http)
+2022-10-19 01:11:02.057  INFO 8088 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-10-19 01:11:02.058  INFO 8088 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-10-19 01:11:02.194  INFO 8088 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-10-19 01:11:02.194  INFO 8088 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1565 ms
+2022-10-19 01:11:02.694  INFO 8088 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-10-19 01:11:02.978  INFO 8088 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-10-19 01:11:03.800  INFO 8088 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-10-19 01:11:04.284  INFO 8088 --- [main] f.a.AutowiredAnnotationBeanPostProcessor : Autowired annotation should only be used on methods with parameters: public java.util.List com.group_4_trial_1.Nutri_App_user_Trial.service.NutritionPlanServiceImpl.getNutritionPlans()
+2022-10-19 01:11:05.762  INFO 8088 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8020 (http) with context path ''
+2022-10-19 01:11:06.001  INFO 8088 --- [main] c.g.N.NutritionApplication               : Started NutritionApplication in 5.787 seconds (JVM running for 6.602)
+2022-10-19 01:11:26.862  INFO 8088 --- [http-nio-8020-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-10-19 01:11:26.863  INFO 8088 --- [http-nio-8020-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-10-19 01:11:26.865  INFO 8088 --- [http-nio-8020-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-10-19 01:13:58.752  WARN 8088 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m25s399ms99µs).
+2022-10-19 01:13:58.850  INFO 8088 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-10-19 01:13:58.852  INFO 8088 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-10-19 01:13:58.856  INFO 8088 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-10-19 01:14:04.675  INFO 10268 --- [main] c.g.N.NutritionApplication               : Starting NutritionApplication using Java 19 on CALLMEX with PID 10268 (D:\project\NutritionApp\target\classes started by CALL ME X in D:\project\NutritionApp)
+2022-10-19 01:14:04.679  INFO 10268 --- [main] c.g.N.NutritionApplication               : No active profile set, falling back to 1 default profile: "default"
+2022-10-19 01:14:05.844  INFO 10268 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-10-19 01:14:05.908  INFO 10268 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 56 ms. Found 5 JPA repository interfaces.
+2022-10-19 01:14:06.737  INFO 10268 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8020 (http)
+2022-10-19 01:14:06.751  INFO 10268 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-10-19 01:14:06.751  INFO 10268 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-10-19 01:14:06.938  INFO 10268 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-10-19 01:14:06.943  INFO 10268 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2201 ms
+2022-10-19 01:14:07.615  INFO 10268 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-10-19 01:14:07.931  INFO 10268 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-10-19 01:14:09.173  INFO 10268 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-10-19 01:14:09.824  INFO 10268 --- [main] f.a.AutowiredAnnotationBeanPostProcessor : Autowired annotation should only be used on methods with parameters: public java.util.List com.group_4_trial_1.Nutri_App_user_Trial.service.NutritionPlanServiceImpl.getNutritionPlans()
+2022-10-19 01:14:12.539  INFO 10268 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8020 (http) with context path ''
+2022-10-19 01:14:12.972  INFO 10268 --- [main] c.g.N.NutritionApplication               : Started NutritionApplication in 8.789 seconds (JVM running for 10.157)
+2022-10-19 01:14:16.004  INFO 10268 --- [http-nio-8020-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-10-19 01:14:16.004  INFO 10268 --- [http-nio-8020-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-10-19 01:14:16.006  INFO 10268 --- [http-nio-8020-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2022-10-19 01:14:40.471  INFO 10268 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-10-19 01:14:40.473  INFO 10268 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-10-19 01:14:40.477  INFO 10268 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-10-19 01:46:31.482  INFO 14828 --- [main] c.g.N.NutritionApplication               : Starting NutritionApplication using Java 19 on CALLMEX with PID 14828 (D:\project\NutritionApp\target\classes started by CALL ME X in D:\project\NutritionApp)
+2022-10-19 01:46:31.485  INFO 14828 --- [main] c.g.N.NutritionApplication               : No active profile set, falling back to 1 default profile: "default"
+2022-10-19 01:46:32.209  INFO 14828 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-10-19 01:46:32.257  INFO 14828 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 41 ms. Found 5 JPA repository interfaces.
+2022-10-19 01:46:32.834  INFO 14828 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8020 (http)
+2022-10-19 01:46:32.840  INFO 14828 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-10-19 01:46:32.841  INFO 14828 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-10-19 01:46:32.961  INFO 14828 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-10-19 01:46:32.961  INFO 14828 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1433 ms
+2022-10-19 01:46:33.422  INFO 14828 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-10-19 01:46:33.708  INFO 14828 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-10-19 01:46:34.497  INFO 14828 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-10-19 01:46:34.966  INFO 14828 --- [main] f.a.AutowiredAnnotationBeanPostProcessor : Autowired annotation should only be used on methods with parameters: public java.util.List com.group_4_trial_1.Nutri_App_user_Trial.service.NutritionPlanServiceImpl.getNutritionPlans()
+2022-10-19 01:46:36.201  INFO 14828 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8020 (http) with context path ''
+2022-10-19 01:46:36.425  INFO 14828 --- [main] c.g.N.NutritionApplication               : Started NutritionApplication in 5.265 seconds (JVM running for 5.949)
+2022-10-19 01:47:03.056  INFO 14828 --- [http-nio-8020-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-10-19 01:47:03.057  INFO 14828 --- [http-nio-8020-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-10-19 01:47:03.058  INFO 14828 --- [http-nio-8020-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-10-19 01:49:31.850  INFO 14828 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-10-19 01:49:31.851  INFO 14828 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-10-19 01:49:31.854  INFO 14828 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+>>>>>>> Stashed changes
