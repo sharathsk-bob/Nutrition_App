@@ -4,10 +4,16 @@ import java.time.LocalDate;
 
 public class NutritionPlandto {
     private Long id;
+    @NotNull(message = "{customer.name.absent}")
+    @Pattern(regexp = "[A-Za-z]+( [A-Za-z]+)*", message = "{customer.name.invalid}")
     private String name;
+    @NotEmpty(message = "planDiscription")
     private String planDiscription;
+  //  @PastOrPresent(message = "customer.created.invalid")
     private LocalDate created_At;
+//    @PastOrPresent(message = "customer.updated.invalid")
     private LocalDate updated_At;
+    @NotNull(message = "Price > 0 ")
     private double price;
 
     public NutritionPlandto() {
