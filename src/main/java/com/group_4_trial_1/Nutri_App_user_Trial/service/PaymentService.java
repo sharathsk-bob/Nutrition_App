@@ -1,12 +1,11 @@
-package com.sprint_1.payment_module.service;
+package com.group_4_trial_1.Nutri_App_user_Trial.service;
 
 import java.util.List;
 
+import com.group_4_trial_1.Nutri_App_user_Trial.entity.Payment;
+import com.group_4_trial_1.Nutri_App_user_Trial.exception.PaymentNotFoundException;
 import org.springframework.stereotype.Service;
 
-
-import com.sprint_1.payment_module.entity.Payment;
-import com.sprint_1.payment_module.exception.PaymentNotFoundException;
 
 @Service
 public interface PaymentService {

@@ -1,4 +1,4 @@
-package com.sprint_1.payment_module.entity;
+package com.group_4_trial_1.Nutri_App_user_Trial.entity;
 
 import javax.persistence.*;
 import java.time.LocalDate;

@@ -1,18 +1,14 @@
-package com.sprint_1.payment_module.service;
+package com.group_4_trial_1.Nutri_App_user_Trial.service;
 
-import com.sprint_1.payment_module.entity.Payment;
-import com.sprint_1.payment_module.exception.PaymentNotFoundException;
-//import com.sprint_1.payment_module.entity.Payment;
+
+import com.group_4_trial_1.Nutri_App_user_Trial.entity.Payment;
+import com.group_4_trial_1.Nutri_App_user_Trial.exception.PaymentNotFoundException;
 import com.sprint_1.payment_module.repository.PaymentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-//import org.apache.logging.log4j.LogManager;
-//import org.apache.logging.log4j.Logger;
-//import org.modelmapper.ModelMapper;
-//import org.modelmapper.convention.MatchingStrategies;
-//import java.time.LocalDate;
+
 import java.util.List;
 //import java.util.Optional;
 

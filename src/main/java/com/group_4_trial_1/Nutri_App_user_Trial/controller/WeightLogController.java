@@ -1,7 +1,5 @@
 package com.group_4_trial_1.Nutri_App_user_Trial.controller;
 
-//import com.nutritionapp.nutrition.Entity.WeightLog;
-//import com.nutritionapp.nutrition.service.WeightLogService;
 
 import com.group_4_trial_1.Nutri_App_user_Trial.entity.WeightLog;
 import com.group_4_trial_1.Nutri_App_user_Trial.exception.WeightLogNotFoundException;

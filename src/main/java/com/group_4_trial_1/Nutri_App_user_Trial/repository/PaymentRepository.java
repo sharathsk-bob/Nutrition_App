@@ -1,7 +1,8 @@
-package com.sprint_1.payment_module.repository;
+package com.group_4_trial_1.Nutri_App_user_Trial.repository;
 
 
-import com.sprint_1.payment_module.entity.Payment;
+import com.group_4_trial_1.Nutri_App_user_Trial.entity.Payment;
+
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
