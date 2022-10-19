@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-//Description : This is Flat Controller
+//Description : This is weightLog Controller
 
 @RestController
 @RequestMapping(path = "/weightLog")  
@@ -31,10 +31,7 @@ public class WeightLogController {
     
     
 //private Environment environment;
-   @GetMapping
-    public List<WeightLog> WeightLog() throws WeightLogNotFoundException {
-       return weightLogService.showAllWeightLog();
-  }
+  
 
    /************************************************************************************
 	 * Method: addWeightLog
@@ -59,10 +56,10 @@ public class WeightLogController {
 	 ************************************************************************************/
 
 
-  @PutMapping(path ="ID")
+  @PutMapping(path ="{ID}")
   public void updateWeightLog(@RequestBody WeightLog weightLog,
-          @PathVariable("ID") Long ID
-//@RequestParam(required = false) String slots ,
+          @PathVariable("ID") Long ID,
+@RequestParam(required = false) String userId 
 //@RequestParam(required = false) String foodType
 )
   {
@@ -108,11 +105,14 @@ public class WeightLogController {
   /************************************************************************************
 	 * Method: showAllWeightLog
 	 * Description: It is used to show all weights  from weightLog  table
-	 * @returns flat :It returns weightLog table with details
+	 * @returns WeightLog :It returns weightLog table with details
 	 * @GetMapping: It is used to handle the HTTP GET requests matched.
 	 *  
 	 ************************************************************************************/
-
+  @GetMapping
+  public List<WeightLog> WeightLog() throws WeightLogNotFoundException {
+     return weightLogService.showAllWeightLog();
+}
 }
 
 
