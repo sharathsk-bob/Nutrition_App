@@ -3,7 +3,8 @@ package com.group_4_trial_1.Nutri_App_user_Trial.service;
 
 import com.group_4_trial_1.Nutri_App_user_Trial.entity.Payment;
 import com.group_4_trial_1.Nutri_App_user_Trial.exception.PaymentNotFoundException;
-import com.sprint_1.payment_module.repository.PaymentRepository;
+
+import com.group_4_trial_1.Nutri_App_user_Trial.repository.PaymentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
