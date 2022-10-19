@@ -13,19 +13,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-//Description : This is WeightLog Controller
-=======
-//Description : This is Flat Controller
->>>>>>> Stashed changes
-=======
-//Description : This is weightLog Controller
->>>>>>> e0dffda6e325ff7fdfcea9e50c4b59640758274b
-=======
-//Description : This is weightLog Controller
->>>>>>> e0dffda6e325ff7fdfcea9e50c4b59640758274b
 
 @RestController
 @RequestMapping(path = "/weightLog")  
@@ -43,18 +30,12 @@ public class WeightLogController {
     
     
 //private Environment environment;
-<<<<<<< HEAD
-<<<<<<< HEAD
+
    @GetMapping
-    public List<WeightLog> WeightLog() throws WeightLogNotFoundException {
+    public List<WeightLog> WeightLog() {
        return weightLogService.showAllWeightLog();
   }
-=======
-  
->>>>>>> e0dffda6e325ff7fdfcea9e50c4b59640758274b
-=======
-  
->>>>>>> e0dffda6e325ff7fdfcea9e50c4b59640758274b
+
 
    /************************************************************************************
 	 * Method: addWeightLog
@@ -77,15 +58,7 @@ public class WeightLogController {
 	 * @RequestBody: It used to bind the HTTP request/response body with a domain object in method parameter or return type.
 	 * 
 	 ************************************************************************************/
-<<<<<<< HEAD
-<<<<<<< HEAD
 
-=======
->>>>>>> e0dffda6e325ff7fdfcea9e50c4b59640758274b
-
-=======
-
->>>>>>> e0dffda6e325ff7fdfcea9e50c4b59640758274b
 
   @PutMapping(path ="{ID}")
   public void updateWeightLog(@RequestBody WeightLog weightLog,
@@ -133,31 +106,6 @@ public class WeightLogController {
     }
 
   }
-  /************************************************************************************
-	 * Method: showAllWeightLog
-	 * Description: It is used to show all weights  from weightLog  table
-<<<<<<< HEAD
-<<<<<<< HEAD
-	 * @returns flat :It returns weightLog table with details
-	 * @GetMapping: It is used to handle the HTTP GET requests matched.
-	 *  
-	 ************************************************************************************/
-
-=======
-=======
->>>>>>> e0dffda6e325ff7fdfcea9e50c4b59640758274b
-	 * @returns WeightLog :It returns weightLog table with details
-	 * @GetMapping: It is used to handle the HTTP GET requests matched.
-	 *  
-	 ************************************************************************************/
-  @GetMapping
-  public List<WeightLog> WeightLog() throws WeightLogNotFoundException {
-     return weightLogService.showAllWeightLog();
-}
-<<<<<<< HEAD
->>>>>>> e0dffda6e325ff7fdfcea9e50c4b59640758274b
-=======
->>>>>>> e0dffda6e325ff7fdfcea9e50c4b59640758274b
 }
 
 
