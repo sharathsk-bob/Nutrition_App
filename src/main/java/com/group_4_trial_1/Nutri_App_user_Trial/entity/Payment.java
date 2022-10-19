@@ -1,10 +1,9 @@
-package com.group_4_trial_1.Nutri_App_user_Trial.entity;
+package com.sprint_1.payment_module.entity;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-@Table
 public class Payment {
         @Id
         @SequenceGenerator(
@@ -26,6 +25,7 @@ public class Payment {
 
 
     public Payment() {
+    	super();
     }
 
     public Payment(long id, float payment, float discount, LocalDate created_At, LocalDate updated_At, String userId, long planId) {

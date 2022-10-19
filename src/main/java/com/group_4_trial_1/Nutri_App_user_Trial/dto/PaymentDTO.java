@@ -1,4 +1,4 @@
-package com.group_4_trial_1.Nutri_App_user_Trial.dto;
+package com.sprint_1.payment_module.dto;
 
 import java.time.LocalDate;
 
@@ -10,6 +10,10 @@ public class PaymentDTO {
     private LocalDate updated_At;
     private String userId;
     private long planId;
+    
+    public PaymentDTO() {
+    	super();
+    }
 
     public PaymentDTO(long id,float payment, float discount, LocalDate created_At, LocalDate updated_At, String userId, long planId) {
         this.id=id;

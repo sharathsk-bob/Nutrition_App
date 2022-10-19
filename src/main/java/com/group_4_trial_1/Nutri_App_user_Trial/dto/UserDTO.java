@@ -22,7 +22,7 @@ public class UserDTO {
     @Email(message = "{Please provide valid email address}")
     @NotNull(message = "{Please provide valid email address}")
     private String email;
-    @Pattern(regexp = "[A-Za-z]+", message = "{user.gender.invalid}")
+    @Pattern(regexp = "[A-Za-z]+", message = "{user.role.invalid}")
     private String role;
     private String status;
     private Float weight;

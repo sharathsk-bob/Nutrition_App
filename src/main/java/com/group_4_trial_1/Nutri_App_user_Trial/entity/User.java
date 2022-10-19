@@ -66,8 +66,6 @@ public class User {
     public User() {
     }
 
-    public User(long l, String mariam007, String mariam, String gender, String female, LocalDate of) {
-    }
 
     public User(String userId, String name, String contact, String gender, LocalDate dob, DietPlan dietPlan) {
         this.userId = userId;
@@ -77,6 +75,8 @@ public class User {
         this.dob = dob;
         this.dietPlan = dietPlan;
     }
+
+
 
     public User(Long id, String userId, String name, String contact,
                 String gender, LocalDate dob, String email, String role,
@@ -193,7 +193,7 @@ public class User {
         this.status = status;
     }
 
-    public double getWeight() {
+    public float getWeight() {
         return weight;
     }
 
@@ -201,7 +201,7 @@ public class User {
         this.weight = weight;
     }
 
-    public double getHeight() {
+    public float getHeight() {
         return height;
     }
 
