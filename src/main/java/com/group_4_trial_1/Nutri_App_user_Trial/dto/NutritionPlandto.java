@@ -1,4 +1,7 @@
 package com.group_4_trial_1.Nutri_App_user_Trial.dto;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import java.time.LocalDate;
 
 

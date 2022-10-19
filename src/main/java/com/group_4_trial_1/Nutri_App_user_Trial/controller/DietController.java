@@ -42,7 +42,7 @@ public class DietController {
         }}
 
 
-        @PutMapping(path ="{dietPlanId}")
+        @PutMapping(path ="/change/{dietPlanId}")
     public void changeDietPlan(
             @PathVariable(" dietPlanId") long  dietPlanId,
                                @RequestParam(required = false) String slots ,
