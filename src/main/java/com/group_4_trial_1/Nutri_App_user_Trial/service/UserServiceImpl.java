@@ -84,7 +84,7 @@ public class UserServiceImpl implements UserService {
                            Float height, String goal, Time wakeUpTime, Time sleepTime)
     {
         System.out.println(status);
-            User user = userRepository.findById(id).orElseThrow(() -> new IllegalStateException(
+            User user = userRepository.findById(id).orElseThrow(() -> new UserApiRequestException(
                     "User with this id is not present in the database."
         ));
             if(name != null && name.length() > 0 && !Objects.equals(name, user.getName())) {

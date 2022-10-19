@@ -52,6 +52,9 @@ public class NutritionPlan {
         this.price = price;
     }
 
+    public NutritionPlan(long i, String name, String eating_vegetables_and_fruits, LocalDate of, LocalDate of1, int price) {
+    }
+
     public Long getId() {
         return id;
     }

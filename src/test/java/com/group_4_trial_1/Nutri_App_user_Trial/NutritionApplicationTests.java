@@ -1,21 +1,27 @@
 package com.group_4_trial_1.Nutri_App_user_Trial;
 
+import com.group_4_trial_1.Nutri_App_user_Trial.dto.NutritionPlandto;
 import com.group_4_trial_1.Nutri_App_user_Trial.entity.DietPlan;
 import com.group_4_trial_1.Nutri_App_user_Trial.entity.NutritionPlan;
 import com.group_4_trial_1.Nutri_App_user_Trial.entity.User;
+import com.group_4_trial_1.Nutri_App_user_Trial.entity.WeightLog;
+import com.group_4_trial_1.Nutri_App_user_Trial.exception.WeightLogNotFoundException;
 import com.group_4_trial_1.Nutri_App_user_Trial.repository.DietPlanRepo;
 import com.group_4_trial_1.Nutri_App_user_Trial.repository.NutritionPlanRepository;
 import com.group_4_trial_1.Nutri_App_user_Trial.repository.UserRepository;
+import com.group_4_trial_1.Nutri_App_user_Trial.repository.WeightLogRepository;
 import com.group_4_trial_1.Nutri_App_user_Trial.service.DietService;
 import com.group_4_trial_1.Nutri_App_user_Trial.service.NutritionPlanService;
 import com.group_4_trial_1.Nutri_App_user_Trial.service.UserService;
+import com.group_4_trial_1.Nutri_App_user_Trial.service.WeightLogServiceImpl;
+import org.junit.Assert;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.yaml.snakeyaml.events.Event;
 
 import java.time.LocalDate;
 import java.time.Month;
@@ -25,7 +31,8 @@ import java.util.stream.Stream;
 
 import static java.time.Month.JANUARY;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -35,14 +42,15 @@ class NutritionApplicationTests {
 	void contextLoads() {
 	}
 
+	/************************************************************************************
+	 * Pratik Tests
+	 * Description: Tests for User Module
+	 *
+	 ************************************************************************************/
 	@MockBean
 	private UserRepository userRepository;
 	@Autowired
 	private UserService userService;
-	@Autowired
-	private DietService dietService;
-	@MockBean
-	private DietPlanRepo repository;
 
 	@Test
 	public void getAllUsersTest() {
@@ -101,15 +109,12 @@ class NutritionApplicationTests {
 //	}
 
 
-//        @Test
-//        public void deletePlanTest() throws DietPlanNotFoundException {
-//           DietPlan plan = new DietPlan(1,"jjgk","jggig","guguigui","jhfuyfu",
-//                    "jgjkgk","jhfyufy","fuyuu");
-//            //int Id = 2;
-//            dietService.removeDietPlan(plan.getId());
-//            verify(repository,times(1)).delete(plan);
-//        }
-   
+
+	/************************************************************************************
+	 * Kamran Tests
+	 * Description: Tests for Nutrition Plans
+	 *
+	 ************************************************************************************/
 	@MockBean
 	private NutritionPlanRepository nutritionPlanRepository;
 	@Autowired
@@ -133,6 +138,19 @@ class NutritionApplicationTests {
 		assertEquals(2, nutritionPlanService.getNutritionPlans().size());
 	}
 
+	@Test
+	public void createPlanTest1() {
+		NutritionPlan nutritionPlan = new NutritionPlan(1L,
+				"Plant-based Nutrition Plan","Eating Vegetables and Fruits",
+				LocalDate.of(2022, Month.OCTOBER,10),
+				LocalDate.of(2022, Month.OCTOBER,14),
+				5000
+		);
+		when(nutritionPlanRepository.save(nutritionPlan)).thenReturn(nutritionPlan);
+		assertEquals(null, nutritionPlanService.addNewNutritionPlan(nutritionPlan));
+	}
+
+
 //	@Test
 //	public void createPlanTest() {
 //		NutritionPlan nutritionPlan = new NutritionPlan(
@@ -154,10 +172,15 @@ class NutritionApplicationTests {
 		((NutritionPlanService) verify(nutritionPlanRepository, times(0))).removePlan(nutritionPlanDTOId);
 	}*/
 
-//	@Autowired
-//	private DietService dietService;
-//	@MockBean
-//	private DietPlanRepo repository;
+	/************************************************************************************
+	 * Adarsh Tests
+	 * Description: Tests for DietPlan
+	 *
+	 ************************************************************************************/
+	@Autowired
+	private DietService dietService;
+	@MockBean
+	private DietPlanRepo repository;
 
 	@Test
 	public void listPlansTest(){
@@ -186,4 +209,112 @@ class NutritionApplicationTests {
 //            dietService.removeDietPlan(plan.getId());
 //            verify(repository,times(1)).delete(plan);
 //        }
+
+
+	/************************************************************************************
+	 * Ashish Tests
+	 * Description: Tests for Weight Logs
+	 *
+	 ************************************************************************************/
+	@Autowired
+	private WeightLogServiceImpl weightLogService;
+
+	@MockBean
+	private WeightLogRepository weightLogRepository;
+	WeightLog w1;
+	@BeforeEach
+	public void init() {
+		w1 = new WeightLog(1,20f,LocalDate.now(),LocalDate.now() ,"ABCD1");
+	}
+
+
+   /*@Test
+    void contextLoads() {
+    }*/
+
+	@Test
+	public void showAllWeightLogTest() throws WeightLogNotFoundException {
+		when(weightLogRepository.findAll()).thenReturn(Stream.of(new WeightLog(1L,0f,LocalDate.now(),LocalDate.now(),"null"), new WeightLog(2L,0f,LocalDate.now(),LocalDate.now(),"null")).collect(Collectors.toList()));
+		Assert.assertEquals(2,weightLogService.showAllWeightLog().size());
+	}
+
+
+	/* public void payTest() throws PaymentNotFoundException{
+         PaymentDTO tester= new PaymentDTO(1L,0f,0f,LocalDate.now(),LocalDate.now(),"null",0L);
+         float price=0;
+         paymentService.pay(tester,price);
+         verify(paymentService,times(1)).pay(tester,price);
+
+     } */
+//	@Test
+//	public void removeWeightLogTest() throws WeightLogNotFoundException {
+//
+//		when(weightLogRepository.existsById(w1.getID())).thenReturn(true);
+//
+//		when(weightLogRepository.findById(w1.getID())).thenReturn(Optional.ofNullable(w1));
+//
+//		weightLogService.removeWeightLog(w1.getID());
+//
+//		verify(weightLogRepository).delete(w1);
+//	}
+
+
+	/*
+    public void addWeightLog() throws WeightLogNotFoundException {
+
+        PaymentDTO tester= new PaymentDTO(1L,0f,0f,LocalDate.now(),LocalDate.now(),"null",0L);
+        float discount=0;
+        paymentService.addOffer(tester, discount);
+        verify(paymentService,times(1)).pay(tester, discount);
+
+
+    }
+    */
+	@Test
+	public void addWeightLogTest() throws WeightLogNotFoundException {
+
+		when(weightLogRepository.save(w1)).thenReturn(w1);
+
+		Assert.assertEquals(w1.getID(),weightLogService.addWeightLog(w1).getID());
+
+		// assertEquals(w1.getWeight(),weightLogService.addWeightLog(w1).getWeight());
+
+		Assert.assertEquals(w1.getCreated_At(),weightLogService.addWeightLog(w1).getCreated_At());
+
+		Assert.assertEquals(w1.getUpdated_At(),weightLogService.addWeightLog(w1).getUpdated_At());
+
+		Assert.assertEquals(w1.getUserId(),weightLogService.addWeightLog(w1).getUserId());
+
+
+	}
+
+
+	// @Test
+   /* public void updateWeightLogTest() throws WeightLogNotFoundException {
+       // WeightLog tester=  WeightLog(w1);
+        when(weightLogService.updateWeightLog(w1,w1.getID())).thenReturn(w1);
+        assertEquals(w1,weightLogService.updateWeightLog(w1,w1.getID()));
+
+    } */
+	@Test
+	public void updateWeightLogTest()  throws WeightLogNotFoundException {
+
+		when(weightLogRepository.existsById(w1.getID())).thenReturn(true);
+
+		when(weightLogRepository.findById(w1.getID())).thenReturn(Optional.ofNullable(w1));
+
+		when(weightLogRepository.save(w1)).thenReturn(w1);
+
+		//  assertEquals(w1.getWeight(),weightLogService.updateWeightLog(w1, w1.getID()).getWeight());
+
+		Assert.assertEquals(w1.getCreated_At(),weightLogService.updateWeightLog(w1, w1.getID()).getCreated_At());
+
+		Assert.assertEquals(w1.getUpdated_At(),weightLogService.updateWeightLog(w1, w1.getID()).getUpdated_At());
+
+		Assert.assertEquals(w1.getUserId(),weightLogService.updateWeightLog(w1, w1.getID()).getUserId());
+
+	}
+
+
+
 }
