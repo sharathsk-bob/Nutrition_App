@@ -2014,3 +2014,9 @@ Caused by: org.postgresql.util.PSQLException: FATAL: password authentication fai
 2022-10-21 11:02:19.242  INFO 31364 --- [main] f.a.AutowiredAnnotationBeanPostProcessor : Autowired annotation should only be used on methods with parameters: public java.util.List com.capg.nutritionapp.service.NutritionPlanServiceImpl.getNutritionPlans()
 2022-10-21 11:02:21.863  INFO 31364 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8020 (http) with context path ''
 2022-10-21 11:02:22.423  INFO 31364 --- [main] c.c.nutritionapp.NutritionApplication    : Started NutritionApplication in 12.085 seconds (JVM running for 13.03)
+2022-10-21 11:06:37.923  INFO 31364 --- [http-nio-8020-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-10-21 11:06:37.929  INFO 31364 --- [http-nio-8020-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-10-21 11:06:38.006  INFO 31364 --- [http-nio-8020-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 77 ms
+2022-10-21 12:47:12.653  INFO 31364 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-10-21 12:47:12.863  INFO 31364 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-10-21 12:47:13.002  INFO 31364 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
