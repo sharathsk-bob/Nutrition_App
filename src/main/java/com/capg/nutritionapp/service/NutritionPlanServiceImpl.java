@@ -4,7 +4,6 @@ import com.capg.nutritionapp.entity.NutritionPlan;
 import com.capg.nutritionapp.repository.NutritionPlanRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Objects;
@@ -51,7 +50,7 @@ public class NutritionPlanServiceImpl implements INutritionPlanService {
  */
 
     @Override
-    public void deleteNutritionPlan(Long nutritionPlanId) {
+    public void deleteNutritionPlan(long nutritionPlanId) {
          boolean exists = nutritionPlanRepository.existsById(nutritionPlanId);
          if(!exists){
              throw new IllegalStateException("Nutrition Plan for id "
@@ -68,7 +67,7 @@ public class NutritionPlanServiceImpl implements INutritionPlanService {
     
     @Override
     @Transactional
-    public void updateNutritionPlan(Long nutritionPlanId,
+    public void updateNutritionPlan(long nutritionPlanId,
                                     String name,
                                     Double price, String planDiscription) {
         NutritionPlan nutritionPlanDTO = nutritionPlanRepository.findById(nutritionPlanId).
