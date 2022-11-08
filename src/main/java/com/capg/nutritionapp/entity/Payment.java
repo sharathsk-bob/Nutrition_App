@@ -1,21 +1,41 @@
 package com.capg.nutritionapp.entity;
 
 import javax.persistence.*;
+
+import com.capg.nutritionapp.dto.PaymentDTO;
+
 import java.time.LocalDate;
+import java.util.Objects;
 
 @Entity
 public class Payment {
-		@Id
-		@GeneratedValue(strategy = GenerationType.IDENTITY)
+        @Id
+//      @SequenceGenerator(
+//              name = "payement_sequence",
+//              sequenceName = "payment_sequence",
+//              allocationSize = 1
+//      )
+        @GeneratedValue(
+                strategy = GenerationType.SEQUENCE,
+                generator = "payment_sequence"
+        )
         private long id;
+        @Column(nullable = false)
         private long planId;
+        @Column(nullable = false)
         private float payment;
+        @Column(nullable = false)
         private float discount;
+        @Column(nullable = false)
         private LocalDate created_At;
+        @Column(nullable = false)
         private LocalDate updated_At;
+        //?
+        //@OneToOne(cascade = CascadeType.MERGE)
+    	//@JoinColumn(name = "paymentId", unique = true)
         private String userId;
 
-
+     // Constructors	
     public Payment() {
     	super();
     }
@@ -30,6 +50,7 @@ public class Payment {
             this.planId = planId;
         }
 
+    // Getters and setters
     public float getPayment() {
             return payment;
         }
@@ -70,7 +91,7 @@ public class Payment {
             this.userId = userId;
         }
 
-        public Long getPlanId() {
+        public long getPlanId() {
             return planId;
         }
 
@@ -78,7 +99,6 @@ public class Payment {
             this.planId = planId;
         }
 
-		
 		public long getId() {
 			return id;
 		}
@@ -87,13 +107,45 @@ public class Payment {
 			this.id = id;
 		}
 
+		//overrides
 		@Override
 		public String toString() {
 			return "Payment [Id=" + id + ", planId=" + planId + ", payment=" + payment + ", discount=" + discount
 					+ ", created_At=" + created_At + ", updated_At=" + updated_At + ", userId=" + userId + "]";
 		}
 
+		@Override
+		public int hashCode() {
+			return Objects.hash(created_At, discount, id, payment, planId, updated_At, userId);
+		}
+
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj)
+				return true;
+			if (obj == null)
+				return false;
+			if (getClass() != obj.getClass())
+				return false;
+			Payment other = (Payment) obj;
+			return Objects.equals(created_At, other.created_At)
+					&& Float.floatToIntBits(discount) == Float.floatToIntBits(other.discount) && id == other.id
+					&& Float.floatToIntBits(payment) == Float.floatToIntBits(other.payment) && planId == other.planId
+					&& Objects.equals(updated_At, other.updated_At) && Objects.equals(userId, other.userId);
+		}
+
+		//Conversions
+		public PaymentDTO toPaymentDTO() {
+			PaymentDTO paymentDTO = new PaymentDTO();
+			paymentDTO.setId(this.getId());
+			paymentDTO.setPayment(this.getPayment());
+			paymentDTO.setDiscount(this.getDiscount());
+			paymentDTO.setCreated_At(this.getCreated_At());
+			paymentDTO.setUpdated_At(this.getUpdated_At());
+			paymentDTO.setUserId(this.getUserId());
+			paymentDTO.setPlanId(this.getPlanId());	
+			return paymentDTO;
+		}	
         
         
     }
-

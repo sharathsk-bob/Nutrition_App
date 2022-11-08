@@ -3,6 +3,8 @@ package com.capg.nutritionapp.service;
 import com.capg.nutritionapp.entity.DietPlan;
 import com.capg.nutritionapp.exception.DietPlanNotFoundException;
 import com.capg.nutritionapp.repository.DietPlanRepo;
+import com.capg.nutritionapp.repository.DietPlanRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.apache.logging.log4j.LogManager;
@@ -12,11 +14,11 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
-public class DietService implements DietServices {
+public class DietService implements IDietService {
     private static final Logger logger = LogManager.getLogger(DietService.class);
-    private final DietPlanRepo dietPlanRepo;
+    private final DietPlanRepository dietPlanRepo;
     @Autowired
-    public DietService(DietPlanRepo dietPlanRepo) {
+    public DietService(DietPlanRepository dietPlanRepo) {
         this.dietPlanRepo = dietPlanRepo;
     }
 

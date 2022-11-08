@@ -2,34 +2,39 @@ package com.capg.nutritionapp.dto;
 
 import java.util.Objects;
 
-public class DietPlan {
+import javax.validation.constraints.NotNull;
 
+public class DietPlanDTO {
+	// Data Fields
     private Long id;
-
-    //    @Id
-//    @Column(name = "diet_plan_id")
-    //private String  userId;
+    @NotNull(message="userID should not be empty")
+    private String  userId;
+    @NotNull(message="Slots should not be empty")
     private String slots;
+    @NotNull(message="FoodType should not be empty")
     private String foodType;
+    @NotNull(message="ProteinRatio should not be empty")
     private String proteinRatio;
+    @NotNull(message="FatRatio should not be empty")
     private String fatRatio;
+    @NotNull(message="CarbsRatio should not be empty")
     private String carbsRatio;
+    @NotNull(message="Total should not be empty")
     private String total;
 
-//    @OneToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "user_id", unique = true)
+//    Relationship
 //    private User user;
 
-    public DietPlan() {
+    // Constructors
+    public DietPlanDTO() {
+    	super();
     }
 
-
-
-    public DietPlan(Long id, String slots,
+    public DietPlanDTO(Long id, String userId, String slots,
                     String foodType, String proteinRatio,
                     String fatRatio, String carbsRatio, String total) {
         this.id = id;
-        //this.userId = userId;
+        this.userId = userId;
         this.slots = slots;
         this.foodType = foodType;
         this.proteinRatio = proteinRatio;
@@ -38,10 +43,10 @@ public class DietPlan {
         this.total = total;
     }
 
-    public DietPlan( String slots, String foodType,
+    public DietPlanDTO(String userId, String slots, String foodType,
                     String proteinRatio, String fatRatio,
                     String carbsRatio, String total) {
-        //this.userId = userId;
+        this.userId = userId;
         this.slots = slots;
         this.foodType = foodType;
         this.proteinRatio = proteinRatio;
@@ -50,21 +55,22 @@ public class DietPlan {
         this.total = total;
     }
 
-    public Long getId() {
+    //Getters Setters
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
-//    public String getUserId() {
-//        return userId;
-//    }
-//
-//    public void setUserId(String userId) {
-//        this.userId = userId;
-//    }
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
 
     public String getSlots() {
         return slots;
@@ -113,6 +119,8 @@ public class DietPlan {
     public void setTotal(String total) {
         this.total = total;
     }
+    
+    // Overrides
     @Override
     public String toString() {
         return "DietPlan{" +
@@ -127,6 +135,25 @@ public class DietPlan {
                 '}';
     }
 
+	@Override
+	public int hashCode() {
+		return Objects.hash(carbsRatio, fatRatio, foodType, id, proteinRatio, slots, total, userId);
+	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		DietPlanDTO other = (DietPlanDTO) obj;
+		return Objects.equals(carbsRatio, other.carbsRatio) && Objects.equals(fatRatio, other.fatRatio)
+				&& Objects.equals(foodType, other.foodType) && Objects.equals(id, other.id)
+				&& Objects.equals(proteinRatio, other.proteinRatio) && Objects.equals(slots, other.slots)
+				&& Objects.equals(total, other.total) && Objects.equals(userId, other.userId);
+	}
     
+	
 }

@@ -7,34 +7,39 @@ import javax.persistence.*;
 @Entity
 @Table
 public class DietPlan {
-	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+//    @SequenceGenerator(
+//            name="dietplan_sequence",
+//            sequenceName = "dietplan_sequence",
+//            allocationSize = 1
+//    )
+    @GeneratedValue( strategy = GenerationType.SEQUENCE,generator = "dietplan_sequence")
     private Long id;
-
-//    @Id
-//    @Column(name = "diet_plan_id")
-   // private String  userId;
+    @Column(nullable = false)
+    private String  userId;
+    @Column(nullable = false)
     private String slots;
+    @Column(nullable = false)
     private String foodType;
+    @Column(nullable = false)
     private String proteinRatio;
+    @Column(nullable = false)
     private String fatRatio;
+    @Column(nullable = false)
     private String carbsRatio;
+    @Column(nullable = false)
     private String total;
 
-//    @OneToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "user_id", unique = true)
-//    private User user;
-
+ // Constructors
     public DietPlan() {
+    	super();
     }
 
-
-
-    public DietPlan(Long id, String slots,
+    public DietPlan(long id, String userId, String slots,
                     String foodType, String proteinRatio,
                     String fatRatio, String carbsRatio, String total) {
         this.id = id;
-       // this.userId = userId;
+        this.userId = userId;
         this.slots = slots;
         this.foodType = foodType;
         this.proteinRatio = proteinRatio;
@@ -43,10 +48,10 @@ public class DietPlan {
         this.total = total;
     }
 
-    public DietPlan(String slots, String foodType,
+    public DietPlan(String userId, String slots, String foodType,
                     String proteinRatio, String fatRatio,
                     String carbsRatio, String total) {
-        //this.userId = userId;
+        this.userId = userId;
         this.slots = slots;
         this.foodType = foodType;
         this.proteinRatio = proteinRatio;
@@ -55,7 +60,8 @@ public class DietPlan {
         this.total = total;
     }
 
-    public Long getId() {
+	// Getters and setters   
+    public long getId() {
         return id;
     }
 
@@ -63,13 +69,13 @@ public class DietPlan {
         this.id = id;
     }
 
-//    public String getUserId() {
-//        return userId;
-//    }
-//
-//    public void setUserId(String userId) {
-//        this.userId = userId;
-//    }
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
 
     public String getSlots() {
         return slots;
@@ -118,28 +124,12 @@ public class DietPlan {
     public void setTotal(String total) {
         this.total = total;
     }
+    
+    //overrides
     @Override
-    public String toString() {
-        return "DietPlan{" +
-                "id=" + id +
-//                ", userId='" + userId + '\'' +
-                ", slots='" + slots + '\'' +
-                ", foodType='" + foodType + '\'' +
-                ", proteinRatio='" + proteinRatio + '\'' +
-                ", fatRatio='" + fatRatio + '\'' +
-                ", carbsRatio='" + carbsRatio + '\'' +
-                ", total='" + total + '\'' +
-                '}';
-    }
-
-
-
-	@Override
 	public int hashCode() {
-		return Objects.hash(carbsRatio, fatRatio, foodType, id, proteinRatio, slots, total);
+		return Objects.hash(carbsRatio, fatRatio, foodType, id, proteinRatio, slots, total, userId);
 	}
-
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -153,7 +143,20 @@ public class DietPlan {
 		return Objects.equals(carbsRatio, other.carbsRatio) && Objects.equals(fatRatio, other.fatRatio)
 				&& Objects.equals(foodType, other.foodType) && Objects.equals(id, other.id)
 				&& Objects.equals(proteinRatio, other.proteinRatio) && Objects.equals(slots, other.slots)
-				&& Objects.equals(total, other.total);
+				&& Objects.equals(total, other.total) && Objects.equals(userId, other.userId);
 	}
-    
+
+	@Override
+    public String toString() {
+        return "DietPlan{" +
+                "id=" + id +
+//                ", userId='" + userId + '\'' +
+                ", slots='" + slots + '\'' +
+                ", foodType='" + foodType + '\'' +
+                ", proteinRatio='" + proteinRatio + '\'' +
+                ", fatRatio='" + fatRatio + '\'' +
+                ", carbsRatio='" + carbsRatio + '\'' +
+                ", total='" + total + '\'' +
+                '}';
+    }
 }

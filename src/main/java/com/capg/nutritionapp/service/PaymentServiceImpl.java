@@ -1,129 +1,84 @@
 package com.capg.nutritionapp.service;
 
 
-import com.capg.nutritionapp.entity.Payment;
-import com.capg.nutritionapp.exception.PaymentNotFoundException;
-import com.capg.nutritionapp.repository.PaymentRepository;
+import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
+import com.capg.nutritionapp.dto.PaymentDTO;
+import com.capg.nutritionapp.entity.Payment;
+import com.capg.nutritionapp.exception.PaymentNotFoundException;
+import com.capg.nutritionapp.repository.PaymentRepository;
 //import java.util.Optional;
 
-@Component
+/**
+ * The Class PaymentServiceImpl.
+ */
 @Service
 @Transactional
-public class PaymentServiceImpl implements PaymentService {
+public class PaymentServiceImpl implements IPaymentService {
 	
-	//private static final Logger logger = LogManager.getLogger(PaymentServiceImpl.class); 
+	/** The payment repository. */ 
 	@Autowired
 	private PaymentRepository paymentRepository;
-//	@Autowired
-//	private ModelMapper mapper;
 
-   /* @Autowired
-    public PaymentServiceImpl(PaymentRepository paymentRepository, ModelMapper mapper) {
-        this.paymentRepository = paymentRepository;
-        this.mapper=mapper;
-    }*/
-
-
-
-   /* public Optional<PaymentDTO> getPaymentByUserId(String userId) {
-        boolean exist = paymentRepository.findPaymentByUserId(userId).isPresent();
-        if(!exist) {
-            throw new IllegalStateException("Payment not found...");
-        }
-        return paymentRepository.findPaymentByUserId(userId);
-    }*/
+	
     
     @Override
-	public void pay(Payment paymentEntity) throws PaymentNotFoundException {
-    	
-    	paymentRepository.save(paymentEntity);
-    	
-    	//logger.info("pay method initiated");
-//		Payment value = paymentRepository.findById(paymentEntity.getId()).
-//                orElseThrow(()->new PaymentNotFoundException("Payment with id "+
-//                		paymentEntity.getId() +" does not exist."));
-//		if(value.getPayment()!=0) {
-//			throw new PaymentNotFoundException("Payment already done");
-//		}
-//		else {
-//			value.setPayment(payment);
-//			value.setUpdated_At(LocalDate.now());
-//		}
-//		
-		//mapToEntity(paymentEntity);
-		//logger.info("pay method executed");
+	public PaymentDTO pay(PaymentDTO paymentDTO){
+    	Payment payment = paymentDTO.toPayment();
+		Payment savedPayment = paymentRepository.save(payment);
+		return savedPayment.toPaymentDTO();
 	}
 
 	@Override
-	public void addOffer(Payment paymentEntity, float discount) throws PaymentNotFoundException {
+	public PaymentDTO addOffer(PaymentDTO paymentDTO, float discount) throws PaymentNotFoundException {
 		
 		//logger.info("addOffer method initiated");
-		Payment value = paymentRepository.findById(paymentEntity.getId()).
+		Payment Discountedvalue = paymentRepository.findById(paymentDTO.getId()).
                 orElseThrow(()->new PaymentNotFoundException("Payment with id "+
-                		paymentEntity.getId() +" does not exist."));
-		if(value.getDiscount()!= 0f) {
+                paymentDTO.getId() +" does not exist."));
+		if(Discountedvalue.getDiscount()!= 0f) {
 			throw new PaymentNotFoundException("Discount already exist");
-			
 		}
 		else {
-			value.setDiscount(discount);
-		}
-		
+			Discountedvalue.setDiscount(discount);
+		}		
 		//mapToEntity(paymentDto);
-		//logger.info("addOffer method executed"); 
+		//logger.info("addOffer method executed");
+		return Discountedvalue.toPaymentDTO();
 	}
 	
-	
-    
     @Override
     public List<Payment> showAllPayments() throws PaymentNotFoundException {
     	//logger.info("showAllPayment method initiated"); 
     	//System.out.println("Getting data from DB:" + payment);
     	//logger.info("showAllPayment method executed");
     	List<Payment> iterable= paymentRepository.findAll();
-    	return iterable;
-    			
-    	 
+    	return iterable; 
     	}
 
 	@Override
 	@Transactional
-	public Payment updatePayment(Payment paymentEntity) throws PaymentNotFoundException {
+	public PaymentDTO updatePayment(long id, PaymentDTO paymentDTO) throws PaymentNotFoundException {
 		
 		//logger.info("update method initiated");
-		Payment value = paymentRepository.findById(paymentEntity.getId()).
-                orElseThrow(()->new PaymentNotFoundException("Payment with id "+
-                		paymentEntity.getId() +" does not exist."));
-        value.setId(paymentEntity.getId());
-        value.setPayment(paymentEntity.getPayment());
-        value.setDiscount(paymentEntity.getDiscount());
-        value.setCreated_At(paymentEntity.getCreated_At());
-        value.setUpdated_At(paymentEntity.getUpdated_At());
-        value.setUserId(paymentEntity.getUserId());
-        value.setPlanId(paymentEntity.getPlanId());
-        
-        //mapToEntity(paymentEntity);
-        
-       // logger.info("update method executed");
-        return value;
+		Optional<Payment> optionalPayment = paymentRepository.findById(id);
+		Payment payment = optionalPayment.orElseThrow(()->new PaymentNotFoundException("Payment with this id does not exist."));
+		
+//		if(paymentDTO.getPayment() != null)
+//			payment.setPayment(paymentDTO.getPayment());
+//		if(paymentDTO.getDiscount() != null)
+//			payment.setDiscount(paymentDTO.getDiscount());
+		if(paymentDTO.getCreated_At() != null)
+			payment.setDiscount(paymentDTO.getDiscount());
+		if(paymentDTO.getUpdated_At() != null)
+			payment.setDiscount(paymentDTO.getDiscount());
+		return payment.toPaymentDTO();
 	}
 	
-	/*private Payment mapToEntity(PaymentDTO paymentDto) {
-		
-		mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.LOOSE);
-		Payment payment= mapper.map(paymentDto, Payment.class);
-		return payment;
-		
-	}*/
-	
-	
-
 
 }
