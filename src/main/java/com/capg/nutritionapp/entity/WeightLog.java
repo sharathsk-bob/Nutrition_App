@@ -13,7 +13,7 @@ import javax.persistence.Id;
 public class WeightLog {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	//@OneToMany
 	//@JoinColumn(name="WeightLog")
 	//@OneToMany

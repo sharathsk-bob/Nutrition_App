@@ -1,15 +1,21 @@
 package com.capg.nutritionapp.dto;
 
 import javax.validation.constraints.*;
+
+import com.capg.nutritionapp.entity.DietPlan;
+import com.capg.nutritionapp.entity.NutritionPlan;
+import com.capg.nutritionapp.entity.Payment;
+import com.capg.nutritionapp.entity.WeightLog;
+
 import java.sql.Time;
 import java.time.LocalDate;
+import java.util.List;
 
 
 public class UserDTO {
     private Long id;
-    @NotEmpty(message = "UserId cant be empty")
     private String userIdentification;
-    @NotNull(message = "{user.name.absent}")
+    
     @Pattern(regexp = "[A-Za-z]+", message = "{user.name.invalid}")
     private String name;
     @Pattern(regexp = "[0-9]+", message = "{user.contact.invalid}")
@@ -22,7 +28,7 @@ public class UserDTO {
     @Email(message = "{Please provide valid email address}")
     @NotNull(message = "{Please provide valid email address}")
     private String email;
-    @Pattern(regexp = "[A-Za-z]+", message = "{user.role.invalid}")
+    //@Pattern(regexp = "[A-Za-z]+", message = "{user.role.invalid}")
     private String role;
     private String status;
     private Float weight;
@@ -37,6 +43,10 @@ public class UserDTO {
     private String allergicTo;
     private String loginName;
     private String password;
+    private DietPlan dietPlan;
+    private NutritionPlan nutritionPlan;
+    private List<Payment> paymentList;
+    private List<WeightLog> weightLogList;
 
     public UserDTO() {
     }
@@ -68,8 +78,48 @@ public class UserDTO {
         this.loginName = loginName;
         this.password = password;
     }
+    
+    
 
-    public UserDTO(Long id, String name, String contact, String gender) {
+    public UserDTO(Long id, String userIdentification,
+			@Pattern(regexp = "[A-Za-z]+", message = "{user.name.invalid}") String name,
+			@Pattern(regexp = "[0-9]+", message = "{user.contact.invalid}") String contact,
+			@Pattern(regexp = "[A-Za-z]+", message = "{user.gender.invalid}") String gender,
+			@PastOrPresent(message = "user.dob.invalid") LocalDate dob,
+			@Email(message = "{Please provide valid email address}") @NotNull(message = "{Please provide valid email address}") String email,
+			String role, String status, Float weight, Float height, String dietaryOrientation, String intensity,
+			String goal, String workOutline, Time wakeUpTime, Time sleepTime, String medicalCondition,
+			String allergicTo, String loginName, String password, DietPlan dietPlan, NutritionPlan nutritionPlan,
+			List<Payment> paymentList, List<WeightLog> weightLogList) {
+		super();
+		this.id = id;
+		this.userIdentification = userIdentification;
+		this.name = name;
+		this.contact = contact;
+		this.gender = gender;
+		this.dob = dob;
+		this.email = email;
+		this.role = role;
+		this.status = status;
+		this.weight = weight;
+		this.height = height;
+		this.dietaryOrientation = dietaryOrientation;
+		this.intensity = intensity;
+		this.goal = goal;
+		this.workOutline = workOutline;
+		this.wakeUpTime = wakeUpTime;
+		this.sleepTime = sleepTime;
+		this.medicalCondition = medicalCondition;
+		this.allergicTo = allergicTo;
+		this.loginName = loginName;
+		this.password = password;
+		this.dietPlan = dietPlan;
+		this.nutritionPlan = nutritionPlan;
+		this.paymentList = paymentList;
+		this.weightLogList = weightLogList;
+	}
+
+	public UserDTO(Long id, String name, String contact, String gender) {
 
         this.name = name;
         this.contact = contact;
@@ -243,31 +293,52 @@ public class UserDTO {
     public void setPassword(String password) {
         this.password = password;
     }
+    
+    
 
-    @Override
-    public String toString() {
-        return "UserDTO{" +
-                "id=" + id +
-                ", userIdentification='" + userIdentification + '\'' +
-                ", name='" + name + '\'' +
-                ", contact='" + contact + '\'' +
-                ", gender='" + gender + '\'' +
-                ", dob=" + dob +
-                ", email='" + email + '\'' +
-                ", role='" + role + '\'' +
-                ", status='" + status + '\'' +
-                ", weight=" + weight +
-                ", height=" + height +
-                ", dietaryOrientation='" + dietaryOrientation + '\'' +
-                ", intensity='" + intensity + '\'' +
-                ", goal='" + goal + '\'' +
-                ", workOutline='" + workOutline + '\'' +
-                ", wakeUpTime=" + wakeUpTime +
-                ", sleepTime=" + sleepTime +
-                ", medicalCondition='" + medicalCondition + '\'' +
-                ", allergicTo='" + allergicTo + '\'' +
-                ", loginName='" + loginName + '\'' +
-                ", password='" + password + '\'' +
-                '}';
-    }
+    public DietPlan getDietPlan() {
+		return dietPlan;
+	}
+
+	public void setDietPlan(DietPlan dietPlan) {
+		this.dietPlan = dietPlan;
+	}
+
+	public NutritionPlan getNutritionPlan() {
+		return nutritionPlan;
+	}
+
+	public void setNutritionPlan(NutritionPlan nutritionPlan) {
+		this.nutritionPlan = nutritionPlan;
+	}
+
+	public List<Payment> getPaymentList() {
+		return paymentList;
+	}
+
+	public void setPaymentList(List<Payment> paymentList) {
+		this.paymentList = paymentList;
+	}
+
+	public List<WeightLog> getWeightLogList() {
+		return weightLogList;
+	}
+
+	public void setWeightLogList(List<WeightLog> weightLogList) {
+		this.weightLogList = weightLogList;
+	}
+
+	@Override
+	public String toString() {
+		return "UserDTO [id=" + id + ", userIdentification=" + userIdentification + ", name=" + name + ", contact="
+				+ contact + ", gender=" + gender + ", dob=" + dob + ", email=" + email + ", role=" + role + ", status="
+				+ status + ", weight=" + weight + ", height=" + height + ", dietaryOrientation=" + dietaryOrientation
+				+ ", intensity=" + intensity + ", goal=" + goal + ", workOutline=" + workOutline + ", wakeUpTime="
+				+ wakeUpTime + ", sleepTime=" + sleepTime + ", medicalCondition=" + medicalCondition + ", allergicTo="
+				+ allergicTo + ", loginName=" + loginName + ", password=" + password + ", dietPlan=" + dietPlan
+				+ ", nutritionPlan=" + nutritionPlan + ", paymentList=" + paymentList + ", weightLogList="
+				+ weightLogList + "]";
+	}
+
+	
 }

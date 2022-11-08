@@ -1,40 +1,49 @@
 package com.capg.nutritionapp.controller;
 
+import com.capg.nutritionapp.dto.UserDTO;
 import com.capg.nutritionapp.entity.User;
+import com.capg.nutritionapp.exception.InvalidDataException;
 import com.capg.nutritionapp.service.UserService;
+
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Time;
 import java.util.List;
 
+import javax.validation.Valid;
+
 //Description : This is UserController
 
 @RestController
-@RequestMapping(path = "/user")
+@RequestMapping(path = "/capg/userinterface")
 /*Spring RestController takes care of mapping request data
  * to the defined request handler method
  */
-@CrossOrigin("*")
+@Validated
+@CrossOrigin(origins="http://localhost:3000")
 public class UserController {
 
-    private final UserService userService;
+    @Autowired
+        private UserService iuserService;
 
     @Autowired
-    public UserController(UserService userService) {
-        this.userService = userService;
-    }
-
-
+	private Environment environment;
     /************************************************************************************
      * Method: getAllUsers
      * Description: It is used to get all users from user_table
      * @GetMapping: It is used to handle the HTTP GET requests matched.
      *
      ************************************************************************************/
-    @GetMapping
-    public List<User> getAllUsers(){
-        return userService.getAllUsers();
+    @GetMapping(value="/users")
+    public ResponseEntity<List<UserDTO>> getAllUsers() throws InvalidDataException{
+    	List<UserDTO> userList = iuserService.getAllUsers();
+		return new ResponseEntity<>(userList, HttpStatus.OK);
     }
 
 
@@ -44,9 +53,10 @@ public class UserController {
      * @GetMapping: It is used to handle the HTTP GET requests matched.
      *
      ************************************************************************************/
-    @GetMapping(path = "{userId}")
-    public User getByUserId(@PathVariable("userId") String userId) {
-        return userService.getUserByUserId(userId);
+    @GetMapping(path = "/users/{id}")
+    public ResponseEntity<UserDTO> getUserByUserId(@PathVariable("userId") Long id) throws InvalidDataException  {
+    	UserDTO user = iuserService.getUserByUserId(id);
+		return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
 
@@ -57,9 +67,11 @@ public class UserController {
      * @RequestBody: It used to bind the HTTP request/response body with a domain object in method parameter or return type.
      *
      ************************************************************************************/
-    @PostMapping
-    public void saveUser(@RequestBody User user) {
-        userService.registerUser(user);
+    @PostMapping(value="/users")
+    public ResponseEntity<String> registerUser(@Valid @RequestBody User user) throws InvalidDataException {
+    	User us =iuserService.registerUser(user);
+		String successMessage = environment.getProperty("API.USER_INSERT_SUCCESS") + us.getId();
+		return new ResponseEntity<>(successMessage, HttpStatus.CREATED);
     }
 
 
@@ -70,9 +82,11 @@ public class UserController {
      * @PathVariable: It used to bind the HTTP request body with a parameter.
      *
      ************************************************************************************/
-    @DeleteMapping(path = "{id}")
-    public void deleteUser(@PathVariable("id") Long id) {
-        userService.deleteUser(id);
+    @DeleteMapping(path = "/users/{id}")
+    public ResponseEntity<String> deleteUser(@PathVariable Long id) throws InvalidDataException {
+    	iuserService.deleteUser(id);
+		String successMessage = environment.getProperty("API.USER_DELETE_SUCCESS");
+		return new ResponseEntity<>(successMessage, HttpStatus.OK);
     }
 
     /************************************************************************************
@@ -84,21 +98,11 @@ public class UserController {
      *
      ************************************************************************************/
 
-    @PutMapping(path = "{id}")
-    public void updateUser(
-            @PathVariable("id") Long id,
-            @RequestParam(required = false) String name,
-            @RequestParam(required = false) String contact,
-            @RequestParam(required = false) String email,
-            @RequestParam(required = false) String gender,
-            @RequestParam(required = false) String status,
-            @RequestParam(required = false) Float weight,
-            @RequestParam(required = false) Float height,
-            @RequestParam(required = false) String goal,
-            @RequestParam(required = false) Time wakeUpTime,
-            @RequestParam(required = false) Time sleepTime
-            ) {
-        userService.updateUser(id, name, contact, email, gender, status, weight, height, goal, wakeUpTime, sleepTime);
+    @PutMapping(path = "/users/{id}")
+    public ResponseEntity<String> updateUser(@PathVariable Long id , @RequestBody UserDTO user) throws InvalidDataException{
+    	iuserService.updateUser(user);
+    	String successMessage = environment.getProperty("API.USER_UPDATE_SUCCESS");
+		return new ResponseEntity<>(successMessage, HttpStatus.CREATED);
     }
 
 }

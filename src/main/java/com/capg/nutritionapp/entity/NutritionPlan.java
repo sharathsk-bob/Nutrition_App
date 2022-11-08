@@ -2,20 +2,13 @@ package com.capg.nutritionapp.entity;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Objects;
 
 @Entity
 @Table
 public class NutritionPlan {
-    @Id
-    @SequenceGenerator(
-            name = "nutritionplan_sequence",
-            sequenceName = "nutritionplan_sequence",
-            allocationSize = 1
-    )
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "nutritionplan_sequence"
-    )
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String planDiscription;
@@ -114,4 +107,25 @@ public class NutritionPlan {
                 ", price=" + price +
                 '}';
     }
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(created_At, id, name, planDiscription, price, updated_At);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		NutritionPlan other = (NutritionPlan) obj;
+		return Objects.equals(created_At, other.created_At) && Objects.equals(id, other.id)
+				&& Objects.equals(name, other.name) && Objects.equals(planDiscription, other.planDiscription)
+				&& Double.doubleToLongBits(price) == Double.doubleToLongBits(other.price)
+				&& Objects.equals(updated_At, other.updated_At);
+	}
+    
 }

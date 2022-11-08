@@ -1,117 +1,117 @@
 package com.capg.nutritionapp.service;
 
+import com.capg.nutritionapp.dto.UserDTO;
+
+import com.capg.nutritionapp.entity.DietPlan;
+import com.capg.nutritionapp.entity.NutritionPlan;
+import com.capg.nutritionapp.entity.Payment;
 import com.capg.nutritionapp.entity.User;
+import com.capg.nutritionapp.entity.WeightLog;
 import com.capg.nutritionapp.exception.UserApiRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.capg.nutritionapp.repository.UserRepository;
-
+import com.capg.nutritionapp.exception.InvalidDataException;
 import javax.transaction.Transactional;
 import java.sql.Time;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
 @Service
+@Transactional
 public class UserServiceImpl implements UserService {
-    private UserRepository userRepository;
+    //private UserRepository userRepository;
 //    private Logger logger;
 
     @Autowired
-    public UserServiceImpl(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
+    private UserRepository iuserRepository;
+    
 
     @Override
-    public List<User> getAllUsers() {
+    public List<UserDTO> getAllUsers()throws InvalidDataException {
 //        logger.info("Getting all users request initiated...");
-        return userRepository.findAll();
+    	Iterable<User> users = iuserRepository.findAll();
+		List<UserDTO> users2 = new ArrayList<>();
+		users.forEach(user -> {
+			UserDTO cust = new UserDTO(user.getId(),user.getUserIdentification(),user.getName(),user.getContact(),
+	                   user.getGender(), user.getDob(), user.getEmail(),user.getRole(),
+	                   user.getStatus(), user.getWeight(), user.getHeight(), user.getDietaryOrientation(),
+	                   user.getIntensity(),user.getGoal(), user.getWorkOutline(),user.getWakeUpTime(),
+	                   user.getSleepTime(), user.getMedicalCondition(),user.getAllergicTo(),user.getLoginName(),user.getPassword(),user.getDietPlan(),user.getNutritionPlan(),
+	       			user.getPaymentList(),user.getWeightLogList());
+			users2.add(cust);
+		});
+		if (users2.isEmpty())
+			throw new InvalidDataException("Service.USERS_NOT_FOUND");
+		return users2;
+        //return userRepository.findAll();
     }
 
     @Override
-    public User getUserByUserId(String userId) {
-//        logger.info("Getting user by its ID");
-        boolean exist = userRepository.findByUserId(userId).isPresent();
-        if(!exist) {
-//            logger.info("Could not retrive user !");
-            throw new UserApiRequestException("User with " + userId + " is not present in database right now !");
-        }
-//        logger.info("Found User :-)");
-       return userRepository.findByUserId(userId).get();
-    }
+    public UserDTO getUserByUserId(Long id) throws InvalidDataException{
+    	Optional<User> optional = iuserRepository.findById(id);
+        User user = optional.orElseThrow(() -> new InvalidDataException("Service.USER_NOT_FOUND"));
+		UserDTO user2 = new UserDTO(user.getId(),user.getUserIdentification(),user.getName(),user.getContact(),
+                user.getGender(), user.getDob(), user.getEmail(),user.getRole(),
+                user.getStatus(), user.getWeight(), user.getHeight(), user.getDietaryOrientation(),
+                user.getIntensity(), user.getGoal(), user.getWorkOutline(),user.getWakeUpTime(),
+                user.getSleepTime(), user.getMedicalCondition(),user.getAllergicTo(),user.getLoginName(),user.getPassword(),user.getDietPlan(),user.getNutritionPlan(),
+    			user.getPaymentList(),user.getWeightLogList());
+		return user2;
+		}
 
 
-    @Override
-    public User registerUser(User user) {
-        Optional<User> optionalUser = userRepository
-                                        .findByUserId(user.getUserId());
-        if(optionalUser.isPresent()) {
-            throw new UserApiRequestException("User is already present in the Database !");
-//            throw new IllegalStateException("User is already present in the Database !");
-        }
-        return userRepository.save(user);
-    }
 
     @Override
-    public void deleteUser(Long id) {
+    public User registerUser(User user) throws InvalidDataException {
+    	List<User> optionalUser = iuserRepository.findUserByemail(user.getEmail());
+		if(!optionalUser.isEmpty()) {
+			throw new InvalidDataException("Service.USER_FOUND");
+		}
+		User c = new User();
+		c.setName(user.getName());
+		c.setContact(user.getContact());
+        c.setGender(user.getGender()); 
+        c.setDob(user.getDob()); c.setEmail(user.getEmail());c.setRole(user.getRole());
+        c.setStatus(user.getStatus()); c.setWeight(user.getWeight()); c.setHeight(user.getHeight()); c.setDietaryOrientation(user.getDietaryOrientation());
+        c.setIntensity(user.getIntensity()); c.setGoal(user.getGoal());  c.setWorkOutline(user.getWorkOutline()); c.setWakeUpTime(user.getWakeUpTime());
+        c.setSleepTime(user.getSleepTime()); c.setMedicalCondition(user.getMedicalCondition());c.setAllergicTo(user.getAllergicTo());c.setLoginName(user.getLoginName());
+        c.setPassword(user.getPassword());
+		User c2 = iuserRepository.save(c);
+		return c2;
+    }
+
+    @Override
+    public UserDTO deleteUser(Long id) throws InvalidDataException {
 //        boolean exist = userRepository.existsById(id);
-        boolean exist = userRepository.findById(id).isPresent();
-
-        if (!exist) {
-            throw new UserApiRequestException("User is not present in the database ! Please try with different User Id !");
-//            throw new IllegalStateException("User is not present in the database ! Please try with different User Id !");
-        }
-        userRepository.deleteById(id);
+    	Optional<User> user1 = iuserRepository.findById(id);
+		User user=user1.orElseThrow(() -> new InvalidDataException("Service.USER_NOT_FOUND"));
+		UserDTO customer=new UserDTO(user.getId(),user.getUserIdentification(),user.getName(),user.getContact(),
+                user.getGender(), user.getDob(), user.getEmail(),user.getRole(),
+                user.getStatus(), user.getWeight(), user.getHeight(), user.getDietaryOrientation(),
+                user.getIntensity(), user.getGoal(), user.getWorkOutline(),user.getWakeUpTime(),
+                user.getSleepTime(), user.getMedicalCondition(),user.getAllergicTo(),user.getLoginName(),user.getPassword(),user.getDietPlan(),user.getNutritionPlan(),
+    			user.getPaymentList(),user.getWeightLogList());
+		return customer;
 
     }
 
     @Override
-    @Transactional
-    public void updateUser(Long id, String name, String contact, String email, String gender, String status, Float weight,
-                           Float height, String goal, Time wakeUpTime, Time sleepTime)
-    {
-            User user = userRepository.findById(id).orElseThrow(() -> new UserApiRequestException(
-                    "User with this id is not present in the database."
-        ));
-            if(name != null && name.length() > 0 && !Objects.equals(name, user.getName())) {
-                user.setName(name);
-            }
-
-            if(contact != null && contact.length() == 10 && !Objects.equals(contact, user.getContact())) {
-                user.setContact(contact);
-            }
-
-            if(email != null && email.length() > 0 && email.contains("@") && email.contains(".")
-                    && Objects.equals(email, user.getEmail())) {
-                Optional<User> optionalUser = userRepository.findUserByemail(email);
-                if(optionalUser.isPresent()) {
-                    throw new UserApiRequestException("User with same email is already present in the database!");
-                }
-                user.setEmail(email);
-            }
-
-//            if(gender.equalsIgnoreCase("Male") || gender.equalsIgnoreCase("Female") || !gender.equals(null)){
-                user.setGender(gender);
-//            }
-                user.setStatus(status);
-//
-
-//            if(weight > 0f) {
-//                user.setWeight(weight);
-//            }
-//            if(height > 0f) {
-//                user.setHeight(height);
-//            }
-//
-//            if(goal != null && goal.length() > 0 && !Objects.equals(goal, user.getGoal())) {
-//                user.setGoal(goal);
-//            }
-//
-//            if(wakeUpTime != null) {
-//                user.setWakeUpTime(wakeUpTime);
-//            }
-//            if(sleepTime != null) {
-//                user.setSleepTime(sleepTime);
-//            }
+    public UserDTO updateUser(UserDTO user)throws InvalidDataException{
+    	Optional<User> user1 = iuserRepository.findById(user.getId());
+		User c = user1.orElseThrow(() -> new InvalidDataException("Service.USER_NOT_FOUND"));
+		c.setName(user.getName());
+		c.setContact(user.getContact());
+        c.setGender(user.getGender()); 
+        c.setDob(user.getDob()); c.setEmail(user.getEmail());c.setRole(user.getRole());
+        c.setStatus(user.getStatus()); c.setWeight(user.getWeight()); c.setHeight(user.getHeight()); c.setDietaryOrientation(user.getDietaryOrientation());
+        c.setIntensity(user.getIntensity()); c.setGoal(user.getGoal());  c.setWorkOutline(user.getWorkOutline()); c.setWakeUpTime(user.getWakeUpTime());
+        c.setSleepTime(user.getSleepTime()); c.setMedicalCondition(user.getMedicalCondition());c.setAllergicTo(user.getAllergicTo());c.setLoginName(user.getLoginName());
+        c.setPassword(user.getPassword());
+		return user;
     }
+    
 }

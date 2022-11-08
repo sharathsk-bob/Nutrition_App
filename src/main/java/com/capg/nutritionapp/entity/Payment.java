@@ -5,16 +5,8 @@ import java.time.LocalDate;
 
 @Entity
 public class Payment {
-        @Id
-        @SequenceGenerator(
-                name = "payement_sequence",
-                sequenceName = "payment_sequence",
-                allocationSize = 1
-        )
-        @GeneratedValue(
-                strategy = GenerationType.SEQUENCE,
-                generator = "payment_sequence"
-        )
+		@Id
+		@GeneratedValue(strategy = GenerationType.IDENTITY)
         private long id;
         private long planId;
         private float payment;

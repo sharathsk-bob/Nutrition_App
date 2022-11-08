@@ -12,6 +12,6 @@ import java.util.Optional;
 public interface DietPlanRepo extends JpaRepository<DietPlan, Long> {
     Optional<DietPlan> findDietPlanById(long id);
 
-    @Query("SELECT u FROM User u WHERE u.userId = ?1")
-    Optional<User> findByUserId(String userId);
+    //@Query("SELECT u FROM User u WHERE u.userId = ?1")
+   // Optional<User> findByUserId(String userId);
 }

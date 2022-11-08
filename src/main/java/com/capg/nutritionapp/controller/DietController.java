@@ -55,7 +55,7 @@ public class DietController {
     )
     {
         try{
-        dietService.changeDietPlan( dietPlanId,slots,foodType,userId
+        dietService.changeDietPlan( dietPlanId,slots,foodType
                 ,proteinRatio,fatRatio,carbsRatio,total);}
     catch(Exception e)
     {

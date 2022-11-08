@@ -1,25 +1,19 @@
 package com.capg.nutritionapp.entity;
 
+import java.util.Objects;
+
 import javax.persistence.*;
 
 @Entity
 @Table
 public class DietPlan {
-    @Id
-    @SequenceGenerator(
-            name="dietplan_sequence",
-            sequenceName = "dietplan_sequence",
-            allocationSize = 1
-    )
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "dietplan_sequence"
-    )
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
 //    @Id
 //    @Column(name = "diet_plan_id")
-    private String  userId;
+   // private String  userId;
     private String slots;
     private String foodType;
     private String proteinRatio;
@@ -36,11 +30,11 @@ public class DietPlan {
 
 
 
-    public DietPlan(Long id, String userId, String slots,
+    public DietPlan(Long id, String slots,
                     String foodType, String proteinRatio,
                     String fatRatio, String carbsRatio, String total) {
         this.id = id;
-        this.userId = userId;
+       // this.userId = userId;
         this.slots = slots;
         this.foodType = foodType;
         this.proteinRatio = proteinRatio;
@@ -49,10 +43,10 @@ public class DietPlan {
         this.total = total;
     }
 
-    public DietPlan(String userId, String slots, String foodType,
+    public DietPlan(String slots, String foodType,
                     String proteinRatio, String fatRatio,
                     String carbsRatio, String total) {
-        this.userId = userId;
+        //this.userId = userId;
         this.slots = slots;
         this.foodType = foodType;
         this.proteinRatio = proteinRatio;
@@ -69,13 +63,13 @@ public class DietPlan {
         this.id = id;
     }
 
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
+//    public String getUserId() {
+//        return userId;
+//    }
+//
+//    public void setUserId(String userId) {
+//        this.userId = userId;
+//    }
 
     public String getSlots() {
         return slots;
@@ -137,4 +131,29 @@ public class DietPlan {
                 ", total='" + total + '\'' +
                 '}';
     }
+
+
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(carbsRatio, fatRatio, foodType, id, proteinRatio, slots, total);
+	}
+
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		DietPlan other = (DietPlan) obj;
+		return Objects.equals(carbsRatio, other.carbsRatio) && Objects.equals(fatRatio, other.fatRatio)
+				&& Objects.equals(foodType, other.foodType) && Objects.equals(id, other.id)
+				&& Objects.equals(proteinRatio, other.proteinRatio) && Objects.equals(slots, other.slots)
+				&& Objects.equals(total, other.total);
+	}
+    
 }

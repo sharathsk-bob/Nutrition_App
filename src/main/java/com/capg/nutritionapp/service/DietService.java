@@ -44,7 +44,7 @@ public class DietService implements DietServices {
 
 @Transactional
     public void changeDietPlan(long dietPlanId,String slots, String foodType,
-                                   String userId,String proteinRatio, String fatRatio,
+                                   String proteinRatio, String fatRatio,
                                    String carbsRatio,String total) throws DietPlanNotFoundException
     {
         logger.info("changeDietPlan method initiated.");
@@ -57,7 +57,7 @@ public class DietService implements DietServices {
             value.setFoodType(foodType);
             value.setProteinRatio(proteinRatio);
             value.setSlots(slots);
-            value.setUserId(userId);
+            //value.setUserId(userId);
             value.setTotal(total);
 
         logger.info("changeDietPlan method executed");

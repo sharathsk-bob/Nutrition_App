@@ -1,5 +1,6 @@
 package com.capg.nutritionapp.dto;
 
+import java.util.Objects;
 
 public class DietPlan {
 
@@ -7,7 +8,7 @@ public class DietPlan {
 
     //    @Id
 //    @Column(name = "diet_plan_id")
-    private String  userId;
+    //private String  userId;
     private String slots;
     private String foodType;
     private String proteinRatio;
@@ -24,11 +25,11 @@ public class DietPlan {
 
 
 
-    public DietPlan(Long id, String userId, String slots,
+    public DietPlan(Long id, String slots,
                     String foodType, String proteinRatio,
                     String fatRatio, String carbsRatio, String total) {
         this.id = id;
-        this.userId = userId;
+        //this.userId = userId;
         this.slots = slots;
         this.foodType = foodType;
         this.proteinRatio = proteinRatio;
@@ -37,10 +38,10 @@ public class DietPlan {
         this.total = total;
     }
 
-    public DietPlan(String userId, String slots, String foodType,
+    public DietPlan( String slots, String foodType,
                     String proteinRatio, String fatRatio,
                     String carbsRatio, String total) {
-        this.userId = userId;
+        //this.userId = userId;
         this.slots = slots;
         this.foodType = foodType;
         this.proteinRatio = proteinRatio;
@@ -57,13 +58,13 @@ public class DietPlan {
         this.id = id;
     }
 
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
+//    public String getUserId() {
+//        return userId;
+//    }
+//
+//    public void setUserId(String userId) {
+//        this.userId = userId;
+//    }
 
     public String getSlots() {
         return slots;
@@ -125,4 +126,7 @@ public class DietPlan {
                 ", total='" + total + '\'' +
                 '}';
     }
+
+
+    
 }

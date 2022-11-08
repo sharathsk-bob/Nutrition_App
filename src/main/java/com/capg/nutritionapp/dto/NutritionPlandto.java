@@ -3,6 +3,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import java.time.LocalDate;
+import java.util.Objects;
 
 
 public class NutritionPlandto {
@@ -98,4 +99,6 @@ public class NutritionPlandto {
                 ", price=" + price +
                 '}';
     }
+
+	
 }
