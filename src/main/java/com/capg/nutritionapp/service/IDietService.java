@@ -24,7 +24,7 @@ public interface IDietService {
 	 * @throws DietPlanException the DietPlanNotFound exception
 	 */
     public void changeDietPlan(long dietPlanId,String slots, String foodType,
-                                   String userId,String proteinRatio, String fatRatio,
+                                   String proteinRatio, String fatRatio,
                                    String carbsRatio,String total) throws DietPlanNotFoundException;
     
     /**

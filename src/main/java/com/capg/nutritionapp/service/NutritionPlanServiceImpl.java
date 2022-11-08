@@ -12,7 +12,7 @@ import java.util.Objects;
 //Description : This is Nutrition Plan Service Layer
 
 @Service
-public class NutritionPlanServiceImpl implements NutritionPlanService {
+public class NutritionPlanServiceImpl implements INutritionPlanService {
 
     private final NutritionPlanRepository nutritionPlanRepository;
 

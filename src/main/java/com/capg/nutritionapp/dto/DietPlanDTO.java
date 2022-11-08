@@ -7,8 +7,8 @@ import javax.validation.constraints.NotNull;
 public class DietPlanDTO {
 	// Data Fields
     private Long id;
-    @NotNull(message="userID should not be empty")
-    private String  userId;
+//    @NotNull(message="userID should not be empty")
+//    private String  userId;
     @NotNull(message="Slots should not be empty")
     private String slots;
     @NotNull(message="FoodType should not be empty")
@@ -30,11 +30,11 @@ public class DietPlanDTO {
     	super();
     }
 
-    public DietPlanDTO(Long id, String userId, String slots,
+    public DietPlanDTO(Long id,  String slots,
                     String foodType, String proteinRatio,
                     String fatRatio, String carbsRatio, String total) {
         this.id = id;
-        this.userId = userId;
+        //this.userId = userId;
         this.slots = slots;
         this.foodType = foodType;
         this.proteinRatio = proteinRatio;
@@ -43,10 +43,10 @@ public class DietPlanDTO {
         this.total = total;
     }
 
-    public DietPlanDTO(String userId, String slots, String foodType,
+    public DietPlanDTO( String slots, String foodType,
                     String proteinRatio, String fatRatio,
                     String carbsRatio, String total) {
-        this.userId = userId;
+        //this.userId = userId;
         this.slots = slots;
         this.foodType = foodType;
         this.proteinRatio = proteinRatio;
@@ -64,13 +64,13 @@ public class DietPlanDTO {
         this.id = id;
     }
 
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
+//    public String getUserId() {
+//        return userId;
+//    }
+//
+//    public void setUserId(String userId) {
+//        this.userId = userId;
+//    }
 
     public String getSlots() {
         return slots;
@@ -137,7 +137,7 @@ public class DietPlanDTO {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(carbsRatio, fatRatio, foodType, id, proteinRatio, slots, total, userId);
+		return Objects.hash(carbsRatio, fatRatio, foodType, id, proteinRatio, slots, total);
 	}
 
 	@Override
@@ -152,7 +152,7 @@ public class DietPlanDTO {
 		return Objects.equals(carbsRatio, other.carbsRatio) && Objects.equals(fatRatio, other.fatRatio)
 				&& Objects.equals(foodType, other.foodType) && Objects.equals(id, other.id)
 				&& Objects.equals(proteinRatio, other.proteinRatio) && Objects.equals(slots, other.slots)
-				&& Objects.equals(total, other.total) && Objects.equals(userId, other.userId);
+				&& Objects.equals(total, other.total);
 	}
     
 	

@@ -15,8 +15,8 @@ public class DietPlan {
 //    )
     @GeneratedValue( strategy = GenerationType.SEQUENCE,generator = "dietplan_sequence")
     private Long id;
-    @Column(nullable = false)
-    private String  userId;
+//    @Column(nullable = false)
+//    private String  userId;
     @Column(nullable = false)
     private String slots;
     @Column(nullable = false)
@@ -35,11 +35,11 @@ public class DietPlan {
     	super();
     }
 
-    public DietPlan(long id, String userId, String slots,
+    public DietPlan(long id, String slots,
                     String foodType, String proteinRatio,
                     String fatRatio, String carbsRatio, String total) {
         this.id = id;
-        this.userId = userId;
+//        this.userId = userId;
         this.slots = slots;
         this.foodType = foodType;
         this.proteinRatio = proteinRatio;
@@ -48,10 +48,10 @@ public class DietPlan {
         this.total = total;
     }
 
-    public DietPlan(String userId, String slots, String foodType,
+    public DietPlan( String slots, String foodType,
                     String proteinRatio, String fatRatio,
                     String carbsRatio, String total) {
-        this.userId = userId;
+//        this.userId = userId;
         this.slots = slots;
         this.foodType = foodType;
         this.proteinRatio = proteinRatio;
@@ -69,13 +69,13 @@ public class DietPlan {
         this.id = id;
     }
 
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
+//    public String getUserId() {
+//        return userId;
+//    }
+//
+//    public void setUserId(String userId) {
+//        this.userId = userId;
+//    }
 
     public String getSlots() {
         return slots;
@@ -128,7 +128,7 @@ public class DietPlan {
     //overrides
     @Override
 	public int hashCode() {
-		return Objects.hash(carbsRatio, fatRatio, foodType, id, proteinRatio, slots, total, userId);
+		return Objects.hash(carbsRatio, fatRatio, foodType, id, proteinRatio, slots, total);
 	}
 
 	@Override
@@ -143,7 +143,7 @@ public class DietPlan {
 		return Objects.equals(carbsRatio, other.carbsRatio) && Objects.equals(fatRatio, other.fatRatio)
 				&& Objects.equals(foodType, other.foodType) && Objects.equals(id, other.id)
 				&& Objects.equals(proteinRatio, other.proteinRatio) && Objects.equals(slots, other.slots)
-				&& Objects.equals(total, other.total) && Objects.equals(userId, other.userId);
+				&& Objects.equals(total, other.total);
 	}
 
 	@Override

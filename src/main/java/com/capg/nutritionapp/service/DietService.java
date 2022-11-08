@@ -2,7 +2,7 @@ package com.capg.nutritionapp.service;
 
 import com.capg.nutritionapp.entity.DietPlan;
 import com.capg.nutritionapp.exception.DietPlanNotFoundException;
-import com.capg.nutritionapp.repository.DietPlanRepo;
+
 import com.capg.nutritionapp.repository.DietPlanRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
