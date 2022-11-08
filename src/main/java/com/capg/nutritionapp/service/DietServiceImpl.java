@@ -1,5 +1,6 @@
 package com.capg.nutritionapp.service;
 
+import com.capg.nutritionapp.dto.DietPlanDTO;
 import com.capg.nutritionapp.entity.DietPlan;
 import com.capg.nutritionapp.exception.DietPlanNotFoundException;
 
@@ -14,11 +15,11 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
-public class DietService implements IDietService {
-    private static final Logger logger = LogManager.getLogger(DietService.class);
+public class DietServiceImpl implements IDietService {
+    private static final Logger logger = LogManager.getLogger(DietServiceImpl.class);
     private final DietPlanRepository dietPlanRepo;
     @Autowired
-    public DietService(DietPlanRepository dietPlanRepo) {
+    public DietServiceImpl(DietPlanRepository dietPlanRepo) {
         this.dietPlanRepo = dietPlanRepo;
     }
 
@@ -27,42 +28,42 @@ public class DietService implements IDietService {
     return dietPlanRepo.findAll();
     }
 
-    public DietPlan createDietPlan(DietPlan dietPlan) {
+    public DietPlanDTO createDietPlan(DietPlanDTO dietPlanDTO) {
         logger.info("createDietPlan method initiated");
-        DietPlan diet = dietPlanRepo.save(dietPlan);
+        DietPlanDTO dietDTO = dietPlanRepo.save(dietPlanDTO);
         logger.info("createDietPlan method executed");
-       return  diet;
+       return  dietDTO;
     }
 
-    public void removeDietPlan(long dietPlanId)  throws DietPlanNotFoundException{
+    public DietPlanDTO removeDietPlan(long dietPlanId)  throws DietPlanNotFoundException{
         logger.info("removeDietPlan method initiated");
         boolean exists = dietPlanRepo.existsById(dietPlanId);
         if(!exists){
             throw new DietPlanNotFoundException("The id mentioned" + dietPlanId + "doesn't exists");
         }dietPlanRepo.deleteById(dietPlanId);
         logger.info("removeDietPlan method executed");
+		return null;
     }
 
 
 @Transactional
-    public void changeDietPlan(long dietPlanId,String slots, String foodType,
-                                   String proteinRatio, String fatRatio,
-                                   String carbsRatio,String total) throws DietPlanNotFoundException
+    public DietPlanDTO changeDietPlan(long id, DietPlanDTO DietPlanDTO) throws DietPlanNotFoundException
     {
         logger.info("changeDietPlan method initiated.");
 
-            DietPlan value = dietPlanRepo.findById(dietPlanId).
-                    orElseThrow(()->new DietPlanNotFoundException("DietPlan with id "+
-                            dietPlanId +" does not exist."));
-            value.setCarbsRatio(carbsRatio);
-            value.setFatRatio(fatRatio);
-            value.setFoodType(foodType);
-            value.setProteinRatio(proteinRatio);
-            value.setSlots(slots);
+            DietPlan value = dietPlanRepo.findDietPlanById(id).
+                    orElseThrow(()->new DietPlanNotFoundException("DietPlan with id does not exist."));
+            value.setCarbsRatio(DietPlanDTO.getCarbsRatio());
+            value.setFatRatio(DietPlanDTO.getFatRatio());
+            value.setFoodType(DietPlanDTO.getFoodType());
+            value.setProteinRatio(DietPlanDTO.getProteinRatio());
+            value.setSlots(DietPlanDTO.getSlots());
             //value.setUserId(userId);
-            value.setTotal(total);
+            value.setTotal(DietPlanDTO.getTotal());
 
         logger.info("changeDietPlan method executed");
+		return DietPlanDTO;
 
     }
 }
+

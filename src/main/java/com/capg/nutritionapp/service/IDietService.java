@@ -1,8 +1,9 @@
 package com.capg.nutritionapp.service;
 
+import java.util.List;
+import com.capg.nutritionapp.dto.DietPlanDTO;
 import com.capg.nutritionapp.entity.DietPlan;
 import com.capg.nutritionapp.exception.DietPlanNotFoundException;
-import java.util.List;
 
 /**
  * The Interface IDietService.
@@ -15,7 +16,7 @@ public interface IDietService {
 	 * @return the DietPlan DTO
 	 * @throws DietPlanException the DietPlan exception
 	 */
-    public DietPlan createDietPlan(DietPlan dietPlan);
+    public DietPlanDTO createDietPlan(DietPlanDTO dietPlanDTO);
     
     /**
 	 * Update/Change DietPlan.
@@ -23,9 +24,7 @@ public interface IDietService {
 	 * @return the DietPlan DTO
 	 * @throws DietPlanException the DietPlanNotFound exception
 	 */
-    public void changeDietPlan(long dietPlanId,String slots, String foodType,
-                                   String proteinRatio, String fatRatio,
-                                   String carbsRatio,String total) throws DietPlanNotFoundException;
+    public DietPlanDTO changeDietPlan(long dietPlanId,DietPlanDTO dietplanDTO) throws DietPlanNotFoundException;
     
     /**
 	 * Removes the DietPlan.
@@ -33,7 +32,7 @@ public interface IDietService {
 	 * @return the DietPlan DTO
 	 * @throws DietPlanException the DietPlanNotFound exception
 	 */
-    public void removeDietPlan(long dietPlanId) throws DietPlanNotFoundException;
+    public DietPlanDTO removeDietPlan(long dietPlanId) throws DietPlanNotFoundException;
     
     /**
 	 * Gets and lists the all DietPlan.

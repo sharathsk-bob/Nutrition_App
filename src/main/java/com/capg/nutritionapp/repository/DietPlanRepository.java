@@ -1,5 +1,6 @@
 package com.capg.nutritionapp.repository;
 
+import com.capg.nutritionapp.dto.DietPlanDTO;
 import com.capg.nutritionapp.entity.DietPlan;
 import com.capg.nutritionapp.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -14,4 +15,9 @@ public interface DietPlanRepository extends JpaRepository<DietPlan, Long> {
 
     @Query("SELECT u FROM User u WHERE u.userId = ?1")
     Optional<User> findByUserId(String userId);
+
+	Optional<DietPlan> findDietPlanById(Object setId);
+
+	DietPlanDTO save(DietPlanDTO dietPlanDTO);
+    
 }
