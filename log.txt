@@ -286,3 +286,21 @@ Caused by: org.hibernate.QueryException: could not resolve property: userId of: 
 2022-11-08 08:12:23.299  INFO 23268 --- [http-nio-8020-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
 2022-11-08 08:12:23.300  INFO 23268 --- [http-nio-8020-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
 2022-11-08 08:12:23.304  INFO 23268 --- [http-nio-8020-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2022-11-08 10:18:08.283  INFO 1928 --- [main] c.c.nutritionapp.NutritionApplication    : Starting NutritionApplication using Java 17.0.4.1 on INLEN8520079904 with PID 1928 (C:\Users\shsashik\Desktop\Sprint 1Nutritionapp\NutritionApp\target\classes started by shsashik in C:\Users\shsashik\Desktop\Sprint 1Nutritionapp\NutritionApp)
+2022-11-08 10:18:08.285  INFO 1928 --- [main] c.c.nutritionapp.NutritionApplication    : No active profile set, falling back to 1 default profile: "default"
+2022-11-08 10:18:09.169  INFO 1928 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-11-08 10:18:09.245  INFO 1928 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 67 ms. Found 5 JPA repository interfaces.
+2022-11-08 10:18:10.109  INFO 1928 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8020 (http)
+2022-11-08 10:18:10.123  INFO 1928 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-11-08 10:18:10.123  INFO 1928 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-11-08 10:18:10.249  INFO 1928 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-11-08 10:18:10.250  INFO 1928 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1929 ms
+2022-11-08 10:18:10.924  INFO 1928 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-11-08 10:18:11.104  INFO 1928 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-11-08 10:18:11.934  INFO 1928 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-11-08 10:18:12.421  INFO 1928 --- [main] f.a.AutowiredAnnotationBeanPostProcessor : Autowired annotation should only be used on methods with parameters: public java.util.List com.capg.nutritionapp.service.NutritionPlanServiceImpl.getNutritionPlans()
+2022-11-08 10:18:14.070  INFO 1928 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8020 (http) with context path ''
+2022-11-08 10:18:14.412  INFO 1928 --- [main] c.c.nutritionapp.NutritionApplication    : Started NutritionApplication in 6.475 seconds (JVM running for 6.882)
+2022-11-08 10:18:34.894  INFO 1928 --- [http-nio-8020-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-11-08 10:18:34.895  INFO 1928 --- [http-nio-8020-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-11-08 10:18:34.896  INFO 1928 --- [http-nio-8020-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
