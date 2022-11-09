@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.capg.nutritionapp.dto.DietPlanDTO;
 import com.capg.nutritionapp.entity.DietPlan;
+import com.capg.nutritionapp.entity.NutritionPlan;
 import com.capg.nutritionapp.service.DietServiceImpl;
 
 @RestController
@@ -52,12 +53,12 @@ public class DietController {
 
         @PutMapping(path ="/change/{dietPlanId}")
     public void changeDietPlan(
-            @PathVariable(" dietPlanId") long  dietPlanId
+            @PathVariable(" dietPlanId") long  dietPlanId,@RequestBody DietPlanDTO dietPlanDTO
            // @RequestParam(required = false) 
             )
     {
         try{
-        dietService.changeDietPlan(dietPlanId);}
+        dietService.changeDietPlan(dietPlanId,dietPlanDTO);}
     catch(Exception e)
     {
         logger.info("The plan you are requesting to change doesn't exists");
