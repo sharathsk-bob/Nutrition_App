@@ -1,9 +1,7 @@
 package com.capg.nutritionapp.service;
 
 import java.util.List;
-
 import com.capg.nutritionapp.dto.PaymentDTO;
-import com.capg.nutritionapp.entity.Payment;
 import com.capg.nutritionapp.exception.PaymentNotFoundException;
 
 /**
@@ -31,7 +29,7 @@ public interface IPaymentService {
 	 *
 	 * @return the all payment details
 	 */
-	List<Payment> showAllPayments() throws PaymentNotFoundException;
+	List<PaymentDTO> showAllPayments() throws PaymentNotFoundException;
 	
 	/**
 	 * Update payment.

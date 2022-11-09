@@ -1,11 +1,9 @@
 package com.capg.nutritionapp.controller;
 
 import java.util.List;
-import com.capg.nutritionapp.entity.Payment;
-import com.capg.nutritionapp.exception.PaymentNotFoundException;
-import com.capg.nutritionapp.service.PaymentServiceImpl;
-import org.springframework.core.env.Environment;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.capg.nutritionapp.dto.PaymentDTO;
+import com.capg.nutritionapp.exception.PaymentNotFoundException;
+import com.capg.nutritionapp.service.PaymentServiceImpl;
 
 //import org.springframework.core.env.Environment;
 //import java.util.logging.Logger;
@@ -34,19 +34,30 @@ public class PaymentController {
 	@Autowired
 	private Environment environment;
 	
+	/**
+	 * Update payment.
+	 *
+	 * @param paymentId the payment id
+	 * @param paymentDTO the payment DTO
+	 * @return the response entity
+	 * @throws PaymentException the payment exception
+	 */
 	@PutMapping(value = "/updatepayment")
-	    public ResponseEntity<String> updatePayment(@RequestBody long id, PaymentDTO paymentDTO)
+	    public ResponseEntity<PaymentDTO> updatePayment(@RequestBody long id, PaymentDTO paymentDTO)
 	            throws PaymentNotFoundException {
-	        paymentService.updatePayment(id, paymentDTO);
-	        String successMessage = environment.getProperty("API.UPDATE_SUCCESS");
-	        return new ResponseEntity<>(successMessage, HttpStatus.OK);
+		PaymentDTO savedPayment = paymentService.updatePayment(id, paymentDTO);
+		return new ResponseEntity<PaymentDTO>(savedPayment, HttpStatus.OK);
 	    }
 	
-	
+	 /**
+	 * Gets the all payment details.
+	 *
+	 * @return the all payment details
+	 */
 	 @GetMapping(value = "/showallpayments")
-	    public ResponseEntity<List<Payment>> showAllPayments() throws PaymentNotFoundException {
-	        List<Payment> paymentList = paymentService.showAllPayments();
-	        return new ResponseEntity<>(paymentList, HttpStatus.OK);
+	    public ResponseEntity<List<PaymentDTO>> showAllPayments() throws PaymentNotFoundException {
+		 List<PaymentDTO> paymentList = paymentService.showAllPayments();
+			return new ResponseEntity<List<PaymentDTO>>(paymentList, HttpStatus.OK);
 	    }
 	 
 	 
@@ -57,13 +68,18 @@ public class PaymentController {
 	       return new ResponseEntity<>(successMessage, HttpStatus.CREATED);
 	    }
 	 
-		
+	 
+	  /**
+	  * Adds the payment.
+	  *
+	  * @param paymentDTO the payment DTO
+ 	  * @return the response entity
+	  */
 	 @PostMapping(value = "/paythepayment")
-		public ResponseEntity<String> pay(@RequestBody PaymentDTO paymentDTO)
+		public ResponseEntity<PaymentDTO>  pay(@RequestBody @Valid PaymentDTO paymentDTO)
 				throws PaymentNotFoundException {
-			paymentService.pay(paymentDTO);
-			String successMessage = environment.getProperty("API.UPDATE_SUCCESS");
-			return new ResponseEntity<>(successMessage, HttpStatus.OK);	
+		 PaymentDTO savedPayment = paymentService.pay(paymentDTO);
+			return new ResponseEntity<PaymentDTO>(savedPayment, HttpStatus.CREATED);
 	 }
    
 }

@@ -1,11 +1,18 @@
 package com.capg.nutritionapp.entity;
 
-import javax.persistence.*;
+import java.util.Date;
+import java.util.Objects;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 
 import com.capg.nutritionapp.dto.PaymentDTO;
-
-import java.time.LocalDate;
-import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 public class Payment {
@@ -27,10 +34,11 @@ public class Payment {
         @Column(nullable = false)
         private float discount;
         @Column(nullable = false)
-        private LocalDate created_At;
+        @JsonFormat(pattern ="yyyy-MM-dd")
+        private Date created_At;
         @Column(nullable = false)
-        private LocalDate updated_At;
-        //?
+        @JsonFormat(pattern ="yyyy-MM-dd")
+        private Date updated_At;
         //@OneToOne(cascade = CascadeType.MERGE)
     	//@JoinColumn(name = "paymentId", unique = true)
         private String userId;
@@ -40,7 +48,7 @@ public class Payment {
     	super();
     }
 
-    public Payment(long id, float payment, float discount, LocalDate created_At, LocalDate updated_At, String userId, long planId) {
+    public Payment(long id, float payment, float discount, Date created_At, Date updated_At, String userId, long planId) {
             this.id=id;
     	    this.payment = payment;
             this.discount = discount;
@@ -67,19 +75,19 @@ public class Payment {
             this.discount = discount;
         }
 
-        public LocalDate getCreated_At() {
+        public Date getCreated_At() {
             return created_At;
         }
 
-        public void setCreated_At(LocalDate created_At) {
+        public void setCreated_At(Date created_At) {
             this.created_At = created_At;
         }
 
-        public LocalDate getUpdated_At() {
+        public Date getUpdated_At() {
             return updated_At;
         }
 
-        public void setUpdated_At(LocalDate updated_At) {
+        public void setUpdated_At(Date updated_At) {
             this.updated_At = updated_At;
         }
 
@@ -147,5 +155,13 @@ public class Payment {
 			return paymentDTO;
 		}	
         
+		@PrePersist
+		public void onCreate() {
+			this.created_At = new Date();
+		}
         
+		@PreUpdate
+		public void onUpdate() {
+			this.updated_At = new Date();
+		}
     }

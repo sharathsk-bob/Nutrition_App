@@ -1,7 +1,8 @@
 package com.capg.nutritionapp.dto;
 
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.Objects;
+
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -19,9 +20,9 @@ public class PaymentDTO {
 	@NotNull(message="discount should not be empty")
     private float discount;
 	@NotNull(message="Creation date should not be empty")
-    private LocalDate created_At;
+    private Date created_At;
 	@NotNull(message="Update date should not be empty")
-    private LocalDate updated_At;
+    private Date updated_At;
 	//relationships
     private String userId;
     private long planId;
@@ -31,7 +32,7 @@ public class PaymentDTO {
     	super();
     }
 
-    public PaymentDTO(long id,float payment, float discount, LocalDate created_At, LocalDate updated_At, String userId, long planId) {
+    public PaymentDTO(long id,float payment, float discount, @NotNull(message = "Creation date should not be empty") Date created_At, @NotNull(message = "Update date should not be empty") Date updated_At, String userId, long planId) {
         this.id=id;
     	this.payment = payment;
         this.discount = discount;
@@ -70,19 +71,19 @@ public class PaymentDTO {
         this.discount = discount;
     }
 
-    public LocalDate getCreated_At() {
+    public Date getCreated_At() {
         return created_At;
     }
 
-    public void setCreated_At(LocalDate created_At) {
+    public void setCreated_At(Date created_At) {
         this.created_At = created_At;
     }
 
-    public LocalDate getUpdated_At() {
+    public Date getUpdated_At() {
         return updated_At;
     }
 
-    public void setUpdated_At(LocalDate updated_At) {
+    public void setUpdated_At(Date updated_At) {
         this.updated_At = updated_At;
     }
 
@@ -94,7 +95,7 @@ public class PaymentDTO {
         this.userId = userId;
     }
 
-    public Long getPlanId() {
+    public long getPlanId() {
         return planId;
     }
 

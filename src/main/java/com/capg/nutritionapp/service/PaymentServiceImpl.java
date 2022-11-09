@@ -1,6 +1,7 @@
 package com.capg.nutritionapp.service;
 
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,8 +25,6 @@ public class PaymentServiceImpl implements IPaymentService {
 	/** The payment repository. */ 
 	@Autowired
 	private PaymentRepository paymentRepository;
-
-	
     
     @Override
 	public PaymentDTO pay(PaymentDTO paymentDTO){
@@ -53,22 +52,21 @@ public class PaymentServiceImpl implements IPaymentService {
 	}
 	
     @Override
-    public List<Payment> showAllPayments() throws PaymentNotFoundException {
-    	//logger.info("showAllPayment method initiated"); 
-    	//System.out.println("Getting data from DB:" + payment);
-    	//logger.info("showAllPayment method executed");
-    	List<Payment> iterable= paymentRepository.findAll();
-    	return iterable; 
+    public List<PaymentDTO> showAllPayments() throws PaymentNotFoundException {    	
+    	List<Payment> payment = paymentRepository.findAll();
+		List<PaymentDTO> paymentDtolist = new ArrayList<>();
+		for(Payment p : payment) {
+			PaymentDTO paymentDto = p.toPaymentDTO();
+			paymentDtolist.add(paymentDto);
+		}
+		return paymentDtolist; 
     	}
 
 	@Override
 	@Transactional
 	public PaymentDTO updatePayment(long id, PaymentDTO paymentDTO) throws PaymentNotFoundException {
-		
-		//logger.info("update method initiated");
 		Optional<Payment> optionalPayment = paymentRepository.findById(id);
-		Payment payment = optionalPayment.orElseThrow(()->new PaymentNotFoundException("Payment with this id does not exist."));
-		
+		Payment payment = optionalPayment.orElseThrow(()->new PaymentNotFoundException("Payment with this id does not exist."));	
 //		if(paymentDTO.getPayment() != null)
 //			payment.setPayment(paymentDTO.getPayment());
 //		if(paymentDTO.getDiscount() != null)
@@ -79,6 +77,5 @@ public class PaymentServiceImpl implements IPaymentService {
 			payment.setDiscount(paymentDTO.getDiscount());
 		return payment.toPaymentDTO();
 	}
-	
 
 }
