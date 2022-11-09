@@ -6,16 +6,14 @@ import java.util.Objects;
 
 @Entity
 public class NutritionPlan {
-    @Id
+    
 //    @SequenceGenerator(
 //            name = "nutritionplan_sequence",
 //            sequenceName = "nutritionplan_sequence",
 //            allocationSize = 1
 //    )
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "nutritionplan_sequence"
-    )
+	@Id
+    @GeneratedValue( strategy = GenerationType.SEQUENCE,generator = "dietplan_sequence")
     private long id;
     @Column(nullable = false)
     private String name;

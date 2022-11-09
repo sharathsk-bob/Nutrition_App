@@ -13,8 +13,8 @@ import java.util.Optional;
 public interface DietPlanRepository extends JpaRepository<DietPlan, Long> {
     Optional<DietPlan> findDietPlanById(long id);
 
-    @Query("SELECT u FROM User u WHERE u.userId = ?1")
-    Optional<User> findByUserId(String userId);
+//    @Query("SELECT u FROM User u WHERE u.userId = ?1")
+//    Optional<User> findByUserId(String userId);
 
 	Optional<DietPlan> findDietPlanById(Object setId);
 
