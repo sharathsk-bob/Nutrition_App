@@ -1,20 +1,18 @@
 package com.capg.nutritionapp.service;
 
-import com.capg.nutritionapp.entity.WeightLog;
+import java.util.List;
+import com.capg.nutritionapp.dto.WeightLogDTO;
 import com.capg.nutritionapp.exception.WeightLogNotFoundException;
 
-import java.util.List;
-
-import javax.transaction.Transactional;
 public interface WeightLogServices {
 
-    public WeightLog addWeightLog(WeightLog weightLog)throws WeightLogNotFoundException;
-@Transactional
-    public WeightLog updateWeightLog(WeightLog weightLog, Long ID) throws WeightLogNotFoundException;
+    public WeightLogDTO addWeightLog(WeightLogDTO weightLogDTO)throws WeightLogNotFoundException;
+    
+    public WeightLogDTO updateWeightLog(WeightLogDTO weightLogDTO, Long ID) throws WeightLogNotFoundException;
 
-    public void removeWeightLog(Long ID) throws WeightLogNotFoundException, WeightLogNotFoundException;
+    public WeightLogDTO removeWeightLog(Long ID) throws WeightLogNotFoundException, WeightLogNotFoundException;
 
-    public List<WeightLog> showAllWeightLog() throws WeightLogNotFoundException;
+    public List<WeightLogDTO> showAllWeightLog() throws WeightLogNotFoundException;
 
 	
 

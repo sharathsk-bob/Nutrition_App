@@ -1,24 +1,15 @@
 package com.capg.nutritionapp.service;
 
-import com.capg.nutritionapp.dto.UserDTO;
-
-import com.capg.nutritionapp.entity.DietPlan;
-import com.capg.nutritionapp.entity.NutritionPlan;
-import com.capg.nutritionapp.entity.Payment;
-import com.capg.nutritionapp.entity.User;
-import com.capg.nutritionapp.entity.WeightLog;
-import com.capg.nutritionapp.exception.UserApiRequestException;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import com.capg.nutritionapp.repository.UserRepository;
-import com.capg.nutritionapp.exception.InvalidDataException;
-import javax.transaction.Transactional;
-import java.sql.Time;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
+import javax.transaction.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import com.capg.nutritionapp.dto.UserDTO;
+import com.capg.nutritionapp.entity.User;
+import com.capg.nutritionapp.exception.InvalidDataException;
+import com.capg.nutritionapp.repository.UserRepository;
 
 @Service
 @Transactional

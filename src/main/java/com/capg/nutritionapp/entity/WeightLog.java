@@ -1,13 +1,19 @@
 package com.capg.nutritionapp.entity;
 
-import java.time.LocalDate;
+import java.util.Date;
+import java.util.Objects;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 //import javax.persistence.JoinColumn;
 //import javax.persistence.OneToOne;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 public class WeightLog {
@@ -19,16 +25,19 @@ public class WeightLog {
 	//@OneToMany
 	//@JoinColumn(name="WeightLog")
 	private Long ID;
+	@Column(nullable = false)
     private float weight;
-    private LocalDate created_At;
-    private LocalDate updated_At;
+    @JsonFormat(pattern ="yyyy-MM-dd")
+    private Date created_At;
+    @JsonFormat(pattern ="yyyy-MM-dd")
+    private Date updated_At;
     private String userId;
 	
 	public WeightLog() {
 		super();
 	}
 
-	public WeightLog(long ID, float weight, LocalDate created_At, LocalDate updated_At, String userId) {
+	public WeightLog(long ID, float weight, Date created_At, Date updated_At, String userId) {
        super();
          this.ID = ID;
         this.weight = weight;
@@ -53,19 +62,19 @@ public class WeightLog {
         this.weight = weight;
     }
 
-    public LocalDate getCreated_At() {
+    public Date getCreated_At() {
         return created_At;
     }
 
-    public void setCreated_At(LocalDate created_At) {
+    public void setCreated_At(Date created_At) {
         this.created_At = created_At;
     }
 
-    public LocalDate getUpdated_At() {
+    public Date getUpdated_At() {
         return updated_At;
     }
 
-    public void setUpdated_At(LocalDate updated_At) {
+    public void setUpdated_At(Date updated_At) {
         this.updated_At = updated_At;
     }
 
@@ -76,7 +85,8 @@ public class WeightLog {
     public void setUserId(String userId) {
         this.userId = userId;
     }
-@Override
+    
+    @Override
     public String toString() {
         return "WeightLog{" +
                 "ID=" + ID +
@@ -86,6 +96,36 @@ public class WeightLog {
                 ", userId=" + userId +
                 '}';
     }
+    
+    @Override
+	public int hashCode() {
+		return Objects.hash(ID, created_At, updated_At, userId, weight);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		WeightLog other = (WeightLog) obj;
+		return Objects.equals(ID, other.ID) && Objects.equals(created_At, other.created_At)
+				&& Objects.equals(updated_At, other.updated_At) && Objects.equals(userId, other.userId)
+				&& Float.floatToIntBits(weight) == Float.floatToIntBits(other.weight);
+	}
+
+	@PrePersist
+	public void onCreate() {
+		this.created_At = new Date();
+	}
+    
+	@PreUpdate
+	public void onUpdate() {
+		this.updated_At = new Date();
+	}
+	
 }
 
 

@@ -1,7 +1,7 @@
 package com.capg.nutritionapp.controller;
 
 
-import com.capg.nutritionapp.entity.WeightLog;
+import com.capg.nutritionapp.dto.WeightLogDTO;
 import com.capg.nutritionapp.exception.WeightLogNotFoundException;
 import com.capg.nutritionapp.service.WeightLogServiceImpl;
 import org.apache.logging.log4j.LogManager;
@@ -30,7 +30,7 @@ public class WeightLogController {
 //private Environment environment;
 
    @GetMapping
-    public List<WeightLog> WeightLog() {
+    public List<WeightLogDTO> WeightLog() {
        return weightLogService.showAllWeightLog();
   }
 
@@ -45,7 +45,7 @@ public class WeightLogController {
 
 
   @PostMapping
-  public void addWeightLog(@RequestBody WeightLog weightLog) throws WeightLogNotFoundException {
+  public void addWeightLog(@RequestBody WeightLogDTO weightLog) throws WeightLogNotFoundException {
         weightLogService.addWeightLog(weightLog);
   }
   
@@ -59,7 +59,7 @@ public class WeightLogController {
 
 
   @PutMapping(path ="{ID}")
-  public void updateWeightLog(@RequestBody WeightLog weightLog,
+  public void updateWeightLog(@RequestBody WeightLogDTO weightLog,
           @PathVariable("ID") Long ID,
 @RequestParam(required = false) String userId 
 //@RequestParam(required = false) String foodType

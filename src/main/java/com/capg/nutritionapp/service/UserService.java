@@ -1,13 +1,9 @@
 package com.capg.nutritionapp.service;
 
+import java.util.List;
 import com.capg.nutritionapp.dto.UserDTO;
-
 import com.capg.nutritionapp.entity.User;
 import com.capg.nutritionapp.exception.InvalidDataException;
-
-import javax.transaction.Transactional;
-import java.sql.Time;
-import java.util.List;
 
 public interface UserService {
     public List<UserDTO> getAllUsers() throws InvalidDataException;
