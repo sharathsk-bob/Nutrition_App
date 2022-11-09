@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 @Entity
+@Table(name="nutrition_plan")
 public class NutritionPlan {
     
 //    @SequenceGenerator(
@@ -13,7 +14,7 @@ public class NutritionPlan {
 //            allocationSize = 1
 //    )
 	@Id
-    @GeneratedValue( strategy = GenerationType.SEQUENCE,generator = "dietplan_sequence")
+	 @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @Column(nullable = false)
     private String name;

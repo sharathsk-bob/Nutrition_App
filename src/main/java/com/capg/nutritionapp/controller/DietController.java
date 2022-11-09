@@ -20,17 +20,17 @@ import com.capg.nutritionapp.dto.DietPlanDTO;
 import com.capg.nutritionapp.entity.DietPlan;
 import com.capg.nutritionapp.entity.NutritionPlan;
 import com.capg.nutritionapp.entity.User;
+import com.capg.nutritionapp.exception.DietPlanNotFoundException;
+import com.capg.nutritionapp.exception.InvalidDataException;
 import com.capg.nutritionapp.service.DietServiceImpl;
 
 @RestController
 @RequestMapping(path = "/dietPlan")
 public class DietController {
     //private static final Logger logger = LogManager.getLogger(DietController.class);
-    private final DietServiceImpl dietService;
     @Autowired
-    public DietController(DietServiceImpl dietService) {
-        this.dietService = dietService;
-    }
+    private DietServiceImpl dietService;
+     
     @Autowired
  	private Environment environment;
     
@@ -52,8 +52,8 @@ public class DietController {
      *
      ************************************************************************************/
     @PostMapping(path = "/create")
-    public ResponseEntity<String> createDietPlan(@Valid @RequestBody DietPlanDTO dietPlan){
-        DietPlanDTO dp = DietServiceImpl.createDietPlan(dietPlan);
+    public ResponseEntity<String> createDietPlan(@Valid @RequestBody DietPlanDTO dietPlan)throws DietPlanNotFoundException{
+        DietPlanDTO dp = dietService.createDietPlan(dietPlan);
 		String successMessage = environment.getProperty("API.USER_INSERT_SUCCESS") + dp.getId();
 		return new ResponseEntity<>(successMessage, HttpStatus.CREATED);
     }
@@ -66,8 +66,8 @@ public class DietController {
      *
      ************************************************************************************/
     @DeleteMapping(path ="/delete/{dietPlanId}")
-    public ResponseEntity<String> removeDietPlan(@PathVariable int dietPlanId){
-    	DietServiceImpl.removeDietPlan(dietPlanId);
+    public ResponseEntity<String> removeDietPlan(@PathVariable int dietPlanId)throws DietPlanNotFoundException{
+    	dietService.removeDietPlan(dietPlanId);
 		String successMessage = environment.getProperty("API.USER_DELETE_SUCCESS");
 		return new ResponseEntity<>(successMessage, HttpStatus.OK);
     }
@@ -81,10 +81,10 @@ public class DietController {
      ************************************************************************************/
     @PutMapping(path ="/change/{dietPlanId}")  
     public ResponseEntity<String> changeDietPlan(
-            @PathVariable(" dietPlanId") long  dietPlanId,@RequestBody DietPlanDTO dietPlanDTO){
-    DietServiceImpl.changeDietPlan(dietPlanDTO);
-	String successMessage = environment.getProperty("API.USER_UPDATE_SUCCESS");
-	return new ResponseEntity<>(successMessage, HttpStatus.CREATED);
+            @PathVariable(" dietPlanId") long  dietPlanId,@RequestBody DietPlanDTO dietPlanDTO)throws DietPlanNotFoundException{
+    	dietService.changeDietPlan(dietPlanDTO);
+    	String successMessage = environment.getProperty("API.USER_UPDATE_SUCCESS");
+    	return new ResponseEntity<>(successMessage, HttpStatus.CREATED);
     }
 
 }

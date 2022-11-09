@@ -1,8 +1,17 @@
 package com.capg.nutritionapp.controller;
 
+import com.capg.nutritionapp.dto.NutritionPlanDTO;
+import com.capg.nutritionapp.dto.UserDTO;
 import com.capg.nutritionapp.entity.NutritionPlan;
+import com.capg.nutritionapp.exception.InvalidDataException;
+import com.capg.nutritionapp.service.INutritionPlanService;
 import com.capg.nutritionapp.service.NutritionPlanServiceImpl;
+import com.capg.nutritionapp.service.UserService;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,17 +19,17 @@ import java.util.List;
 //Description : This is Nutrition Plan Controller
 
 @RestController
-@RequestMapping(path = "nutritionplan")
+@RequestMapping(path = "/capg/nutritionplan")
 /* Spring RestController takes care of mapping request data 
  to the defined request handler method */ 
+@CrossOrigin(origins="http://localhost:3000")
 public class NutritionPlanContoller {
 
-    private final NutritionPlanServiceImpl nutritionPlanService;
+	@Autowired
+    private INutritionPlanService inutritionService;
 
-    @Autowired
-    public NutritionPlanContoller(NutritionPlanServiceImpl nutritionPlanService) {
-        this.nutritionPlanService = nutritionPlanService;
-    }
+	@Autowired
+	private Environment environment;
 
     /************************************************************************************
 	 * Method: listAllPlans
@@ -37,11 +46,12 @@ public class NutritionPlanContoller {
 	 * @GetMapping: It is used to handle the HTTP GET requests matched.
 	 *  
 	 ************************************************************************************/
-    @GetMapping
-    public List<NutritionPlan> listAllPlans(){
+    @GetMapping(value="/nutris")
+    public ResponseEntity<List<NutritionPlanDTO>> getNutritionPlans() throws InvalidDataException{
    // throw new NutritionPlanApiRequestException("Oops cannot get all Nutrition Plans with custom exception");
     //throw new IllegalStateException("Oops cannot get all Nutrition Plans");
-       return  nutritionPlanService.getNutritionPlans();
+    	List<NutritionPlanDTO> userList = inutritionService. getNutritionPlans();
+		return new ResponseEntity<>(userList, HttpStatus.OK);
     }
     
     /************************************************************************************
@@ -52,9 +62,11 @@ public class NutritionPlanContoller {
 	 * 
 	 ************************************************************************************/
 
-    @PostMapping
-    public void createPlan(@RequestBody NutritionPlan nutritionPlan){
-        nutritionPlanService.addNewNutritionPlan(nutritionPlan);
+    @PostMapping(value="/nutris")
+    public ResponseEntity<String> addNewNutritionPlan(@RequestBody NutritionPlan nutritionPlan)throws InvalidDataException{
+    	NutritionPlan user=inutritionService.addNewNutritionPlan(nutritionPlan);
+    	String successMessage = environment.getProperty("API.USER_INSERT_SUCCESS") + user.getId();
+		return new ResponseEntity<>(successMessage, HttpStatus.CREATED);
     }
     
       /************************************************************************************
@@ -64,10 +76,12 @@ public class NutritionPlanContoller {
 	 *  
 	 ************************************************************************************/
     
-    @DeleteMapping(path = "{nutritionPlanDTOId}")
-    public void removePlan(
-            @PathVariable("nutritionPlanDTOId") Long nutritionPlanDTOId){
-        nutritionPlanService.deleteNutritionPlan(nutritionPlanDTOId);
+    @DeleteMapping(path = "/nutris/{nutritionPlanDTOId}")
+    public ResponseEntity<String> deleteNutritionPlan(
+            @PathVariable("nutritionPlanDTOId") Long nutritionPlanDTOId)throws InvalidDataException{
+    	inutritionService.deleteNutritionPlan(nutritionPlanDTOId);
+    	String successMessage = environment.getProperty("API.USER_DELETE_SUCCESS");
+		return new ResponseEntity<>(successMessage, HttpStatus.OK);
     }
 
     /************************************************************************************
@@ -78,17 +92,12 @@ public class NutritionPlanContoller {
 	 * 
 	 ************************************************************************************/
     
-    @PutMapping(path = "{nutritionPlanDTOId}")
-    public void changePlan(
+    @PutMapping(path = "/nutris/{nutritionPlanDTOId}")
+    public ResponseEntity<String> updateNutritionPlan(
             @PathVariable("nutritionPlanDTOId") Long nutritionPlanDTOId ,
-            @RequestParam(required = false) String name,
-            @RequestParam(required = false) String planDiscription,
-
-           // @RequestParam(required = false) LocalDate created_At,
-            //@RequestParam(required = false) LocalDate updated_At,
-
-            @RequestParam(required = false) Double price) {
-        nutritionPlanService.updateNutritionPlan(nutritionPlanDTOId ,name
-                ,price,planDiscription);
+            @RequestBody NutritionPlanDTO nutritionPlanDTO) throws InvalidDataException{
+    	inutritionService.updateNutritionPlan(nutritionPlanDTO );
+    	String successMessage = environment.getProperty("API.USER_UPDATE_SUCCESS");
+		return new ResponseEntity<>(successMessage, HttpStatus.CREATED);
     }
 }

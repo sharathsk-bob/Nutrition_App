@@ -1,7 +1,11 @@
 package com.capg.nutritionapp.repository;
-
 import com.capg.nutritionapp.entity.NutritionPlan;
+import com.capg.nutritionapp.entity.User;
+
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 
@@ -15,9 +19,10 @@ import org.springframework.stereotype.Repository;
  * for storage, retrieval, search, update and delete operation on objects*/
 @Repository
 public interface NutritionPlanRepository
-        extends JpaRepository<NutritionPlan, Long> {
+extends CrudRepository<NutritionPlan, Long>  {
 
     // SELECT * FROM nutrition_planDTO where email= XYZ ;
     // @Query("SELECT n FROM nutrition_planDTO n where n.price= ?1")
     //Optional<NutritionPlanDTO> findNutritionPlanDTOByPrice(Double price);
+	List<NutritionPlan> findUserByName(String Name);
 }

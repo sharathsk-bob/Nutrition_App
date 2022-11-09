@@ -1,47 +1,68 @@
 package com.capg.nutritionapp.service;
 
+import com.capg.nutritionapp.dto.NutritionPlanDTO;
+import com.capg.nutritionapp.dto.UserDTO;
 import com.capg.nutritionapp.entity.NutritionPlan;
+import com.capg.nutritionapp.entity.User;
+import com.capg.nutritionapp.exception.InvalidDataException;
 import com.capg.nutritionapp.repository.NutritionPlanRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 //Description : This is Nutrition Plan Service Layer
 
 @Service
 public class NutritionPlanServiceImpl implements INutritionPlanService {
+	@Autowired
+	private NutritionPlanRepository iNutritionPlanRepository;
 
-    private final NutritionPlanRepository nutritionPlanRepository;
+    //private final NutritionPlanRepository nutritionPlanRepository;
 
-    public NutritionPlanServiceImpl(NutritionPlanRepository nutritionPlanRepository) {
-        this.nutritionPlanRepository = nutritionPlanRepository;
-    }
+  //  public NutritionPlanServiceImpl(NutritionPlanRepository nutritionPlanRepository) {
+  //      this.nutritionPlanRepository = nutritionPlanRepository;
+  //  }
 
     /*
  * Description : This method shows existing Nutrition Plans :Input Parameter 
  *          
  */
     @Override
-    @Autowired
-    public List<NutritionPlan> getNutritionPlans(){
-        return nutritionPlanRepository.findAll();
+    public List<NutritionPlanDTO> getNutritionPlans() throws InvalidDataException{
+        Iterable<NutritionPlan> users = iNutritionPlanRepository.findAll();
+		List<NutritionPlanDTO> users2 = new ArrayList<>();
+		users.forEach(user -> {
+			NutritionPlanDTO cust = new NutritionPlanDTO(user.getName(),user.getPlanDiscription(),user.getCreated_At(),user.getUpdated_At()
+	    			,user.getPrice());
+			users2.add(cust);
+		});
+		if (users2.isEmpty())
+			throw new InvalidDataException("Service.USERS_NOT_FOUND");
+		return users2;
     }
 
     
   //Description : This method Adds new NutritionPlan : Input Parameter
     
     @Override
-    public Object addNewNutritionPlan(NutritionPlan nutritionPlan) {
-   /*    Optional<NutritionPlanDTO> findNutritionPlanDTOByEmail = nutritionPlanRepository.
-                findNutritionPlanDTOByEmail(nutritionPlanDTO.getEmail())
-        if(nutritionPlanDTOOptional.isPresent()){
-            throw new IllegalStateException("Email Taken");
-        }*/
-        nutritionPlanRepository.save(nutritionPlan);
-//        System.out.println(nutritionPlan);
-        return null;
+    public NutritionPlan addNewNutritionPlan(NutritionPlan nutritionPlan)throws InvalidDataException {
+       List<NutritionPlan> optionalUser = iNutritionPlanRepository.findUserByName(nutritionPlan.getName());
+	//	if(!optionalUser.isEmpty()) {
+	//		throw new InvalidDataException("Service.USER_FOUND");
+	//	}
+       NutritionPlan c = new NutritionPlan();
+		c.setName(nutritionPlan.getName());
+		c.setPlanDiscription(nutritionPlan.getPlanDiscription());
+		c.setPrice(nutritionPlan.getPrice());
+		c.setUpdated_At(nutritionPlan.getUpdated_At());
+		c.setCreated_At(nutritionPlan.getCreated_At());
+		NutritionPlan c2 = iNutritionPlanRepository.save(c);
+		return c2;
     }
 
     /*
@@ -50,13 +71,13 @@ public class NutritionPlanServiceImpl implements INutritionPlanService {
  */
 
     @Override
-    public void deleteNutritionPlan(long nutritionPlanId) {
-         boolean exists = nutritionPlanRepository.existsById(nutritionPlanId);
-         if(!exists){
-             throw new IllegalStateException("Nutrition Plan for id "
-                     + nutritionPlanId + " does not exits");
-         }
-         nutritionPlanRepository.deleteById(nutritionPlanId);
+    public NutritionPlanDTO deleteNutritionPlan(long nutritionPlanId) throws InvalidDataException {
+    	Optional<NutritionPlan> user1 = iNutritionPlanRepository.findById(nutritionPlanId);
+    	NutritionPlan user=user1.orElseThrow(() -> new InvalidDataException("Service.USER_NOT_FOUND"));
+    	NutritionPlanDTO customer=new NutritionPlanDTO(user.getName(),user.getPlanDiscription(),user.getCreated_At(),user.getUpdated_At()
+    			,user.getPrice());
+    	iNutritionPlanRepository.deleteById(nutritionPlanId);
+		return customer;
     }
 
     
@@ -67,31 +88,15 @@ public class NutritionPlanServiceImpl implements INutritionPlanService {
     
     @Override
     @Transactional
-    public void updateNutritionPlan(long nutritionPlanId,
-                                    String name,
-                                    Double price, String planDiscription) {
-        NutritionPlan nutritionPlanDTO = nutritionPlanRepository.findById(nutritionPlanId).
-                orElseThrow(() -> new IllegalStateException(
-                        "Nutrition Plan with id " + nutritionPlanId + " does not exists"));
-                if(name != null && name.length() > 0 &&
-                !Objects.equals(nutritionPlanDTO.getName(),name)){
-                    nutritionPlanDTO.setName(name);
-                }
-        if(price!= null  &&
-                !Objects.equals(nutritionPlanDTO.getPrice(),price)){
-            nutritionPlanDTO.setPrice(price);
-        }
-        if(planDiscription!= null  &&
-                !Objects.equals(nutritionPlanDTO.getPlanDiscription(),planDiscription)){
-            nutritionPlanDTO.setPlanDiscription(planDiscription);
-        }
-       /*  if(created_At!= null  &&
-                !Objects.equals(nutritionPlanDTO.getCreated_At(),created_At)){
-            nutritionPlanDTO.setCreated_At(created_At);
-        }
-        if(updated_At!= null  &&
-                !Objects.equals(nutritionPlanDTO.getUpdated_At(),updated_At)){
-            nutritionPlanDTO.setUpdated_At(updated_At);
-        }*/
+    public NutritionPlanDTO updateNutritionPlan(NutritionPlanDTO nutritionPlan)throws InvalidDataException {
+    	Optional<NutritionPlan> user1 = iNutritionPlanRepository.findById(nutritionPlan.getId());
+    	NutritionPlan c = user1.orElseThrow(() -> new InvalidDataException("Service.USER_NOT_FOUND"));
+		c.setName(nutritionPlan.getName());
+		c.setPlanDiscription(nutritionPlan.getPlanDescription());
+		c.setPrice(nutritionPlan.getPrice());
+		c.setUpdated_At(nutritionPlan.getUpdated_At());
+		c.setCreated_At(nutritionPlan.getCreated_At());
+		return nutritionPlan;
     }
 }
+
