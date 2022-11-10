@@ -42,16 +42,30 @@ public class  WeightLogServiceImpl  implements WeightLogServices {
        logger.info("removeWeightLog method executed");
 	return null;
     }
+
+	@Override
+	public WeightLogDTO addWeightLog(WeightLogDTO weightLogDTO) throws WeightLogNotFoundException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public WeightLogDTO updateWeightLog(WeightLogDTO weightLogDTO, Long ID) throws WeightLogNotFoundException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
  
   //Description : This method Adds new weightLog : Input Parameter
 
-   @Override
-    public WeightLogDTO addWeightLog(WeightLogDTO weightLogDTO)throws WeightLogNotFoundException {
-        // TODO Auto-generated method stub
-	   logger.info("addWeightLog method executed");
-	   WeightLog wl=weightLogRepository.save(weightLog);
-	   return wl;    
-    }
+//   @Override
+//    public WeightLogDTO addWeightLog(WeightLogDTO weightLogDTO)throws WeightLogNotFoundException {
+//        // TODO Auto-generated method stub
+//	   logger.info("addWeightLog method executed");
+//	   WeightLog wl=weightLogRepository.save(weightLog);
+//	   return wl;    
+//    }
 
 /*
  * Description : This method shows existing weightLog :Input Parameter 
@@ -59,7 +73,7 @@ public class  WeightLogServiceImpl  implements WeightLogServices {
  */
 
    @Override
-    public List<WeightLogDTO> showAllWeightLog() {
+    public List<WeightLog> showAllWeightLog() {
         // TODO Auto-generated method stub
 	   logger.info("showAllWeightLog method initiated");
         return weightLogRepository.findAll().stream().toList();
@@ -70,25 +84,24 @@ public class  WeightLogServiceImpl  implements WeightLogServices {
 	 *               Throws Exception if the ID is not found as WeightLogNotFoundException	
 	 */
 
-   @Override
-   public WeightLogDTO updateWeightLog(WeightLogDTO weightLogDTO, Long ID) throws WeightLogNotFoundException {
-        // TODO Auto-generated method stub
-	  Optional<WeightLogDTO> user1 = weightLogRepository.findById(weightLogDTO.getId());
-	  WeightLog c = WeightLogDTO.orElseThrow(() -> new InvalidDataException("Service.USER_NOT_FOUND"));
-		
-      WeightLog value = weightLogRepository.findById(ID).orElseThrow(()->new WeightLogNotFoundException("WeightLog with id"+ ID + "does not exist."));
-      
-      value.setWeight(weightLogDTO.getWeight());
-      value.setCreated_At(weightLogDTO.getCreated_At());
-      value.setCreated_At(weightLogDTO.getUpdated_At());
-      value.setUserId(weightLogDTO.getUserId());
-      return value;
-    }
+//   @Override
+//   public WeightLogDTO updateWeightLog(WeightLogDTO weightLogDTO, Long ID) throws WeightLogNotFoundException {
+//        // TODO Auto-generated method stub
+//	  Optional<WeightLogDTO> user1 = weightLogRepository.findById(weightLogDTO.getId());
+//	  WeightLog c = WeightLogDTO.orElseThrow(() -> new InvalidDataException("Service.USER_NOT_FOUND"));
+//		
+//      WeightLog value = weightLogRepository.findById(ID).orElseThrow(()->new WeightLogNotFoundException("WeightLog with id"+ ID + "does not exist."));
+//      
+//      value.setWeight(weightLogDTO.getWeight());
+//      value.setCreated_At(weightLogDTO.getCreated_At());
+//      value.setCreated_At(weightLogDTO.getUpdated_At());
+//      value.setUserId(weightLogDTO.getUserId());
+//      return value;
+//    }
 
 
 }
 
-}
 
 
 

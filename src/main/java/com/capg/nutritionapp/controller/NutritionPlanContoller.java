@@ -19,7 +19,7 @@ import java.util.List;
 //Description : This is Nutrition Plan Controller
 
 @RestController
-@RequestMapping(path = "/capg/nutritionplan")
+@RequestMapping(path = "/nutritionplan")
 /* Spring RestController takes care of mapping request data 
  to the defined request handler method */ 
 @CrossOrigin(origins="http://localhost:3000")
@@ -46,7 +46,7 @@ public class NutritionPlanContoller {
 	 * @GetMapping: It is used to handle the HTTP GET requests matched.
 	 *  
 	 ************************************************************************************/
-    @GetMapping(value="/nutris")
+    @GetMapping(value="/getnutri")
     public ResponseEntity<List<NutritionPlanDTO>> getNutritionPlans() throws InvalidDataException{
    // throw new NutritionPlanApiRequestException("Oops cannot get all Nutrition Plans with custom exception");
     //throw new IllegalStateException("Oops cannot get all Nutrition Plans");
@@ -62,7 +62,7 @@ public class NutritionPlanContoller {
 	 * 
 	 ************************************************************************************/
 
-    @PostMapping(value="/nutris")
+    @PostMapping(value="/addnutri")
     public ResponseEntity<String> addNewNutritionPlan(@RequestBody NutritionPlan nutritionPlan)throws InvalidDataException{
     	NutritionPlan user=inutritionService.addNewNutritionPlan(nutritionPlan);
     	String successMessage = environment.getProperty("API.USER_INSERT_SUCCESS") + user.getId();
@@ -76,7 +76,7 @@ public class NutritionPlanContoller {
 	 *  
 	 ************************************************************************************/
     
-    @DeleteMapping(path = "/nutris/{nutritionPlanDTOId}")
+    @DeleteMapping(path = "/delnutri/{nutritionPlanDTOId}")
     public ResponseEntity<String> deleteNutritionPlan(
             @PathVariable("nutritionPlanDTOId") Long nutritionPlanDTOId)throws InvalidDataException{
     	inutritionService.deleteNutritionPlan(nutritionPlanDTOId);
@@ -92,7 +92,7 @@ public class NutritionPlanContoller {
 	 * 
 	 ************************************************************************************/
     
-    @PutMapping(path = "/nutris/{nutritionPlanDTOId}")
+    @PutMapping(path = "/updatenutri/{nutritionPlanDTOId}")
     public ResponseEntity<String> updateNutritionPlan(
             @PathVariable("nutritionPlanDTOId") Long nutritionPlanDTOId ,
             @RequestBody NutritionPlanDTO nutritionPlanDTO) throws InvalidDataException{

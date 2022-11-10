@@ -8,7 +8,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
+import com.capg.nutritionapp.entity.WeightLog;
 import java.util.List;
 
 
@@ -29,8 +29,8 @@ public class WeightLogController {
     
 //private Environment environment;
 
-   @GetMapping
-    public List<WeightLogDTO> WeightLog() {
+   @GetMapping(path = "/showweightLog")
+    public List<WeightLog> WeightLog() {
        return weightLogService.showAllWeightLog();
   }
 

@@ -73,7 +73,6 @@ public class DietServiceImpl implements IDietService {
         c.setTotal(DietPlanDTO.getTotal());
         logger.info("changeDietPlan method executed");
 		return DietPlanDTO;
-
     }
 }
 
