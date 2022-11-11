@@ -65,7 +65,7 @@ public class WeightLogController {
 	 ************************************************************************************/
 
 
-  @PutMapping(path ="/addWeightLog/{ID}")
+  @PutMapping(path ="/updateWeightLog/{ID}")
   public void updateWeightLog(@RequestBody WeightLog weightLog,
           @PathVariable("ID") Long ID,
           @RequestParam(required = false) String userId 

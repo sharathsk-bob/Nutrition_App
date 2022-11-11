@@ -108,3 +108,87 @@ java.lang.IllegalArgumentException: Invalid character found in the request targe
 2022-11-11 15:44:38.078  INFO 10828 --- [http-nio-8020-exec-4] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
 2022-11-11 15:44:38.078  INFO 10828 --- [http-nio-8020-exec-4] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
 2022-11-11 15:44:38.080  INFO 10828 --- [http-nio-8020-exec-4] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2022-11-11 15:47:04.966  INFO 10828 --- [http-nio-8020-exec-9] o.apache.coyote.http11.Http11Processor   : Error parsing HTTP request header
+ Note: further occurrences of HTTP request parsing errors will be logged at DEBUG level.
+
+java.lang.IllegalArgumentException: Invalid character found in the request target [/weightLog?{=&%22weight%22=%2080.0,&%22created_At%22=%20%222020-07-15%22,&%22updated_At%22=%20%222020-09-16%22,&%22userId%22=%20%22ABCD1%22,&%22id%22=%C2%A01&}= ]. The valid characters are defined in RFC 7230 and RFC 3986
+	at org.apache.coyote.http11.Http11InputBuffer.parseRequestLine(Http11InputBuffer.java:494) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:271) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:890) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1789) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at java.base/java.lang.Thread.run(Thread.java:833) ~[na:na]
+
+2022-11-11 15:53:30.150  INFO 10828 --- [RMI TCP Connection(13)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2022-11-11 15:53:30.161  INFO 10828 --- [RMI TCP Connection(13)-127.0.0.1] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2022-11-11 15:53:30.163  INFO 10828 --- [RMI TCP Connection(13)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2022-11-11 15:53:30.175  INFO 10828 --- [RMI TCP Connection(13)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-11-11 15:53:30.177  INFO 10828 --- [RMI TCP Connection(13)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-11-11 15:53:30.180  INFO 10828 --- [RMI TCP Connection(13)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-11-11 15:53:37.037  INFO 19448 --- [main] c.c.nutritionapp.NutritionApplication    : Starting NutritionApplication using Java 17.0.4.1 on LAPTOP-IUKF74KL with PID 19448 (D:\Capgemini\E2e IIHT Training\GROUP IT\Nutrition App\Sprint 1 Backend\Nutrition_App\target\classes started by HP in D:\Capgemini\E2e IIHT Training\GROUP IT\Nutrition App\Sprint 1 Backend\Nutrition_App)
+2022-11-11 15:53:37.042  INFO 19448 --- [main] c.c.nutritionapp.NutritionApplication    : No active profile set, falling back to 1 default profile: "default"
+2022-11-11 15:53:37.806  INFO 19448 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-11-11 15:53:37.857  INFO 19448 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 45 ms. Found 5 JPA repository interfaces.
+2022-11-11 15:53:38.556  INFO 19448 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8020 (http)
+2022-11-11 15:53:38.568  INFO 19448 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-11-11 15:53:38.568  INFO 19448 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-11-11 15:53:38.674  INFO 19448 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-11-11 15:53:38.674  INFO 19448 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1588 ms
+2022-11-11 15:53:39.530  INFO 19448 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-11-11 15:53:39.732  INFO 19448 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-11-11 15:53:40.670  INFO 19448 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-11-11 15:53:41.087  INFO 19448 --- [main] f.a.AutowiredAnnotationBeanPostProcessor : Autowired annotation should only be used on methods with parameters: public java.lang.Iterable com.capg.nutritionapp.service.NutritionPlanServiceImpl.getNutritionPlans()
+2022-11-11 15:53:42.528  INFO 19448 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8020 (http) with context path ''
+2022-11-11 15:53:42.832  INFO 19448 --- [main] c.c.nutritionapp.NutritionApplication    : Started NutritionApplication in 6.108 seconds (JVM running for 6.721)
+2022-11-11 15:53:52.390  INFO 19448 --- [http-nio-8020-exec-2] o.apache.coyote.http11.Http11Processor   : Error parsing HTTP request header
+ Note: further occurrences of HTTP request parsing errors will be logged at DEBUG level.
+
+java.lang.IllegalArgumentException: Invalid character found in the request target [/weightLog/updateWeightLog/1?{=&%22weight%22=%2075.0,&%22created_At%22=%20%222022-11-10%22,&%22updated_At%22=%20%222022-11-10%22,&%22userId%22=%20%22XYZ123%22,&%22id%22=%201&}= ]. The valid characters are defined in RFC 7230 and RFC 3986
+	at org.apache.coyote.http11.Http11InputBuffer.parseRequestLine(Http11InputBuffer.java:494) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:271) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:890) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1789) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.65.jar:9.0.65]
+	at java.base/java.lang.Thread.run(Thread.java:833) ~[na:na]
+
+2022-11-11 15:56:24.018  INFO 19448 --- [http-nio-8020-exec-8] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-11-11 15:56:24.018  INFO 19448 --- [http-nio-8020-exec-8] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-11-11 15:56:24.023  INFO 19448 --- [http-nio-8020-exec-8] o.s.web.servlet.DispatcherServlet        : Completed initialization in 5 ms
+2022-11-11 15:57:29.069  INFO 19448 --- [RMI TCP Connection(7)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2022-11-11 15:57:29.081  INFO 19448 --- [RMI TCP Connection(7)-127.0.0.1] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2022-11-11 15:57:29.083  INFO 19448 --- [RMI TCP Connection(7)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2022-11-11 15:57:29.098  INFO 19448 --- [RMI TCP Connection(7)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-11-11 15:57:29.100  INFO 19448 --- [RMI TCP Connection(7)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-11-11 15:57:29.103  INFO 19448 --- [RMI TCP Connection(7)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-11-11 15:57:35.349  INFO 17844 --- [main] c.c.nutritionapp.NutritionApplication    : Starting NutritionApplication using Java 17.0.4.1 on LAPTOP-IUKF74KL with PID 17844 (D:\Capgemini\E2e IIHT Training\GROUP IT\Nutrition App\Sprint 1 Backend\Nutrition_App\target\classes started by HP in D:\Capgemini\E2e IIHT Training\GROUP IT\Nutrition App\Sprint 1 Backend\Nutrition_App)
+2022-11-11 15:57:35.352  INFO 17844 --- [main] c.c.nutritionapp.NutritionApplication    : No active profile set, falling back to 1 default profile: "default"
+2022-11-11 15:57:36.043  INFO 17844 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-11-11 15:57:36.114  INFO 17844 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 65 ms. Found 5 JPA repository interfaces.
+2022-11-11 15:57:36.814  INFO 17844 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8020 (http)
+2022-11-11 15:57:36.821  INFO 17844 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-11-11 15:57:36.821  INFO 17844 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-11-11 15:57:36.923  INFO 17844 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-11-11 15:57:36.923  INFO 17844 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1526 ms
+2022-11-11 15:57:37.424  INFO 17844 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-11-11 15:57:37.580  INFO 17844 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-11-11 15:57:38.427  INFO 17844 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-11-11 15:57:38.862  INFO 17844 --- [main] f.a.AutowiredAnnotationBeanPostProcessor : Autowired annotation should only be used on methods with parameters: public java.lang.Iterable com.capg.nutritionapp.service.NutritionPlanServiceImpl.getNutritionPlans()
+2022-11-11 15:57:40.298  INFO 17844 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8020 (http) with context path ''
+2022-11-11 15:57:40.665  INFO 17844 --- [main] c.c.nutritionapp.NutritionApplication    : Started NutritionApplication in 5.663 seconds (JVM running for 6.284)
+2022-11-11 15:57:47.030  INFO 17844 --- [http-nio-8020-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-11-11 15:57:47.030  INFO 17844 --- [http-nio-8020-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-11-11 15:57:47.032  INFO 17844 --- [http-nio-8020-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2022-11-11 16:03:04.674  INFO 17844 --- [RMI TCP Connection(8)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2022-11-11 16:03:04.691  INFO 17844 --- [RMI TCP Connection(8)-127.0.0.1] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2022-11-11 16:03:04.693  INFO 17844 --- [RMI TCP Connection(8)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2022-11-11 16:03:04.713  INFO 17844 --- [RMI TCP Connection(8)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-11-11 16:03:04.715  INFO 17844 --- [RMI TCP Connection(8)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-11-11 16:03:04.719  INFO 17844 --- [RMI TCP Connection(8)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
