@@ -75,11 +75,11 @@ public class NutritionPlan {
         this.name = name;
     }
 
-    public String getPlanDiscription() {
+    public String getPlanDescription() {
         return planDescription;
     }
 
-    public void setPlanDiscription(String planDescription) {
+    public void setPlanDescription(String planDescription) {
         this.planDescription = planDescription;
     }
 

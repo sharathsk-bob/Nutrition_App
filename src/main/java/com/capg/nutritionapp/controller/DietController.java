@@ -1,9 +1,6 @@
 package com.capg.nutritionapp.controller;
 
-import java.util.List;
 import javax.validation.Valid;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
@@ -19,15 +16,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.capg.nutritionapp.dto.DietPlanDTO;
 import com.capg.nutritionapp.entity.DietPlan;
-import com.capg.nutritionapp.entity.NutritionPlan;
-import com.capg.nutritionapp.entity.User;
 import com.capg.nutritionapp.exception.DietPlanNotFoundException;
-import com.capg.nutritionapp.exception.InvalidDataException;
 import com.capg.nutritionapp.service.DietServiceImpl;
 
-@CrossOrigin(origins = "http://localhost:3000")
+
 @RestController
 @RequestMapping(path = "/dietPlan")
+@CrossOrigin(origins = "http://localhost:3000")
 public class DietController {
     //private static final Logger logger = LogManager.getLogger(DietController.class);
     @Autowired

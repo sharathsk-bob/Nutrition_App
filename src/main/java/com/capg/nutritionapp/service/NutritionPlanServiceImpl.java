@@ -1,68 +1,46 @@
 package com.capg.nutritionapp.service;
 
-import com.capg.nutritionapp.dto.NutritionPlanDTO;
-import com.capg.nutritionapp.dto.UserDTO;
-import com.capg.nutritionapp.entity.NutritionPlan;
-import com.capg.nutritionapp.entity.User;
-import com.capg.nutritionapp.exception.InvalidDataException;
-import com.capg.nutritionapp.repository.NutritionPlanRepository;
+import java.util.Objects;
+import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import javax.transaction.Transactional;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+import com.capg.nutritionapp.entity.NutritionPlan;
+import com.capg.nutritionapp.repository.NutritionPlanRepository;
 
 //Description : This is Nutrition Plan Service Layer
 
 @Service
 public class NutritionPlanServiceImpl implements INutritionPlanService {
-	@Autowired
-	private NutritionPlanRepository iNutritionPlanRepository;
 
-    //private final NutritionPlanRepository nutritionPlanRepository;
+    private final NutritionPlanRepository nutritionPlanRepository;
 
-  //  public NutritionPlanServiceImpl(NutritionPlanRepository nutritionPlanRepository) {
-  //      this.nutritionPlanRepository = nutritionPlanRepository;
-  //  }
+    public NutritionPlanServiceImpl(NutritionPlanRepository nutritionPlanRepository) {
+        this.nutritionPlanRepository = nutritionPlanRepository;
+    }
 
     /*
  * Description : This method shows existing Nutrition Plans :Input Parameter 
  *          
  */
     @Override
-    public List<NutritionPlanDTO> getNutritionPlans() throws InvalidDataException{
-        Iterable<NutritionPlan> users = iNutritionPlanRepository.findAll();
-		List<NutritionPlanDTO> users2 = new ArrayList<>();
-		users.forEach(user -> {
-			NutritionPlanDTO cust = new NutritionPlanDTO(user.getName(),user.getPlanDiscription(),user.getCreated_At(),user.getUpdated_At()
-	    			,user.getPrice());
-			users2.add(cust);
-		});
-		if (users2.isEmpty())
-			throw new InvalidDataException("Service.USERS_NOT_FOUND");
-		return users2;
+    @Autowired
+    public Iterable<NutritionPlan> getNutritionPlans(){
+        return nutritionPlanRepository.findAll();
     }
 
     
   //Description : This method Adds new NutritionPlan : Input Parameter
     
     @Override
-    public NutritionPlan addNewNutritionPlan(NutritionPlan nutritionPlan)throws InvalidDataException {
-       List<NutritionPlan> optionalUser = iNutritionPlanRepository.findUserByName(nutritionPlan.getName());
-	//	if(!optionalUser.isEmpty()) {
-	//		throw new InvalidDataException("Service.USER_FOUND");
-	//	}
-       NutritionPlan c = new NutritionPlan();
-		c.setName(nutritionPlan.getName());
-		c.setPlanDiscription(nutritionPlan.getPlanDiscription());
-		c.setPrice(nutritionPlan.getPrice());
-		c.setUpdated_At(nutritionPlan.getUpdated_At());
-		c.setCreated_At(nutritionPlan.getCreated_At());
-		NutritionPlan c2 = iNutritionPlanRepository.save(c);
-		return c2;
+    public Object addNewNutritionPlan(NutritionPlan nutritionPlan) {
+   /*    Optional<NutritionPlanDTO> findNutritionPlanDTOByEmail = nutritionPlanRepository.
+                findNutritionPlanDTOByEmail(nutritionPlanDTO.getEmail())
+        if(nutritionPlanDTOOptional.isPresent()){
+            throw new IllegalStateException("Email Taken");
+        }*/
+        nutritionPlanRepository.save(nutritionPlan);
+//        System.out.println(nutritionPlan);
+        return null;
     }
 
     /*
@@ -71,13 +49,13 @@ public class NutritionPlanServiceImpl implements INutritionPlanService {
  */
 
     @Override
-    public NutritionPlanDTO deleteNutritionPlan(long nutritionPlanId) throws InvalidDataException {
-    	Optional<NutritionPlan> user1 = iNutritionPlanRepository.findById(nutritionPlanId);
-    	NutritionPlan user=user1.orElseThrow(() -> new InvalidDataException("Service.USER_NOT_FOUND"));
-    	NutritionPlanDTO customer=new NutritionPlanDTO(user.getName(),user.getPlanDiscription(),user.getCreated_At(),user.getUpdated_At()
-    			,user.getPrice());
-    	iNutritionPlanRepository.deleteById(nutritionPlanId);
-		return customer;
+    public void deleteNutritionPlan(long nutritionPlanId) {
+         boolean exists = nutritionPlanRepository.existsById(nutritionPlanId);
+         if(!exists){
+             throw new IllegalStateException("Nutrition Plan for id "
+                     + nutritionPlanId + " does not exits");
+         }
+         nutritionPlanRepository.deleteById(nutritionPlanId);
     }
 
     
@@ -88,15 +66,36 @@ public class NutritionPlanServiceImpl implements INutritionPlanService {
     
     @Override
     @Transactional
-    public NutritionPlanDTO updateNutritionPlan(NutritionPlanDTO nutritionPlan)throws InvalidDataException {
-    	Optional<NutritionPlan> user1 = iNutritionPlanRepository.findById(nutritionPlan.getId());
-    	NutritionPlan c = user1.orElseThrow(() -> new InvalidDataException("Service.USER_NOT_FOUND"));
-		c.setName(nutritionPlan.getName());
-		c.setPlanDiscription(nutritionPlan.getPlanDescription());
-		c.setPrice(nutritionPlan.getPrice());
-		c.setUpdated_At(nutritionPlan.getUpdated_At());
-		c.setCreated_At(nutritionPlan.getCreated_At());
-		return nutritionPlan;
+    public void updateNutritionPlan(long id,NutritionPlan nutritionPlanDetails) {
+        NutritionPlan nutritionPlanDTO = nutritionPlanRepository.findById(id).
+                orElseThrow(() -> new IllegalStateException(
+                        "Nutrition Plan with id " +id + " does not exists"));
+        //System.out.println(name+price+planDescription+nutritionPlanId);
+       if(nutritionPlanDetails.getName() != null && nutritionPlanDetails.getName().length() > 0 && !Objects.equals(nutritionPlanDTO.getName(),nutritionPlanDetails.getName())){
+                    nutritionPlanDTO.setName(nutritionPlanDetails.getName());
+        }
+       Object s=nutritionPlanDetails.getPrice();
+        if(s!= null &&  !Objects.equals(nutritionPlanDTO.getPrice(),nutritionPlanDetails.getPrice())){
+            nutritionPlanDTO.setPrice(nutritionPlanDetails.getPrice());
+        }
+        if(nutritionPlanDetails.getPlanDescription()!= null  && !Objects.equals(nutritionPlanDTO.getPlanDescription(),nutritionPlanDetails.getPlanDescription())){
+            nutritionPlanDTO.setPlanDescription(nutritionPlanDetails.getPlanDescription());
+        }
+        if(nutritionPlanDetails.getCreated_At()!= null  && !Objects.equals(nutritionPlanDTO.getCreated_At(),nutritionPlanDetails.getCreated_At())){
+            nutritionPlanDTO.setCreated_At(nutritionPlanDetails.getCreated_At());
+        }
+        if(nutritionPlanDetails.getUpdated_At()!= null  && !Objects.equals(nutritionPlanDTO.getUpdated_At(),nutritionPlanDetails.getUpdated_At())){
+
+            nutritionPlanDTO.setUpdated_At(nutritionPlanDetails.getUpdated_At());
+        }
+        nutritionPlanRepository.save(nutritionPlanDTO);
+       /*  if(created_At!= null  &&
+                !Objects.equals(nutritionPlanDTO.getCreated_At(),created_At)){
+            nutritionPlanDTO.setCreated_At(created_At);
+        }
+        if(updated_At!= null  &&
+                !Objects.equals(nutritionPlanDTO.getUpdated_At(),updated_At)){
+            nutritionPlanDTO.setUpdated_At(updated_At);
+        }*/
     }
 }
-

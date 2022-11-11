@@ -1,11 +1,6 @@
 package com.capg.nutritionapp.service;
 
-import java.util.List;
-import javax.transaction.Transactional;
-
-import com.capg.nutritionapp.dto.NutritionPlanDTO;
 import com.capg.nutritionapp.entity.NutritionPlan;
-import com.capg.nutritionapp.exception.InvalidDataException;
 
 /**
  * The Interface IAppointmentService.
@@ -16,7 +11,7 @@ public interface INutritionPlanService {
 	 * Gets the Nutrition Plans.
 	 * @return the all Nutrition Plans
 	 */
-    public List<NutritionPlanDTO> getNutritionPlans() throws InvalidDataException;
+    public Iterable<NutritionPlan> getNutritionPlans();
     
     /**
 	 * Adds the New Nutrition Plan.
@@ -25,7 +20,7 @@ public interface INutritionPlanService {
 	 * @return the NutritionPlan DTO
 	 * @throws NutritionPlan the nutritionplan exception
 	 */
-    public NutritionPlan addNewNutritionPlan(NutritionPlan nutritionPlan)throws InvalidDataException;
+    public Object addNewNutritionPlan(NutritionPlan nutritionPlan);
     
     /**
 	 * Removes the NutritionPlan.
@@ -34,7 +29,7 @@ public interface INutritionPlanService {
 	 * @return the NutritionPlan DTO
 	 * @throws NutritionPlan the nutritionplan exception
 	 */
-    public NutritionPlanDTO deleteNutritionPlan(long nutritionPlanId)throws InvalidDataException;
+    public void deleteNutritionPlan(long nutritionPlanId);
     
     /**
 	 * Update NutritionPlan.
@@ -44,6 +39,6 @@ public interface INutritionPlanService {
 	 * @throws NutritionPlan the nutritionplan exception
 	 */
    
-    @Transactional
-    public NutritionPlanDTO updateNutritionPlan(NutritionPlanDTO nutritionPlan)throws InvalidDataException;
+    //@Transactional
+    public void updateNutritionPlan(long nutritionPlanId,NutritionPlan nutritionPlanDetails);
 }
